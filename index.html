@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Running Gait Analysis for Injury Prevention & Treatment — A Course for Physiotherapists | Core Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1b2a3a;
+    --navy-2:#25384c;
+    --teal:#3a8a8c;
+    --terracotta:#d9764a;
+    --terracotta-dk:#bd5f37;
+    --cream:#f7f5f1;
+    --cream-dk:#e9e4da;
+    --ink:#2a2c2b;
+    --ink-soft:#5a5f5c;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--cream); color:var(--ink);
+    font-family:'Inter', sans-serif; font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{ font-family:'Fraunces', serif; color:var(--navy); font-weight:600; line-height:1.15; letter-spacing:-0.01em; }
+  a{ color:inherit; text-decoration:none; }
+  img,svg{ display:block; max-width:100%; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 32px; }
+  .eyebrow{ font-family:'Inter', sans-serif; font-size:0.72rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; }
+
+  /* NAV */
+  header{ position:sticky; top:0; z-index:50; background:var(--navy); }
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; height:76px; }
+  .logo-word{ font-family:'Fraunces', serif; font-weight:700; font-size:1.32rem; letter-spacing:-0.01em; }
+  .logo-word .core{ color:#fff; }
+  .logo-word .learning{ color:var(--terracotta); }
+  .nav-links{ display:flex; align-items:center; gap:22px; font-size:0.92rem; font-weight:500; }
+  .nav-links a{ color:var(--cream); opacity:0.8; transition:opacity .2s ease; }
+  .nav-links a:hover{ opacity:1; }
+  .nav-home{
+    background:rgba(247,245,241,0.1); opacity:1 !important;
+    padding:9px 18px; border-radius:8px;
+    transition:background .2s ease;
+  }
+  .nav-home:hover{ background:rgba(247,245,241,0.18); }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--teal); outline-offset:3px; border-radius:3px; }
+
+  /* HERO */
+  .hero{ position:relative; overflow:hidden; padding:120px 0 88px; display:flex; align-items:flex-end; min-height:520px; }
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background-image:
+      linear-gradient(100deg, rgba(19,29,40,0.93) 0%, rgba(19,29,40,0.8) 45%, rgba(19,29,40,0.45) 100%),
+      url("Assets/Images/hero.png");
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:cover;
+  }
+  .hero .wrap{ position:relative; width:100%; }
+  .hero-content{ max-width:640px; }
+  .hero-eyebrow{ color:rgba(247,245,241,0.6); display:inline-block; margin-bottom:18px; }
+  .hero h1{ color:#fff; font-size:clamp(2rem, 4.2vw, 3.1rem); margin-bottom:20px; }
+  .hero h1 em{ font-style:italic; color:var(--terracotta); font-weight:500; }
+  .hero p.sub{ color:var(--cream); opacity:0.75; font-size:1.05rem; max-width:520px; margin-bottom:32px; }
+  .hero-ctas{ display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+  .btn-primary{
+    background:var(--terracotta); color:#fff; padding:14px 26px; border-radius:9px;
+    font-weight:600; font-size:0.98rem; display:inline-flex; align-items:center; gap:9px;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .btn-primary:hover{ background:var(--terracotta-dk); transform:translateY(-2px); }
+  .link-ghost{ color:var(--cream); opacity:0.75; font-weight:600; font-size:0.95rem; border-bottom:1px solid rgba(247,245,241,0.4); padding-bottom:2px; }
+  .link-ghost:hover{ opacity:1; }
+
+  @media (max-width:640px){ .hero{ min-height:0; padding:96px 0 64px; } }
+
+  /* WHO IT'S FOR */
+  .strip{ padding:64px 0; border-bottom:1px solid var(--cream-dk); }
+  .strip-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:32px; }
+  .strip-item{ text-align:center; padding:0 12px; }
+  .strip-item svg{ margin:0 auto 16px; color:var(--terracotta); }
+  .strip-item h3{ font-size:1.08rem; margin-bottom:8px; }
+  .strip-item p{ color:var(--ink-soft); font-size:0.92rem; }
+  @media (max-width:760px){ .strip-grid{ grid-template-columns:1fr; gap:36px; } }
+
+  /* CURRICULUM */
+  .curriculum{ padding:100px 0 96px; }
+
+  /* CREATORS */
+  .creators{ padding:0 0 100px; }
+  .creator-grid{ display:grid; grid-template-columns:1fr; max-width:640px; margin:0 auto; gap:28px; }
+  .creator-card{
+    background:#fff; border:1px solid var(--cream-dk); border-radius:16px;
+    padding:32px 30px;
+  }
+  .creator-top{ display:flex; align-items:center; gap:16px; margin-bottom:18px; }
+  .creator-avatar{
+    width:56px; height:56px; border-radius:50%; flex-shrink:0;
+    background:var(--terracotta); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.15rem;
+  }
+  .creator-name{ font-size:1.15rem; margin-bottom:2px; }
+  .creator-credential{ font-size:0.82rem; color:var(--ink-soft); }
+  .creator-card p{ color:var(--ink-soft); font-size:0.93rem; margin-bottom:14px; }
+  .creator-card p:last-child{ margin-bottom:0; }
+  .section-head{ text-align:center; max-width:600px; margin:0 auto 56px; }
+  .section-head .eyebrow{ color:var(--terracotta); margin-bottom:16px; display:block; }
+  .section-head h2{ font-size:clamp(1.7rem, 3vw, 2.2rem); margin-bottom:14px; }
+  .section-head p{ color:var(--ink-soft); }
+
+  .module-list{ display:flex; flex-direction:column; gap:18px; }
+  .module-row{
+    display:grid; grid-template-columns:60px 56px 1fr; gap:20px;
+    background:#fff; border:1px solid var(--cream-dk); border-radius:14px;
+    padding:26px 30px; align-items:center;
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .module-row:hover{ border-color:var(--terracotta); box-shadow:0 16px 30px -18px rgba(27,42,58,0.22); }
+  .module-thumb{
+    width:60px; height:60px; border-radius:10px;
+    background-color:var(--cream-dk); background-size:cover; background-position:center;
+  }
+  .module-num{
+    font-family:'Fraunces', serif; font-size:1.7rem; font-weight:600;
+    color:var(--terracotta); text-align:center;
+  }
+  .module-row h3{ font-size:1.1rem; margin-bottom:6px; }
+  .module-row p{ color:var(--ink-soft); font-size:0.9rem; }
+  @media (max-width:600px){
+    .module-row{ grid-template-columns:48px 44px 1fr; text-align:left; gap:14px; }
+    .module-num{ text-align:left; }
+  }
+
+  /* FORMAT / PRICING */
+  .format{ background:var(--cream-dk); padding:88px 0; }
+  .format-grid{ display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+  .format h2{ font-size:1.7rem; margin-bottom:18px; }
+  .format p{ color:var(--ink-soft); margin-bottom:16px; }
+  .format-list{ list-style:none; margin-top:20px; }
+  .format-list li{ display:flex; gap:10px; margin-bottom:12px; font-size:0.95rem; color:var(--ink-soft); }
+  .format-list li svg{ color:var(--teal); flex-shrink:0; margin-top:3px; }
+
+  .price-card{ background:#fff; border-radius:16px; padding:38px; border:1px solid rgba(27,42,58,0.08); }
+  .price-card .eyebrow{ color:var(--terracotta); margin-bottom:12px; display:block; }
+  .price-card .amount{ font-family:'Fraunces', serif; font-size:2.6rem; font-weight:600; color:var(--navy); margin-bottom:6px; }
+  .price-card .amount-note{ color:var(--ink-soft); font-size:0.88rem; margin-bottom:26px; }
+  .price-card .btn-primary{ width:100%; justify-content:center; }
+  @media (max-width:900px){ .format-grid{ grid-template-columns:1fr; } }
+
+  /* FOOTER */
+  footer{ position:relative; background:var(--navy); padding:56px 0 36px; overflow:hidden; }
+  footer .wrap{ position:relative; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
+  .footer-brand{ display:flex; align-items:center; gap:10px; }
+  .footer-brand-text{ line-height:1.2; }
+  .footer-course{ font-family:'Fraunces', serif; font-weight:600; color:var(--cream); font-size:0.98rem; margin-top:6px; }
+  .footer-meta{ color:var(--cream); opacity:0.5; font-size:0.85rem; display:flex; gap:24px; flex-wrap:wrap; }
+  .footer-meta a:hover{ opacity:0.8; }
+
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } html{ scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo-word"><span class="core">Core</span> <span class="learning">Learning</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-home">Home</a>
+      <a href="login.html">Sign up / Log in</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-content">
+      <span class="eyebrow hero-eyebrow">CORE LEARNING</span>
+      <h1>Running Gait Analysis for Injury Prevention &amp; Treatment</h1>
+      <p class="sub">A five-module course on running gait assessment, interpretation, injury-specific treatment, and return-to-run programming — built for physiotherapists who want a structured, evidence-based framework for their running patients.</p>
+      <div class="hero-ctas">
+        <a href="login.html" class="btn-primary">
+          Enroll now
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#curriculum" class="link-ghost">See the full curriculum</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="wrap">
+    <div class="strip-grid">
+      <div class="strip-item reveal">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M4 21C4 16.6 7.6 14 12 14C16.4 14 20 16.6 20 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <h3>Built for your existing skill level</h3>
+        <p>No running-analysis background assumed — but no re-teaching basic anatomy either. It starts exactly where a physio's training leaves off.</p>
+      </div>
+      <div class="strip-item reveal">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M12 2L14.5 8.5L21 9L16 13.5L17.5 20L12 16.5L6.5 20L8 13.5L3 9L9.5 8.5L12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <h3>Grounded in real evidence</h3>
+        <p>Every module is built around the current running-injury and biomechanics literature, not general opinion.</p>
+      </div>
+      <div class="strip-item reveal">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M4 12L10 18L20 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Immediately clinical</h3>
+        <p>A repeatable gait-analysis method, fault-to-pathology mapping, and treatment/retraining pathways you can use in your very next running patient's session.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="curriculum" id="curriculum">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">THE CURRICULUM</span>
+      <h2>Five modules, start to finish</h2>
+      <p>Each module unlocks once you pass the quiz for the one before it — work through it at your own pace.</p>
+    </div>
+
+    <div class="module-list">
+      <div class="module-row reveal">
+        <div class="module-thumb" style="background-image:url('Assets/Images/module-01.png')"></div>
+        <span class="module-num">01</span>
+        <div>
+          <h3>Introduction &amp; Clinical Rationale</h3>
+          <p>Why running gait analysis matters for injury prevention and management, the evidence base and its limits, and where gait analysis fits in the broader clinical picture.</p>
+        </div>
+      </div>
+      <div class="module-row reveal">
+        <div class="module-thumb" style="background-image:url('Assets/Images/module-02.png')"></div>
+        <span class="module-num">02</span>
+        <div>
+          <h3>Running Gait Analysis Methodology</h3>
+          <p>Video setup, what to look at and why, key kinematic markers, and the subjective intake/screening that precedes the analysis.</p>
+        </div>
+      </div>
+      <div class="module-row reveal">
+        <div class="module-thumb" style="background-image:url('Assets/Images/module-03.png')"></div>
+        <span class="module-num">03</span>
+        <div>
+          <h3>Interpreting Gait &amp; Linking to Pathology</h3>
+          <p>Reading the patterns — overstriding, cadence, vertical oscillation, foot strike, hip drop/crossover — and mapping faults to associated injuries.</p>
+        </div>
+      </div>
+      <div class="module-row reveal">
+        <div class="module-thumb" style="background-image:url('Assets/Images/module-04.png')"></div>
+        <span class="module-num">04</span>
+        <div>
+          <h3>Injury-Specific Treatment Pathways</h3>
+          <p>Per-injury clinical reasoning: which gait faults to target for which diagnosis, and how to sequence treatment against your assessment findings.</p>
+        </div>
+      </div>
+      <div class="module-row reveal">
+        <div class="module-thumb" style="background-image:url('Assets/Images/module-05.png')"></div>
+        <span class="module-num">05</span>
+        <div>
+          <h3>Running Re-Training &amp; Return-to-Run Programming</h3>
+          <p>Cueing strategies, drills, load management, and a structured return-to-run progression.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="creators">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">WHO BUILT THIS</span>
+      <h2>A bit about the creator</h2>
+    </div>
+
+    <div class="creator-grid">
+      <div class="creator-card reveal">
+        <div class="creator-top">
+          <div class="creator-avatar">CA</div>
+          <div>
+            <div class="creator-name" style="font-family:'Fraunces',serif; font-weight:600; color:var(--navy);">Chris Allan</div>
+            <div class="creator-credential">MPhil Sports Physiotherapy (UCT)</div>
+          </div>
+        </div>
+        <p>Chris is a sports physiotherapist with more than 25 years of clinical experience and an MPhil in Sports Physiotherapy from the University of Cape Town, awarded with distinction for his research. His clinical background spans sports and orthopaedic rehabilitation, biomechanics, running injuries, return to sport, and high-performance athletes. He has also lectured extensively to postgraduate Sports Medicine and Sports Physiotherapy students on biomechanics, knee injuries, running analysis, and return to play.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="format" id="format">
+  <div class="wrap">
+    <div class="format-grid">
+      <div class="reveal">
+        <span class="eyebrow" style="color:var(--terracotta); display:block; margin-bottom:14px;">FORMAT &amp; ACCESS</span>
+        <h2>Self-paced, quiz-gated, yours for good</h2>
+        <p>Work through the five modules in order, at whatever pace suits your schedule. Passing each quiz unlocks the next module automatically.</p>
+        <ul class="format-list">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 12L13 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> One-time payment, lifetime access</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 12L13 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Read at your own pace — no deadlines</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 12L13 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Short quiz at the end of each module</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 12L13 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Full reference list included in every module</li>
+        </ul>
+      </div>
+      <div class="price-card reveal">
+        <span class="eyebrow">ONE-TIME ENROLLMENT</span>
+        <div class="amount">R800</div>
+        <div class="amount-note">Once-off payment · secure checkout via Yoco</div>
+        <a href="login.html" class="btn-primary">
+          Enroll in the course
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-brand">
+      <div class="footer-brand-text">
+        <span class="logo-word"><span class="core">Core</span> <span class="learning">Learning</span></span>
+        <div class="footer-course">Running Gait Analysis for Injury Prevention &amp; Treatment</div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <span>&copy; <span id="year"></span> Core Learning</span>
+      <a href="mailto:callan@wam.co.za">callan@wam.co.za</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

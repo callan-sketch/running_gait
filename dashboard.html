@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Running Gait Analysis for Injury Prevention & Treatment | Core Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1b2a3a;
+    --teal:#3a8a8c;
+    --teal-dk:#2e6e70;
+    --terracotta:#d9764a;
+    --terracotta-dk:#bd5f37;
+    --cream:#f7f5f1;
+    --cream-dk:#e9e4da;
+    --ink:#2a2c2b;
+    --ink-soft:#5a5f5c;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    background:var(--cream); color:var(--ink);
+    font-family:'Inter', sans-serif; font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  h1,h2,h3{ font-family:'Fraunces', serif; color:var(--navy); font-weight:600; line-height:1.2; letter-spacing:-0.01em; }
+  a{ color:inherit; text-decoration:none; }
+  img,svg{ display:block; }
+  button{ font-family:inherit; cursor:pointer; }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--teal); outline-offset:2px; border-radius:4px; }
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 32px; }
+
+  /* NAV — same navy pattern as index.html */
+  header{ position:sticky; top:0; z-index:50; background:var(--navy); }
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; height:76px; max-width:1040px; }
+  .logo-word{ font-family:'Fraunces', serif; font-weight:700; font-size:1.32rem; letter-spacing:-0.01em; }
+  .logo-word .core{ color:#fff; }
+  .logo-word .learning{ color:var(--terracotta); }
+  .nav-right{ display:flex; align-items:center; gap:18px; font-size:0.88rem; }
+  .nav-user{ color:var(--cream); opacity:0.75; }
+  .nav-logout{
+    color:var(--cream); opacity:0.85; font-weight:600;
+    background:rgba(247,245,241,0.1); padding:8px 16px; border-radius:8px;
+    transition:background .2s ease;
+  }
+  .nav-logout:hover{ background:rgba(247,245,241,0.18); }
+
+  /* LOADING */
+  .loading-screen{
+    min-height:70vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:16px; color:var(--ink-soft); font-size:0.95rem;
+  }
+  .spinner-lg{
+    width:34px; height:34px; border-radius:50%;
+    border:3px solid var(--cream-dk); border-top-color:var(--terracotta);
+    animation:spin .8s linear infinite;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  main{ display:none; }
+  main.ready{ display:block; }
+
+  /* WELCOME */
+  .welcome{ padding:56px 0 40px; }
+  .welcome-top{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px; margin-bottom:28px; }
+  .welcome h1{ font-size:clamp(1.6rem, 3vw, 2.1rem); margin-bottom:6px; }
+  .welcome p{ color:var(--ink-soft); font-size:0.98rem; }
+
+  .progress-card{
+    background:#fff; border:1px solid var(--cream-dk); border-radius:14px;
+    padding:20px 26px; display:flex; align-items:center; gap:22px; min-width:280px;
+  }
+  .progress-ring-wrap{ position:relative; width:56px; height:56px; flex-shrink:0; }
+  .progress-ring-wrap svg{ transform:rotate(-90deg); }
+  .progress-ring-bg{ fill:none; stroke:var(--cream-dk); stroke-width:5; }
+  .progress-ring-fg{ fill:none; stroke:var(--terracotta); stroke-width:5; stroke-linecap:round; transition:stroke-dashoffset .4s ease; }
+  .progress-fraction{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-weight:600; font-size:0.85rem; color:var(--navy);
+  }
+  .progress-label{ font-size:0.86rem; color:var(--ink-soft); }
+  .progress-label strong{ display:block; color:var(--navy); font-size:0.98rem; margin-bottom:2px; }
+
+  /* PAYMENT PENDING STATE */
+  .pending-card{
+    background:#fff; border:1px solid var(--cream-dk); border-radius:16px;
+    padding:44px 40px; text-align:center; max-width:520px; margin:40px auto;
+  }
+  .pending-card svg{ margin:0 auto 20px; color:var(--terracotta); }
+  .pending-card h2{ font-size:1.4rem; margin-bottom:10px; }
+  .pending-card p{ color:var(--ink-soft); font-size:0.95rem; margin-bottom:26px; }
+  .btn-primary{
+    background:var(--terracotta); color:#fff; padding:13px 26px; border:none; border-radius:9px;
+    font-weight:600; font-size:0.96rem; display:inline-flex; align-items:center; gap:9px;
+    transition:background .2s ease;
+  }
+  .btn-primary:hover{ background:var(--terracotta-dk); }
+
+  /* MODULE GRID */
+  .modules{ padding:12px 0 90px; }
+  .module-list{ display:flex; flex-direction:column; gap:16px; }
+  .module-row{
+    display:grid; grid-template-columns:56px 44px 1fr auto; gap:18px; align-items:center;
+    background:#fff; border:1px solid var(--cream-dk); border-radius:14px;
+    padding:24px 28px; transition:border-color .2s ease, box-shadow .2s ease, opacity .2s ease;
+  }
+  .module-row.unlocked{ cursor:pointer; }
+  .module-row.unlocked:hover{ border-color:var(--terracotta); box-shadow:0 14px 28px -18px rgba(27,42,58,0.22); }
+  .module-row.locked{ opacity:0.55; }
+  .module-row.complete{ border-color:var(--teal); }
+
+  .module-thumb{
+    width:56px; height:56px; border-radius:10px; flex-shrink:0;
+    background-color:var(--cream-dk); background-size:cover; background-position:center;
+  }
+
+  .module-num{
+    width:44px; height:44px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.15rem;
+    background:var(--cream); color:var(--ink-soft);
+  }
+  .module-row.unlocked .module-num{ background:rgba(217,118,74,0.12); color:var(--terracotta); }
+  .module-row.complete .module-num{ background:var(--teal); color:#fff; }
+
+  .module-row h3{ font-size:1.05rem; margin-bottom:4px; }
+  .module-row p{ color:var(--ink-soft); font-size:0.87rem; }
+
+  .module-status{
+    display:flex; align-items:center; gap:8px; font-size:0.85rem; font-weight:600;
+    white-space:nowrap;
+  }
+  .module-status.locked{ color:var(--ink-soft); }
+  .module-status.unlocked{ color:var(--terracotta); }
+  .module-status.complete{ color:var(--teal-dk); }
+  .module-status svg{ flex-shrink:0; }
+
+  @media (max-width:640px){
+    .module-row{ grid-template-columns:48px 40px 1fr; }
+    .module-status{ grid-column:1/3; justify-self:start; margin-top:4px; }
+  }
+
+  /* CERTIFICATE BANNER */
+  .cert-banner{
+    background:var(--navy); border-radius:16px; padding:36px 40px;
+    display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap;
+    margin-bottom:32px;
+  }
+  .cert-banner h2{ color:#fff; font-size:1.25rem; margin-bottom:6px; }
+  .cert-banner p{ color:var(--cream); opacity:0.7; font-size:0.9rem; }
+  .btn-cert{
+    background:rgba(247,245,241,0.12); color:var(--cream); border:1px solid rgba(247,245,241,0.3);
+    padding:12px 22px; border-radius:9px; font-weight:600; font-size:0.9rem;
+    cursor:not-allowed; opacity:0.8;
+  }
+
+  footer{ text-align:center; padding:28px 20px; color:var(--ink-soft); font-size:0.8rem; border-top:1px solid var(--cream-dk); }
+  .footer-word .core{ color:var(--navy); font-weight:700; }
+  .footer-word .learning{ color:var(--terracotta); font-weight:700; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo-word"><span class="core">Core</span> <span class="learning">Learning</span></a>
+    <div class="nav-right">
+      <span class="nav-user" id="navUser"></span>
+      <a href="#" class="nav-logout" id="logoutBtn">Log out</a>
+    </div>
+  </nav>
+</header>
+
+<div class="loading-screen" id="loadingScreen">
+  <div class="spinner-lg"></div>
+  <span>Loading your dashboard…</span>
+</div>
+
+<main id="mainContent">
+
+  <!-- PAID VIEW -->
+  <div id="paidView" style="display:none;">
+    <section class="welcome">
+      <div class="wrap">
+        <div class="welcome-top">
+          <div>
+            <h1>Welcome back<span id="welcomeName"></span></h1>
+            <p>Pick up where you left off below.</p>
+          </div>
+          <div class="progress-card">
+            <div class="progress-ring-wrap">
+              <svg width="56" height="56" viewBox="0 0 56 56">
+                <circle class="progress-ring-bg" cx="28" cy="28" r="24"/>
+                <circle class="progress-ring-fg" id="progressRing" cx="28" cy="28" r="24" stroke-dasharray="150.8" stroke-dashoffset="150.8"/>
+              </svg>
+              <div class="progress-fraction" id="progressFraction">0/5</div>
+            </div>
+            <div class="progress-label">
+              <strong id="progressHeadline">Just getting started</strong>
+              <span>modules completed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="modules">
+      <div class="wrap">
+        <div class="cert-banner" id="certBanner" style="display:none;">
+          <div>
+            <h2>🎉 You've completed the course</h2>
+            <p>Your completion certificate is being finalised — we'll email it to you shortly.</p>
+          </div>
+          <button class="btn-cert" disabled>Certificate coming soon</button>
+        </div>
+
+        <div class="module-list" id="moduleList"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- UNPAID VIEW -->
+  <div id="unpaidView" style="display:none;">
+    <div class="pending-card">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 8V13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16" r="0.8" fill="currentColor"/></svg>
+      <h2>Your enrollment isn't complete yet</h2>
+      <p>We've saved your details, but haven't received payment for this course yet. Finish enrolling to unlock Module 1.</p>
+      <a href="login.html" class="btn-primary">
+        Complete enrollment
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  &copy; <span id="year"></span> <span class="footer-word"><span class="core">Core</span> <span class="learning">Learning</span></span> · <a href="mailto:callan@wam.co.za" style="text-decoration:underline;">callan@wam.co.za</a>
+</footer>
+
+<script type="module">
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyAN9BVXDo15Mav2zketm5jhKRoBjs2yYX8",
+  authDomain: "core-coaching-login.firebaseapp.com",
+  projectId: "core-coaching-login",
+  storageBucket: "core-coaching-login.firebasestorage.app",
+  messagingSenderId: "184932860937",
+  appId: "1:184932860937:web:7023e588b1068ed2a824d8",
+  measurementId: "G-M48JWEWV0D"
+};
+const COURSE_ID = "runninggait";
+
+/* ============================================================
+   MODULE DEFINITIONS — edit titles/descriptions here only.
+   Unlock/complete state comes from Firestore at render time.
+   ============================================================ */
+const MODULES = [
+  { n: 1, title: "Introduction & Clinical Rationale", desc: "Why running gait analysis matters, the evidence base, and where it fits clinically." },
+  { n: 2, title: "Running Gait Analysis Methodology", desc: "Video setup, key kinematic markers, and subjective screening." },
+  { n: 3, title: "Interpreting Gait & Linking to Pathology", desc: "Reading gait patterns and mapping faults to associated injuries." },
+  { n: 4, title: "Injury-Specific Treatment Pathways", desc: "Per-injury clinical reasoning and treatment sequencing." },
+  { n: 5, title: "Running Re-Training & Return-to-Run Programming", desc: "Cueing, drills, load management, and return-to-run progression." }
+];
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+let auth, db, onAuthStateChanged, doc, getDoc;
+
+try {
+  const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js");
+  const authMod = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js");
+  const fsMod = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+
+  const app = initializeApp(FIREBASE_CONFIG);
+  auth = authMod.getAuth(app);
+  onAuthStateChanged = authMod.onAuthStateChanged;
+  db = fsMod.getFirestore(app);
+  doc = fsMod.doc;
+  getDoc = fsMod.getDoc;
+
+  onAuthStateChanged(auth, async (user) => {
+    if (!user){
+      window.location.href = 'login.html';
+      return;
+    }
+    await loadDashboard(user);
+  });
+} catch (err){
+  console.error('Firebase failed to load on dashboard:', err);
+  document.getElementById('loadingScreen').innerHTML =
+    '<span style="color:#c0432f;">Something went wrong loading your dashboard. Please refresh, or check your connection.</span>';
+}
+
+async function loadDashboard(user){
+  document.getElementById('navUser').textContent = user.email || '';
+
+  let profile = {};
+  try {
+    const snap = await getDoc(doc(db, 'users', user.uid));
+    if (snap.exists()) profile = snap.data();
+  } catch (err){
+    console.error('Error loading profile:', err);
+  }
+
+  const courseData = (profile.courses && profile.courses[COURSE_ID]) || { paid: false, unlockedModules: [], moduleProgress: {} };
+
+  document.getElementById('loadingScreen').style.display = 'none';
+  document.getElementById('mainContent').classList.add('ready');
+
+  if (!courseData.paid){
+    document.getElementById('unpaidView').style.display = 'block';
+    return;
+  }
+
+  document.getElementById('paidView').style.display = 'block';
+  const firstName = profile.name ? `, ${profile.name.split(' ')[0]}` : '';
+  document.getElementById('welcomeName').textContent = firstName;
+
+  renderModules(courseData);
+}
+
+function renderModules(courseData){
+  const unlockedModules = courseData.unlockedModules && courseData.unlockedModules.length
+    ? courseData.unlockedModules
+    : [1]; // paid but no explicit unlock record yet — Module 1 should always be reachable once paid
+  const moduleProgress = courseData.moduleProgress || {};
+
+  const completedCount = MODULES.filter(m => moduleProgress[m.n] && moduleProgress[m.n].completed).length;
+
+  // Progress ring + fraction
+  const circumference = 150.8;
+  const offset = circumference - (completedCount / MODULES.length) * circumference;
+  document.getElementById('progressRing').style.strokeDashoffset = offset;
+  document.getElementById('progressFraction').textContent = `${completedCount}/${MODULES.length}`;
+
+  const headline = document.getElementById('progressHeadline');
+  if (completedCount === 0) headline.textContent = 'Just getting started';
+  else if (completedCount === MODULES.length) headline.textContent = 'Course complete!';
+  else headline.textContent = `${completedCount} of ${MODULES.length} done`;
+
+  if (completedCount === MODULES.length){
+    document.getElementById('certBanner').style.display = 'flex';
+  }
+
+  const list = document.getElementById('moduleList');
+  list.innerHTML = MODULES.map(m => {
+    const isComplete = moduleProgress[m.n] && moduleProgress[m.n].completed;
+    const isUnlocked = unlockedModules.includes(m.n);
+    const state = isComplete ? 'complete' : (isUnlocked ? 'unlocked' : 'locked');
+
+    const statusHtml = {
+      complete: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Completed`,
+      unlocked: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Start module`,
+      locked: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="currentColor" stroke-width="1.6"/></svg> Locked`
+    }[state];
+
+    const rowTag = state === 'locked' ? 'div' : 'a';
+    const hrefAttr = state === 'locked' ? '' : `href="module-0${m.n}.html"`;
+    const thumbNum = String(m.n).padStart(2, '0');
+
+    return `
+      <${rowTag} ${hrefAttr} class="module-row ${state}">
+        <div class="module-thumb" style="background-image:url('Assets/Images/module-${thumbNum}.png')"></div>
+        <div class="module-num">${state === 'complete' ? '✓' : m.n}</div>
+        <div>
+          <h3>${m.title}</h3>
+          <p>${m.desc}</p>
+        </div>
+        <div class="module-status ${state}">${statusHtml}</div>
+      </${rowTag}>
+    `;
+  }).join('');
+}
+
+document.getElementById('logoutBtn').addEventListener('click', async (e) => {
+  e.preventDefault();
+  try {
+    const { signOut } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js");
+    await signOut(auth);
+  } catch (err){
+    console.error(err);
+  }
+  window.location.href = 'index.html';
+});
+</script>
+
+</body>
+</html>

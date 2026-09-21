@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enroll — Running Gait Analysis for Injury Prevention & Treatment | Core Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1b2a3a;
+    --teal:#3a8a8c;
+    --teal-dk:#2e6e70;
+    --terracotta:#d9764a;
+    --terracotta-dk:#bd5f37;
+    --cream:#f7f5f1;
+    --cream-dk:#e9e4da;
+    --ink:#2a2c2b;
+    --ink-soft:#5a5f5c;
+    --error:#c0432f;
+    --error-bg:#fbeae6;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    background:var(--cream); color:var(--ink);
+    font-family:'Inter', sans-serif; font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    display:flex; flex-direction:column;
+  }
+  h1,h2,h3{ font-family:'Fraunces', serif; color:var(--navy); font-weight:600; line-height:1.2; letter-spacing:-0.01em; }
+  a{ color:inherit; text-decoration:none; }
+  img,svg{ display:block; }
+  button{ font-family:inherit; cursor:pointer; }
+  input, select{ font-family:inherit; font-size:0.95rem; }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible{
+    outline:2px solid var(--teal); outline-offset:2px; border-radius:4px;
+  }
+
+  /* ---------- DEV BANNER ---------- */
+  .dev-banner{
+    display:none;
+    background:#3a2f1f; color:#f5e6c8;
+    font-size:0.82rem; text-align:center;
+    padding:10px 20px;
+  }
+  .dev-banner.show{ display:block; }
+  .dev-banner code{ background:rgba(255,255,255,0.12); padding:1px 6px; border-radius:4px; }
+
+  /* ---------- NAV ---------- */
+  header{ background:var(--navy); }
+  nav.wrap{
+    max-width:1000px; margin:0 auto; padding:0 28px;
+    display:flex; align-items:center; justify-content:space-between; height:72px;
+  }
+  .logo-word{ font-family:'Fraunces', serif; font-weight:700; font-size:1.2rem; letter-spacing:-0.01em; }
+  .logo-word .core{ color:#fff; }
+  .logo-word .learning{ color:var(--terracotta); }
+  .back-link{
+    color:var(--cream); opacity:0.85; font-weight:600; font-size:0.88rem;
+    display:flex; align-items:center; gap:6px;
+    padding:8px 14px; border-radius:8px; transition:background .2s ease;
+  }
+  .back-link:hover{ background:rgba(247,245,241,0.1); opacity:1; }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; display:flex; align-items:flex-start; justify-content:center; padding:56px 20px 80px; }
+  .panel-wrap{ width:100%; max-width:480px; }
+
+  /* Step indicator */
+  .steps{ display:flex; align-items:center; justify-content:center; gap:0; margin-bottom:40px; }
+  .step{ display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .step-dot{
+    width:32px; height:32px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.85rem; font-weight:700;
+    background:#fff; border:2px solid var(--cream-dk); color:var(--ink-soft);
+    transition:all .2s ease;
+  }
+  .step-label{ font-size:0.74rem; font-weight:600; color:var(--ink-soft); letter-spacing:0.01em; }
+  .step.active .step-dot{ background:var(--terracotta); border-color:var(--terracotta); color:#fff; }
+  .step.active .step-label{ color:var(--navy); }
+  .step.done .step-dot{ background:var(--teal); border-color:var(--teal); color:#fff; }
+  .step-line{ width:56px; height:2px; background:var(--cream-dk); margin:0 4px 22px; }
+  .step-line.done{ background:var(--teal); }
+
+  /* Card */
+  .card{
+    background:#fff; border:1px solid var(--cream-dk); border-radius:16px;
+    padding:38px 34px; box-shadow:0 20px 44px -28px rgba(27,42,58,0.25);
+  }
+  .card h2{ font-size:1.4rem; margin-bottom:6px; }
+  .card .card-sub{ color:var(--ink-soft); font-size:0.9rem; margin-bottom:26px; }
+
+  .panel{ display:none; }
+  .panel.active{ display:block; }
+
+  /* Auth mode tabs */
+  .auth-tabs{ display:flex; gap:4px; background:var(--cream); border-radius:10px; padding:4px; margin-bottom:24px; }
+  .auth-tab{
+    flex:1; text-align:center; padding:9px 0; border-radius:8px; border:none; background:none;
+    font-size:0.88rem; font-weight:600; color:var(--ink-soft); transition:all .18s ease;
+  }
+  .auth-tab.active{ background:#fff; color:var(--navy); box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+
+  .btn-google{
+    width:100%; display:flex; align-items:center; justify-content:center; gap:10px;
+    background:#fff; border:1px solid var(--cream-dk); border-radius:9px;
+    padding:12px 16px; font-size:0.94rem; font-weight:600; color:var(--ink);
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .btn-google:hover{ border-color:var(--navy); background:var(--cream); }
+
+  .divider{ display:flex; align-items:center; gap:14px; margin:22px 0; color:var(--ink-soft); font-size:0.8rem; }
+  .divider::before, .divider::after{ content:""; flex:1; height:1px; background:var(--cream-dk); }
+
+  .field{ margin-bottom:18px; }
+  .field label{ display:block; font-size:0.85rem; font-weight:600; color:var(--navy); margin-bottom:7px; }
+  .field input, .field select{
+    width:100%; padding:11px 13px; border:1px solid var(--cream-dk); border-radius:8px;
+    background:var(--cream); color:var(--ink); font-size:0.95rem;
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .field input:focus, .field select:focus{ border-color:var(--terracotta); background:#fff; }
+  .field-hint{ font-size:0.78rem; color:var(--ink-soft); margin-top:6px; }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+
+  .btn-primary{
+    width:100%; background:var(--terracotta); color:#fff; border:none;
+    padding:13px 20px; border-radius:9px; font-size:0.98rem; font-weight:600;
+    display:flex; align-items:center; justify-content:center; gap:9px;
+    transition:background .2s ease;
+    margin-top:8px;
+  }
+  .btn-primary:hover{ background:var(--terracotta-dk); }
+  .btn-primary:disabled{ background:var(--cream-dk); color:var(--ink-soft); cursor:not-allowed; }
+  .btn-primary .spinner{ display:none; }
+  .btn-primary.loading .spinner{ display:block; animation:spin .7s linear infinite; }
+  .btn-primary.loading .btn-text{ opacity:0.7; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  .btn-secondary{
+    width:100%; background:none; border:1px solid var(--cream-dk); color:var(--navy);
+    padding:12px 20px; border-radius:9px; font-size:0.92rem; font-weight:600;
+    margin-top:10px; transition:border-color .2s ease;
+  }
+  .btn-secondary:hover{ border-color:var(--navy); }
+
+  .error-box{
+    display:none; background:var(--error-bg); color:var(--error);
+    border-radius:8px; padding:11px 14px; font-size:0.85rem; margin-bottom:18px;
+  }
+  .error-box.show{ display:block; }
+
+  .switch-line{ text-align:center; font-size:0.86rem; color:var(--ink-soft); margin-top:20px; }
+  .switch-line button{ background:none; border:none; color:var(--terracotta); font-weight:600; font-size:0.86rem; }
+
+  /* Step 3 summary */
+  .summary-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:16px 0; border-bottom:1px solid var(--cream-dk); font-size:0.94rem;
+  }
+  .summary-row:last-of-type{ border-bottom:none; }
+  .summary-row .label{ color:var(--ink-soft); }
+  .summary-row .value{ font-weight:600; color:var(--navy); }
+  .summary-total{ display:flex; justify-content:space-between; align-items:baseline; padding-top:18px; margin-top:6px; border-top:2px solid var(--cream-dk); }
+  .summary-total .label{ font-size:0.95rem; font-weight:600; color:var(--navy); }
+  .summary-total .amount{ font-family:'Fraunces', serif; font-size:1.7rem; font-weight:600; color:var(--navy); }
+  .secure-note{
+    display:flex; align-items:flex-start; gap:9px; font-size:0.82rem; color:var(--ink-soft);
+    margin-top:20px; background:var(--cream); border-radius:8px; padding:12px 14px;
+  }
+  .secure-note svg{ flex-shrink:0; margin-top:2px; color:var(--teal); }
+
+  .btn-dev-bypass{
+    width:100%; margin-top:14px; background:#fff8ea; border:1px dashed #c9922e; color:#8a6416;
+    padding:11px 16px; border-radius:8px; font-size:0.85rem; font-weight:600;
+    transition:background .2s ease;
+  }
+  .btn-dev-bypass:hover{ background:#fdf0d5; }
+
+  /* Discount code block */
+  .discount-block{ margin-top:6px; }
+  .discount-toggle{
+    background:none; border:none; padding:0; color:var(--terracotta); font-weight:600;
+    font-size:0.86rem; text-decoration:underline;
+  }
+  .discount-input-row{ display:flex; gap:10px; margin-top:12px; }
+  .discount-input-row input{
+    flex:1; padding:10px 12px; border:1px solid var(--cream-dk); border-radius:8px;
+    background:var(--cream); color:var(--ink); font-size:0.92rem; text-transform:uppercase;
+  }
+  .discount-input-row input:focus{ border-color:var(--terracotta); background:#fff; outline:none; }
+  .btn-secondary-sm{
+    background:var(--navy); color:#fff; border:none; padding:10px 18px; border-radius:8px;
+    font-size:0.88rem; font-weight:600; white-space:nowrap;
+  }
+  .btn-secondary-sm:hover{ background:var(--navy-2, #25384c); }
+  .btn-secondary-sm:disabled{ opacity:0.6; cursor:not-allowed; }
+  .discount-error{
+    display:none; color:#c0432f; font-size:0.82rem; margin-top:8px;
+  }
+  .discount-error.show{ display:block; }
+  .discount-applied{
+    display:flex; align-items:center; justify-content:space-between;
+    background:#e9f4ee; color:var(--teal-dk); border-radius:8px;
+    padding:10px 14px; margin-top:10px; font-size:0.88rem; font-weight:600;
+  }
+  .discount-applied button{
+    background:none; border:none; color:var(--teal-dk); text-decoration:underline;
+    font-size:0.82rem; font-weight:600; opacity:0.8;
+  }
+  .discount-applied button:hover{ opacity:1; }
+
+  footer{ text-align:center; padding:24px 20px; color:var(--ink-soft); font-size:0.8rem; }
+  .footer-word .core{ color:var(--navy); font-weight:700; }
+  .footer-word .learning{ color:var(--terracotta); font-weight:700; }
+</style>
+</head>
+<body>
+
+<div class="dev-banner" id="devBanner">
+  ⚠ Front-end preview only — Firebase config is a placeholder. Replace <code>FIREBASE_CONFIG</code> and <code>FUNCTIONS_BASE_URL</code> near the bottom of this file to go live.
+</div>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo-word"><span class="core">Core</span> <span class="learning">Learning</span></a>
+    <a href="index.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to course info
+    </a>
+  </nav>
+</header>
+
+<main>
+  <div class="panel-wrap">
+
+    <div class="steps">
+      <div class="step active" id="stepIndicator-1">
+        <div class="step-dot">1</div>
+        <div class="step-label">Account</div>
+      </div>
+      <div class="step-line" id="stepLine-1"></div>
+      <div class="step" id="stepIndicator-2">
+        <div class="step-dot">2</div>
+        <div class="step-label">About you</div>
+      </div>
+      <div class="step-line" id="stepLine-2"></div>
+      <div class="step" id="stepIndicator-3">
+        <div class="step-dot">3</div>
+        <div class="step-label">Payment</div>
+      </div>
+    </div>
+
+    <div class="card">
+
+      <!-- STEP 1: ACCOUNT -->
+      <div class="panel active" id="panel-1">
+        <h2>Create your account</h2>
+        <p class="card-sub">Sign up once to access every module.</p>
+
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-mode="signup" id="tabSignup">Sign up</button>
+          <button class="auth-tab" data-mode="login" id="tabLogin">Log in</button>
+        </div>
+
+        <div class="error-box" id="authError"></div>
+
+        <button class="btn-google" id="googleBtn">
+          <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.9c1.7-1.57 2.7-3.88 2.7-6.62z"/><path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.9-2.26c-.8.54-1.84.86-3.06.86-2.35 0-4.34-1.59-5.05-3.72H.9v2.33A9 9 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.95 10.7A5.4 5.4 0 0 1 3.67 9c0-.59.1-1.17.28-1.7V4.97H.9A9 9 0 0 0 0 9c0 1.45.35 2.83.9 4.03l3.05-2.33z"/><path fill="#EA4335" d="M9 3.58c1.32 0 2.5.46 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0A9 9 0 0 0 .9 4.97L3.95 7.3C4.66 5.17 6.65 3.58 9 3.58z"/></svg>
+          Continue with Google
+        </button>
+
+        <div class="divider">or continue with email</div>
+
+        <form id="emailForm">
+          <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" required autocomplete="new-password" minlength="8">
+            <div class="field-hint" id="passwordHint">At least 8 characters</div>
+          </div>
+          <button type="submit" class="btn-primary" id="emailSubmitBtn">
+            <span class="btn-text">Create account</span>
+            <svg class="spinner" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="white" stroke-width="2" stroke-opacity="0.3"/><path d="M14 8a6 6 0 0 0-6-6" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- STEP 2: ONBOARDING -->
+      <div class="panel" id="panel-2">
+        <h2>Tell us about you</h2>
+        <p class="card-sub">Helps us tailor reminders and your certificate.</p>
+
+        <div class="error-box" id="onboardError"></div>
+
+        <form id="onboardForm">
+          <div class="field">
+            <label for="fullName">Full name</label>
+            <input type="text" id="fullName" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="onboardEmail">Email address</label>
+            <input type="email" id="onboardEmail" disabled>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="profession">Profession</label>
+              <select id="profession" required>
+                <option value="" disabled selected>Select...</option>
+                <option value="physiotherapist">Physiotherapist</option>
+                <option value="physio-student">Physiotherapy student</option>
+                <option value="sports-therapist">Sports therapist</option>
+                <option value="other-allied-health">Other allied health</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="yearsQualified">Years qualified</label>
+              <input type="number" id="yearsQualified" min="0" max="60" placeholder="e.g. 5">
+            </div>
+          </div>
+          <div class="field">
+            <label for="country">Country</label>
+            <input type="text" id="country" required autocomplete="country-name">
+          </div>
+          <div class="field">
+            <label for="treatsRunners">Do you currently treat runners?</label>
+            <select id="treatsRunners">
+              <option value="" disabled selected>Select...</option>
+              <option value="yes-regularly">Yes, regularly</option>
+              <option value="yes-occasionally">Occasionally</option>
+              <option value="not-yet">Not yet</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-primary" id="onboardSubmitBtn">
+            <span class="btn-text">Continue to payment</span>
+            <svg class="spinner" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="white" stroke-width="2" stroke-opacity="0.3"/><path d="M14 8a6 6 0 0 0-6-6" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- STEP 3: PAYMENT -->
+      <div class="panel" id="panel-3">
+        <h2>Complete your enrollment</h2>
+        <p class="card-sub">One-time payment, lifetime access.</p>
+
+        <div class="error-box" id="paymentError"></div>
+
+        <div class="summary-row">
+          <span class="label">Course</span>
+          <span class="value">Running Gait Analysis for Injury Prevention &amp; Treatment</span>
+        </div>
+        <div class="summary-row">
+          <span class="label">Access</span>
+          <span class="value">5 modules · lifetime</span>
+        </div>
+        <div class="summary-row" id="subtotalRow">
+          <span class="label">Subtotal</span>
+          <span class="value" id="subtotalAmount">R800</span>
+        </div>
+        <div class="summary-row" id="discountRow" style="display:none;">
+          <span class="label">Discount<span id="discountCodeLabel"></span></span>
+          <span class="value" id="discountAmount" style="color:var(--teal-dk);">−R0</span>
+        </div>
+        <div class="summary-total">
+          <span class="label">Total due today</span>
+          <span class="amount" id="totalAmount">R800</span>
+        </div>
+
+        <!-- Discount code entry -->
+        <div class="discount-block" id="discountBlock">
+          <button type="button" class="discount-toggle" id="discountToggle">Have a discount code?</button>
+
+          <div class="discount-input-row" id="discountInputRow" style="display:none;">
+            <input type="text" id="discountInput" placeholder="Enter code" autocomplete="off">
+            <button type="button" class="btn-secondary-sm" id="discountApplyBtn">Apply</button>
+          </div>
+
+          <div class="discount-error" id="discountError"></div>
+
+          <div class="discount-applied" id="discountApplied" style="display:none;">
+            <span>✓ <strong id="discountAppliedCode"></strong> applied</span>
+            <button type="button" id="discountRemoveBtn">Remove</button>
+          </div>
+        </div>
+
+        <button class="btn-primary" id="payBtn" style="margin-top:20px;">
+          <span class="btn-text">Continue to secure payment</span>
+          <svg class="spinner" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="white" stroke-width="2" stroke-opacity="0.3"/><path d="M14 8a6 6 0 0 0-6-6" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+
+        <div class="secure-note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3L20 6.5V11C20 16 16.5 19.7 12 21C7.5 19.7 4 16 4 11V6.5L12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <span>You'll be redirected to Yoco's secure checkout to pay. We never see or store your card details.</span>
+        </div>
+
+        <!-- ============================================================
+             TEMPORARY DEV BYPASS — remove this entire block once Yoco
+             checkout + yocoWebhook are actually wired up and tested for
+             this course. Marks the course paid without any real payment,
+             for build and testing purposes only.
+             ============================================================ -->
+        <button class="btn-dev-bypass" id="devBypassBtn" type="button">
+          ⚠ Dev only: skip payment &amp; unlock course
+        </button>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  &copy; <span id="year"></span> <span class="footer-word"><span class="core">Core</span> <span class="learning">Learning</span></span> · <a href="mailto:callan@wam.co.za" style="text-decoration:underline;">callan@wam.co.za</a>
+</footer>
+
+<script type="module">
+/* ============================================================
+   CONFIG — replace these before going live.
+   ============================================================ */
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyAN9BVXDo15Mav2zketm5jhKRoBjs2yYX8",
+  authDomain: "core-coaching-login.firebaseapp.com",
+  projectId: "core-coaching-login",
+  storageBucket: "core-coaching-login.firebasestorage.app",
+  messagingSenderId: "184932860937",
+  appId: "1:184932860937:web:7023e588b1068ed2a824d8",
+  measurementId: "G-M48JWEWV0D"
+};
+
+// Base URL for your deployed Cloud Functions (2nd gen), e.g.
+// "https://us-central1-your-project.cloudfunctions.net"
+// NOTE: this is still a placeholder in the physio-climbing repo too as of
+// this build — confirm the real value before this course can take payment.
+const FUNCTIONS_BASE_URL = "YOUR_FUNCTIONS_BASE_URL";
+
+// This course's id — matches the "courses.runninggait" namespace
+// used in Firestore and passed through to Cloud Functions.
+const COURSE_ID = "runninggait";
+
+// Base price in Rands, for display/math on this page only. The real
+// source of truth for the amount actually charged is always the
+// createYocoCheckout Cloud Function — this constant must be kept in
+// sync with it manually, or better, have the Cloud Function return
+// the base price too so there's only one place to update it.
+const COURSE_PRICE_RANDS = 800;
+
+const IS_CONFIGURED = FIREBASE_CONFIG.apiKey !== "YOUR_API_KEY_HERE";
+
+if (!IS_CONFIGURED) {
+  document.getElementById('devBanner').classList.add('show');
+}
+
+/* ============================================================
+   FIREBASE — only imported/initialised if configured, so this
+   file doesn't hard-error while FIREBASE_CONFIG is still a
+   placeholder.
+   ============================================================ */
+let auth, db, currentUser = null;
+let FIREBASE_READY = false;
+
+if (IS_CONFIGURED) {
+  try {
+    const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js");
+    const {
+      getAuth, GoogleAuthProvider, signInWithPopup,
+      createUserWithEmailAndPassword, signInWithEmailAndPassword
+    } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js");
+    const { getFirestore, doc, setDoc, getDoc } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+
+    const app = initializeApp(FIREBASE_CONFIG);
+    auth = getAuth(app);
+    db = getFirestore(app);
+
+    window._fb = {
+      GoogleAuthProvider, signInWithPopup,
+      createUserWithEmailAndPassword, signInWithEmailAndPassword,
+      doc, setDoc, getDoc
+    };
+    FIREBASE_READY = true;
+  } catch (err) {
+    console.error('Firebase failed to load:', err);
+    const banner = document.getElementById('devBanner');
+    banner.textContent = '⚠ Firebase failed to load — check your internet connection and try refreshing. If this keeps happening, the CDN URL or config may be wrong.';
+    banner.classList.add('show');
+  }
+}
+
+/* ============================================================
+   STEP NAVIGATION
+   ============================================================ */
+let currentStep = 1;
+
+function goToStep(n){
+  currentStep = n;
+  for (let i = 1; i <= 3; i++){
+    document.getElementById(`panel-${i}`).classList.toggle('active', i === n);
+    const ind = document.getElementById(`stepIndicator-${i}`);
+    ind.classList.toggle('active', i === n);
+    ind.classList.toggle('done', i < n);
+  }
+  document.getElementById('stepLine-1').classList.toggle('done', n > 1);
+  document.getElementById('stepLine-2').classList.toggle('done', n > 2);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ============================================================
+   STEP 1 — AUTH
+   ============================================================ */
+let authMode = 'signup'; // or 'login'
+
+document.getElementById('tabSignup').addEventListener('click', () => setAuthMode('signup'));
+document.getElementById('tabLogin').addEventListener('click', () => setAuthMode('login'));
+
+function setAuthMode(mode){
+  authMode = mode;
+  document.getElementById('tabSignup').classList.toggle('active', mode === 'signup');
+  document.getElementById('tabLogin').classList.toggle('active', mode === 'login');
+  document.getElementById('emailSubmitBtn').querySelector('.btn-text').textContent =
+    mode === 'signup' ? 'Create account' : 'Log in';
+  document.getElementById('passwordHint').style.display = mode === 'signup' ? 'block' : 'none';
+  hideError('authError');
+}
+
+function showError(id, msg){
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.classList.add('show');
+}
+function hideError(id){
+  document.getElementById(id).classList.remove('show');
+}
+function setLoading(btnId, loading){
+  document.getElementById(btnId).classList.toggle('loading', loading);
+  document.getElementById(btnId).disabled = loading;
+}
+
+async function afterAuthSuccess(user){
+  currentUser = user;
+  document.getElementById('onboardEmail').value = user.email || '';
+
+  // If this user already has a profile / has already paid for this
+  // course, skip ahead rather than re-onboarding or re-charging them.
+  if (FIREBASE_READY) {
+    try {
+      const snap = await window._fb.getDoc(window._fb.doc(db, 'users', user.uid));
+      if (snap.exists()){
+        const data = snap.data();
+        if (data.name) document.getElementById('fullName').value = data.name;
+        const courseData = data.courses && data.courses[COURSE_ID];
+        if (courseData && courseData.paid){
+          window.location.href = 'dashboard.html';
+          return;
+        }
+      }
+    } catch (err){
+      console.error('Error checking existing profile:', err);
+    }
+  }
+  goToStep(2);
+}
+
+document.getElementById('googleBtn').addEventListener('click', async () => {
+  hideError('authError');
+  if (!FIREBASE_READY){
+    showError('authError', 'Firebase isn\'t ready yet — see the banner at the top of the page.');
+    return;
+  }
+  try {
+    const provider = new window._fb.GoogleAuthProvider();
+    const result = await window._fb.signInWithPopup(auth, provider);
+    await afterAuthSuccess(result.user);
+  } catch (err){
+    console.error(err);
+    showError('authError', 'Google sign-in failed. Please try again.');
+  }
+});
+
+document.getElementById('emailForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  hideError('authError');
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+
+  if (!FIREBASE_READY){
+    showError('authError', 'Firebase isn\'t ready yet — see the banner at the top of the page.');
+    return;
+  }
+
+  setLoading('emailSubmitBtn', true);
+  try {
+    const result = authMode === 'signup'
+      ? await window._fb.createUserWithEmailAndPassword(auth, email, password)
+      : await window._fb.signInWithEmailAndPassword(auth, email, password);
+    await afterAuthSuccess(result.user);
+  } catch (err){
+    console.error(err);
+    showError('authError', friendlyAuthError(err.code));
+  } finally {
+    setLoading('emailSubmitBtn', false);
+  }
+});
+
+function friendlyAuthError(code){
+  const map = {
+    'auth/email-already-in-use': 'That email is already registered — try logging in instead.',
+    'auth/invalid-email': 'That doesn\'t look like a valid email address.',
+    'auth/weak-password': 'Password should be at least 8 characters.',
+    'auth/wrong-password': 'Incorrect password. Please try again.',
+    'auth/user-not-found': 'No account found with that email — try signing up instead.',
+    'auth/invalid-credential': 'Incorrect email or password.'
+  };
+  return map[code] || 'Something went wrong. Please try again.';
+}
+
+/* ============================================================
+   STEP 2 — ONBOARDING
+   ============================================================ */
+document.getElementById('onboardForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  hideError('onboardError');
+
+  const profile = {
+    name: document.getElementById('fullName').value.trim(),
+    email: currentUser ? currentUser.email : document.getElementById('onboardEmail').value,
+    profession: document.getElementById('profession').value,
+    yearsQualified: document.getElementById('yearsQualified').value || null,
+    country: document.getElementById('country').value.trim(),
+    treatsRunners: document.getElementById('treatsRunners').value || null
+  };
+
+  if (!FIREBASE_READY){
+    showError('onboardError', 'Firebase isn\'t ready yet — see the banner at the top of the page.');
+    return;
+  }
+
+  setLoading('onboardSubmitBtn', true);
+  try {
+    const userRef = window._fb.doc(db, 'users', currentUser.uid);
+    await window._fb.setDoc(userRef, {
+      ...profile,
+      courses: {
+        [COURSE_ID]: {
+          paid: false,
+          unlockedModules: [],
+          moduleProgress: {}
+        }
+      }
+    }, { merge: true });
+    goToStep(3);
+  } catch (err){
+    console.error(err);
+    showError('onboardError', 'Couldn\'t save your details — please try again.');
+  } finally {
+    setLoading('onboardSubmitBtn', false);
+  }
+});
+
+/* ============================================================
+   STEP 3 — DISCOUNT CODE
+   ============================================================
+   Two Cloud Functions are involved here, both shared with the other
+   Core Learning courses:
+
+   1. validateDiscountCode — called live as soon as someone clicks
+      "Apply", purely to show an accurate price preview on this page.
+      Expected request:  POST { code, courseId }
+      Expected response: { valid: true, type: "percent" | "fixed",
+                            value: number, discountRands: number,
+                            newTotalRands: number }
+                       or { valid: false, message: string }
+
+   2. createYocoCheckout — already referenced below for the real
+      payment step. It must independently re-validate whatever
+      discountCode is passed to it and calculate the final amount
+      itself — never trust the discount total this page displays,
+      since it's for preview only and the client could tamper with it.
+
+   NOTE: as of this build, neither function's source has been reviewed
+   for this course, and COURSE_ID = "runninggait" has not yet been
+   added to their shared pricing/dispatch config. Confirm both before
+   relying on this flow.
+   ============================================================ */
+let appliedDiscountCode = null;
+
+function formatRands(n){
+  return `R${n.toLocaleString('en-ZA')}`;
+}
+
+function updatePriceDisplay({ discountRands = 0, newTotalRands = COURSE_PRICE_RANDS, code = null } = {}){
+  document.getElementById('subtotalAmount').textContent = formatRands(COURSE_PRICE_RANDS);
+  document.getElementById('totalAmount').textContent = formatRands(newTotalRands);
+
+  const discountRow = document.getElementById('discountRow');
+  if (discountRands > 0){
+    discountRow.style.display = 'flex';
+    document.getElementById('discountAmount').textContent = `−${formatRands(discountRands)}`;
+    document.getElementById('discountCodeLabel').textContent = code ? ` (${code})` : '';
+  } else {
+    discountRow.style.display = 'none';
+  }
+}
+
+document.getElementById('discountToggle').addEventListener('click', () => {
+  const row = document.getElementById('discountInputRow');
+  const isHidden = row.style.display === 'none';
+  row.style.display = isHidden ? 'flex' : 'none';
+  document.getElementById('discountToggle').style.display = isHidden ? 'none' : 'block';
+  if (isHidden) document.getElementById('discountInput').focus();
+});
+
+function showDiscountError(msg){
+  const el = document.getElementById('discountError');
+  el.textContent = msg;
+  el.classList.add('show');
+}
+function hideDiscountError(){
+  document.getElementById('discountError').classList.remove('show');
+}
+
+document.getElementById('discountApplyBtn').addEventListener('click', async () => {
+  hideDiscountError();
+  const code = document.getElementById('discountInput').value.trim().toUpperCase();
+  if (!code){
+    showDiscountError('Enter a code first.');
+    return;
+  }
+
+  if (!FIREBASE_READY){
+    showDiscountError('Not ready yet — see the banner at the top of the page.');
+    return;
+  }
+
+  const btn = document.getElementById('discountApplyBtn');
+  btn.disabled = true;
+  btn.textContent = 'Checking…';
+
+  try {
+    const idToken = await currentUser.getIdToken();
+    const res = await fetch(`${FUNCTIONS_BASE_URL}/validateDiscountCode`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${idToken}`
+      },
+      body: JSON.stringify({ code, plan: 'upfront', courseId: COURSE_ID })
+    });
+    const result = await res.json();
+
+    if (!res.ok || !result.valid){
+      showDiscountError(result.message || 'That code isn\'t valid.');
+      return;
+    }
+
+    appliedDiscountCode = code;
+    updatePriceDisplay({
+      discountRands: result.discountRands,
+      newTotalRands: result.newTotalRands,
+      code
+    });
+
+    document.getElementById('discountInputRow').style.display = 'none';
+    document.getElementById('discountApplied').style.display = 'flex';
+    document.getElementById('discountAppliedCode').textContent = code;
+  } catch (err){
+    console.error(err);
+    showDiscountError('Couldn\'t check that code — please try again.');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Apply';
+  }
+});
+
+document.getElementById('discountRemoveBtn').addEventListener('click', () => {
+  appliedDiscountCode = null;
+  document.getElementById('discountInput').value = '';
+  document.getElementById('discountApplied').style.display = 'none';
+  document.getElementById('discountToggle').style.display = 'block';
+  updatePriceDisplay();
+});
+
+/* ============================================================
+   STEP 3 — PAYMENT (Yoco hosted checkout)
+   ============================================================ */
+document.getElementById('payBtn').addEventListener('click', async () => {
+  hideError('paymentError');
+
+  if (!FIREBASE_READY){
+    showError('paymentError', 'Payment isn\'t ready yet — see the banner at the top of the page.');
+    return;
+  }
+
+  setLoading('payBtn', true);
+  try {
+    const idToken = await currentUser.getIdToken();
+    const res = await fetch(`${FUNCTIONS_BASE_URL}/createYocoCheckout`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${idToken}`
+      },
+      body: JSON.stringify({
+        uid: currentUser.uid,
+        plan: 'upfront',
+        courseId: COURSE_ID,
+        siteBaseUrl: window.location.origin,
+        discountCode: appliedDiscountCode
+      })
+    });
+    if (!res.ok) throw new Error('Checkout creation failed');
+    const { redirectUrl } = await res.json();
+    window.location.href = redirectUrl;
+    // Yoco redirects back to successUrl/cancelUrl/failureUrl (all built from
+    // siteBaseUrl above, so this correctly returns to gait.corelearning.co.za
+    // rather than another course's domain) after payment. yocoWebhook then
+    // sets courses.runninggait.paid = true server-side once payment clears —
+    // or, if a discount code covers 100%, createYocoCheckout sets it directly
+    // and redirectUrl points straight at dashboard.html with no Yoco step at all.
+  } catch (err){
+    console.error(err);
+    showError('paymentError', 'Couldn\'t start checkout — please try again.');
+    setLoading('payBtn', false);
+  }
+});
+
+/* ============================================================
+   TEMPORARY DEV BYPASS HANDLER — remove alongside the button
+   above once real payment is wired up. Writes paid:true and
+   unlocks Module 1 directly, skipping Yoco entirely.
+   ============================================================ */
+document.getElementById('devBypassBtn').addEventListener('click', async () => {
+  hideError('paymentError');
+
+  if (!FIREBASE_READY){
+    showError('paymentError', 'Firebase isn\'t ready yet — see the banner at the top of the page.');
+    return;
+  }
+  if (!currentUser){
+    showError('paymentError', 'No signed-in user found — please complete step 1 first.');
+    return;
+  }
+
+  setLoading('devBypassBtn', true);
+  try {
+    const userRef = window._fb.doc(db, 'users', currentUser.uid);
+    await window._fb.setDoc(userRef, {
+      courses: {
+        [COURSE_ID]: {
+          paid: true,
+          unlockedModules: [1],
+          moduleProgress: {}
+        }
+      }
+    }, { merge: true });
+    window.location.href = 'dashboard.html';
+  } catch (err){
+    console.error(err);
+    showError('paymentError', 'Dev bypass failed — check the console for details.');
+    setLoading('devBypassBtn', false);
+  }
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
