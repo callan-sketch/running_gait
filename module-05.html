@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 5: Running Re-Training & Return-to-Run Programming | Core Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1b2a3a;
+    --teal:#3a8a8c;
+    --teal-dk:#2e6e70;
+    --terracotta:#d9764a;
+    --terracotta-dk:#bd5f37;
+    --cream:#f7f5f1;
+    --cream-dk:#e9e4da;
+    --ink:#2a2c2b;
+    --ink-soft:#5a5f5c;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    background:var(--cream); color:var(--ink);
+    font-family:'Inter', sans-serif; font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  h1,h2,h3{ font-family:'Fraunces', serif; color:var(--navy); font-weight:600; line-height:1.2; letter-spacing:-0.01em; }
+  a{ color:inherit; text-decoration:none; }
+  img,svg{ display:block; }
+  button{ font-family:inherit; cursor:pointer; }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--teal); outline-offset:2px; border-radius:4px; }
+  .wrap{ max-width:840px; margin:0 auto; padding:0 32px; }
+
+  /* NAV */
+  header{ position:sticky; top:0; z-index:50; background:var(--navy); }
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; height:76px; max-width:1040px; }
+  .logo-word{ font-family:'Fraunces', serif; font-weight:700; font-size:1.32rem; letter-spacing:-0.01em; }
+  .logo-word .core{ color:#fff; }
+  .logo-word .learning{ color:var(--terracotta); }
+  .nav-right{ display:flex; align-items:center; gap:14px; font-size:0.88rem; }
+  .nav-back{
+    color:var(--cream); opacity:0.85; font-weight:600; display:flex; align-items:center; gap:6px;
+    padding:8px 14px; border-radius:8px; transition:background .2s ease;
+  }
+  .nav-back:hover{ background:rgba(247,245,241,0.1); }
+  .nav-logout{
+    color:var(--cream); opacity:0.85; font-weight:600;
+    background:rgba(247,245,241,0.1); padding:8px 16px; border-radius:8px;
+    transition:background .2s ease;
+  }
+  .nav-logout:hover{ background:rgba(247,245,241,0.18); }
+
+  /* LOADING */
+  .loading-screen{
+    min-height:70vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:16px; color:var(--ink-soft); font-size:0.95rem;
+  }
+  .spinner-lg{
+    width:34px; height:34px; border-radius:50%;
+    border:3px solid var(--cream-dk); border-top-color:var(--terracotta);
+    animation:spin .8s linear infinite;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  main{ display:none; }
+  main.ready{ display:block; }
+
+  /* MODULE HEADER */
+  .module-head{ padding:52px 0 36px; }
+  .module-head-inner{ display:flex; align-items:center; gap:26px; }
+  .module-head-thumb{
+    width:110px; height:110px; border-radius:14px; flex-shrink:0;
+    background-color:var(--cream-dk); background-size:cover; background-position:center;
+  }
+  @media (max-width:600px){
+    .module-head-inner{ flex-direction:column; align-items:flex-start; gap:18px; }
+  }
+  .module-eyebrow{
+    font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--terracotta); display:block; margin-bottom:14px;
+  }
+  .module-head h1{ font-size:clamp(1.7rem, 3.4vw, 2.3rem); margin-bottom:14px; }
+  .module-head p{ color:var(--ink-soft); font-size:1rem; max-width:600px; }
+
+  /* LESSON CARD */
+  .lesson-section{ padding-bottom:80px; }
+  .lesson-card{
+    background:#fff; border:1px solid var(--cream-dk); border-radius:16px;
+    padding:36px 38px;
+  }
+  .lesson-label{
+    font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--ink-soft); margin-bottom:10px; display:block;
+  }
+  .lesson-card h2{ font-size:1.3rem; margin-bottom:10px; }
+  .lesson-card p.lesson-desc{ color:var(--ink-soft); font-size:0.94rem; margin-bottom:28px; max-width:520px; }
+
+  .lesson-actions{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:8px; }
+  .lesson-btn{
+    display:flex; align-items:center; gap:12px;
+    background:var(--cream); border:1px solid var(--cream-dk); border-radius:12px;
+    padding:16px 22px; flex:1; min-width:220px;
+    transition:border-color .2s ease, background .2s ease, transform .2s ease;
+  }
+  .lesson-btn:hover{ border-color:var(--terracotta); background:#fff; transform:translateY(-2px); }
+  .lesson-btn.disabled{ opacity:0.5; pointer-events:none; }
+  .lesson-btn .icon{
+    width:42px; height:42px; border-radius:10px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(217,118,74,0.12); color:var(--terracotta);
+  }
+  .lesson-btn.podcast .icon{ background:rgba(58,138,140,0.14); color:var(--teal-dk); }
+  .lesson-btn.pdf .icon{ background:rgba(27,42,58,0.08); color:var(--navy); }
+  .lesson-btn .btn-text{ display:flex; flex-direction:column; }
+  .lesson-btn .btn-title{ font-weight:600; font-size:0.95rem; color:var(--navy); }
+  .lesson-btn .btn-sub{ font-size:0.78rem; color:var(--ink-soft); }
+
+  /* DEV BYPASS */
+  .quiz-cta-box{
+    display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
+    background:var(--cream); border:1px solid var(--cream-dk); border-radius:12px;
+    padding:22px 26px; margin-bottom:8px;
+  }
+  .quiz-cta-title{ font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; color:var(--navy); margin-bottom:4px; }
+  .quiz-cta-sub{ font-size:0.85rem; color:var(--ink-soft); }
+  .btn-primary{
+    background:var(--terracotta); color:#fff; padding:12px 22px; border-radius:9px;
+    font-weight:600; font-size:0.94rem; display:inline-flex; align-items:center; gap:9px;
+    transition:background .2s ease, transform .2s ease; white-space:nowrap; flex-shrink:0;
+  }
+  .btn-primary:hover{ background:var(--terracotta-dk); transform:translateY(-1px); }
+
+  .dev-complete-box{
+    margin-top:28px; padding-top:24px; border-top:1px dashed var(--cream-dk);
+  }
+  .btn-dev-bypass{
+    background:#fff8ea; border:1px dashed #c9922e; color:#8a6416;
+    padding:12px 20px; border-radius:9px; font-size:0.88rem; font-weight:600;
+    transition:background .2s ease; display:inline-flex; align-items:center; gap:9px;
+  }
+  .btn-dev-bypass:hover{ background:#fdf0d5; }
+  .btn-dev-bypass:disabled{ opacity:0.6; cursor:not-allowed; }
+  .dev-note{ font-size:0.78rem; color:var(--ink-soft); margin-top:10px; max-width:480px; }
+
+  .status-msg{
+    display:none; margin-top:16px; padding:12px 16px; border-radius:8px;
+    font-size:0.88rem; font-weight:600;
+  }
+  .status-msg.show{ display:block; }
+  .status-msg.success{ background:#e9f4ee; color:var(--teal-dk); }
+  .status-msg.error{ background:#fbeae6; color:#c0432f; }
+
+  footer{ text-align:center; padding:28px 20px; color:var(--ink-soft); font-size:0.8rem; border-top:1px solid var(--cream-dk); }
+  .footer-word .core{ color:var(--navy); font-weight:700; }
+  .footer-word .learning{ color:var(--terracotta); font-weight:700; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo-word"><span class="core">Core</span> <span class="learning">Learning</span></a>
+    <div class="nav-right">
+      <a href="dashboard.html" class="nav-back">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Dashboard
+      </a>
+      <a href="#" class="nav-logout" id="logoutBtn">Log out</a>
+    </div>
+  </nav>
+</header>
+
+<div class="loading-screen" id="loadingScreen">
+  <div class="spinner-lg"></div>
+  <span>Loading module…</span>
+</div>
+
+<main id="mainContent">
+  <section class="module-head">
+    <div class="wrap">
+      <div class="module-head-inner">
+        <div class="module-head-thumb" style="background-image:url('Assets/Images/module-05.png')"></div>
+        <div>
+          <span class="module-eyebrow">MODULE 5 OF 5</span>
+      <h1>Running Re-Training &amp; Return-to-Run Programming</h1>
+      <p>Delivering cadence retraining and cueing in practice, load management principles, and a structured, symptom-guided return-to-run progression that brings the whole course together.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="wrap">
+      <div class="lesson-card">
+        <span class="lesson-label">Lesson 1 of 1</span>
+        <h2>Running Re-Training &amp; Return-to-Run Programming</h2>
+        <p class="lesson-desc">Read the written guide and listen to the podcast summary in either order — both cover the same material.</p>
+
+        <div class="lesson-actions">
+          <a class="lesson-btn content" href="lessons/module-05-content.html">
+            <span class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M7 3H14L19 8V19a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 3V8H19" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12.5H15.5M8.5 15.5H15.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </span>
+            <span class="btn-text">
+              <span class="btn-title">Read the content</span>
+              <span class="btn-sub">Written guide · ~30 min</span>
+            </span>
+          </a>
+
+          <!-- PDF not built yet — placeholder disabled until Module_5_Running_Re-Training_and_Return-to-Run_Programming.pdf exists in lessons/ -->
+          <a class="lesson-btn pdf disabled" href="lessons/Module_5_Running_Re-Training_and_Return-to-Run_Programming.pdf" download aria-disabled="true" tabindex="-1">
+            <span class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3V15M12 15L7 10M12 15L17 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="btn-text">
+              <span class="btn-title">Download PDF</span>
+              <span class="btn-sub">Coming soon</span>
+            </span>
+          </a>
+
+          <!-- Podcast not recorded yet — placeholder disabled until a real episode URL exists -->
+          <a class="lesson-btn podcast disabled" href="#" aria-disabled="true" tabindex="-1">
+            <span class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M10 9.5V14.5L14.5 12L10 9.5Z" fill="currentColor"/></svg>
+            </span>
+            <span class="btn-text">
+              <span class="btn-title">Listen to the podcast</span>
+              <span class="btn-sub">Coming soon</span>
+            </span>
+          </a>
+        </div>
+
+        <div class="quiz-cta-box">
+          <div>
+            <div class="quiz-cta-title">Ready to test what you've learned?</div>
+            <p class="quiz-cta-sub">80% pass mark. Passing completes the course.</p>
+          </div>
+          <!-- Quiz page not built yet — module_5_quiz.html still to come -->
+          <a class="btn-primary" href="module_5_quiz.html" target="_blank" rel="noopener">
+            Take the Module 5 Quiz
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <!-- ============================================================
+             TEMPORARY DEV BYPASS — remove once the real quiz above is
+             live and wired to the grading endpoint for automatic
+             grading/unlock. Manual override for testing/admin use only.
+             ============================================================ -->
+        <div class="dev-complete-box">
+          <button class="btn-dev-bypass" id="devCompleteBtn">
+            ⚠ Dev only: mark module complete &amp; finish course
+          </button>
+          <p class="dev-note">Manual override for testing — remove once the real quiz handles grading and unlock automatically.</p>
+          <div class="status-msg" id="statusMsg"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  &copy; <span id="year"></span> <span class="footer-word"><span class="core">Core</span> <span class="learning">Learning</span></span> · <a href="mailto:info@corelearning.co.za" style="text-decoration:underline;">info@corelearning.co.za</a>
+</footer>
+
+<script type="module">
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyAN9BVXDo15Mav2zketm5jhKRoBjs2yYX8",
+  authDomain: "core-coaching-login.firebaseapp.com",
+  projectId: "core-coaching-login",
+  storageBucket: "core-coaching-login.firebasestorage.app",
+  messagingSenderId: "184932860937",
+  appId: "1:184932860937:web:7023e588b1068ed2a824d8",
+  measurementId: "G-M48JWEWV0D"
+};
+const COURSE_ID = "runninggait";
+const THIS_MODULE = 5;
+const NEXT_MODULE = 6;
+const TOTAL_MODULES = 5;
+const THIS_MODULE_KEY = "module" + String(THIS_MODULE).padStart(2, "0");
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+let auth, db, doc, getDoc, setDoc, currentUser = null;
+
+try {
+  const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js");
+  const authMod = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js");
+  const fsMod = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+
+  const app = initializeApp(FIREBASE_CONFIG);
+  auth = authMod.getAuth(app);
+  db = fsMod.getFirestore(app);
+  doc = fsMod.doc;
+  getDoc = fsMod.getDoc;
+  setDoc = fsMod.setDoc;
+
+  authMod.onAuthStateChanged(auth, async (user) => {
+    if (!user){
+      window.location.href = 'login.html';
+      return;
+    }
+    currentUser = user;
+    await checkAccess(user);
+  });
+} catch (err){
+  console.error('Firebase failed to load on module page:', err);
+  document.getElementById('loadingScreen').innerHTML =
+    '<span style="color:#c0432f;">Something went wrong loading this module. Please refresh, or check your connection.</span>';
+}
+
+async function checkAccess(user){
+  let profile = {};
+  try {
+    const snap = await getDoc(doc(db, 'users', user.uid));
+    if (snap.exists()) profile = snap.data();
+  } catch (err){
+    console.error('Error loading profile:', err);
+  }
+
+  const courseData = (profile.courses && profile.courses[COURSE_ID]) || { paid: false, unlockedModules: [], moduleProgress: {} };
+
+  // Not paid at all — send back to the dashboard, which shows the
+  // "complete your enrollment" prompt.
+  if (!courseData.paid){
+    window.location.href = 'dashboard.html';
+    return;
+  }
+
+  // Paid, but this specific module isn't unlocked yet (e.g. they typed
+  // the URL directly without finishing earlier modules) — also bounce
+  // to the dashboard rather than letting them view it out of order.
+  const unlockedModules = courseData.unlockedModules && courseData.unlockedModules.length
+    ? courseData.unlockedModules
+    : [1];
+  if (!unlockedModules.includes(THIS_MODULE)){
+    window.location.href = 'dashboard.html';
+    return;
+  }
+
+  document.getElementById('loadingScreen').style.display = 'none';
+  document.getElementById('mainContent').classList.add('ready');
+}
+
+function showStatus(msg, type){
+  const el = document.getElementById('statusMsg');
+  el.textContent = msg;
+  el.className = `status-msg show ${type}`;
+}
+
+document.getElementById('devCompleteBtn').addEventListener('click', async () => {
+  if (!currentUser) return;
+
+  const btn = document.getElementById('devCompleteBtn');
+  btn.disabled = true;
+
+  try {
+    const userRef = doc(db, 'users', currentUser.uid);
+    const snap = await getDoc(userRef);
+    const existing = snap.exists() ? snap.data() : {};
+    const existingCourse = (existing.courses && existing.courses[COURSE_ID]) || {};
+    const existingUnlocked = existingCourse.unlockedModules || [1];
+    const existingProgress = existingCourse.moduleProgress || {};
+
+    const newUnlocked = new Set(existingUnlocked);
+    if (NEXT_MODULE <= TOTAL_MODULES) newUnlocked.add(NEXT_MODULE);
+
+    await setDoc(userRef, {
+      courses: {
+        [COURSE_ID]: {
+          ...existingCourse,
+          unlockedModules: Array.from(newUnlocked),
+          moduleProgress: {
+            ...existingProgress,
+            [THIS_MODULE_KEY]: { completed: true }
+          }
+        }
+      }
+    }, { merge: true });
+
+    showStatus('Module marked complete — course finished! Redirecting to your dashboard…', 'success');
+    setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
+  } catch (err){
+    console.error(err);
+    showStatus('Something went wrong saving your progress — please try again.', 'error');
+    btn.disabled = false;
+  }
+});
+
+document.getElementById('logoutBtn').addEventListener('click', async (e) => {
+  e.preventDefault();
+  try {
+    const { signOut } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js");
+    await signOut(auth);
+  } catch (err){
+    console.error(err);
+  }
+  window.location.href = 'index.html';
+});
+</script>
+
+</body>
+</html>
