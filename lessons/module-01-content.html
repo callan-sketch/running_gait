@@ -291,6 +291,39 @@
       margin: 28px 0 8px;
     }
 
+    .figure-caption {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      margin: 8px 0 24px;
+    }
+
+    .inline-figure {
+      float: right;
+      width: 260px;
+      max-width: 42%;
+      margin: 6px 0 18px 28px;
+    }
+
+    .inline-figure img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .inline-figure .figure-caption {
+      margin: 8px 0 0;
+    }
+
+    @media (max-width:600px) {
+      .inline-figure {
+        float: none;
+        width: 100%;
+        max-width: 100%;
+        margin: 8px 0 20px;
+      }
+    }
+
     article {
       padding-bottom: 100px;
     }
@@ -674,6 +707,7 @@
         </div>
         <p>A systematic review focused specifically on running-related musculoskeletal injuries found broadly consistent prevalence ranges across studies: medial tibial stress syndrome around 9.5%, Achilles tendinopathy roughly 6.2–9.5%, and plantar fasciitis 5.2–17.5% among runners generally — with marathon-specific samples showing Achilles tendinopathy as high as 2.0–18.5% and patellofemoral pain syndrome 7.4–15.6%. These sit alongside, rather than replace, the incidence figures above: prevalence (how many runners have the condition at a point in time) and incidence (how many per hours run) are different measures, and both are reported inconsistently enough in the literature that ranges, not single numbers, are the honest way to report them.</p>
         <p class="callout-ref" style="margin:-16px 0 28px;">Source: Lopes AD, Hespanhol Júnior LC, Yeung SS, Costa LOP. What are the Main Running-Related Musculoskeletal Injuries? A Systematic Review. Sports Med. 2012;42(10):891–905.</p>
+        <img class="hero-image" src="Assets/Images/coastal-runner.png" alt="A runner photographed from three angles on a coastal road, with the knee and ankle circled on the side view, the heel and ankle circled on the rear view, and the knee and shin circled on the front view.">
         <p>These five pathologies will reappear throughout Modules 3 and 4, since they cover the large majority of what you'll actually see walk through the door. Knowing which injuries dominate the clinical picture is itself useful context before you even pick up a camera — it tells you what a gait analysis needs to be sensitive to.</p>
         <h2 id="s1-3">1.3 Why Look at Gait at All?</h2>
         <p>Running-related injury is widely accepted to be multifactorial — training load, tissue capacity, strength, footwear, surface, sleep, and psychosocial factors all contribute alongside biomechanics. Gait analysis is not a replacement for a full clinical assessment; it is one lens within it. The rationale for including it is threefold:</p>
@@ -713,6 +747,10 @@
         </div>
         <p class="callout-ref" style="margin:-16px 0 28px;">Sources: Doyle E, Doyle TLA, Bonacci J, Fuller JT. The Effectiveness of Gait Retraining on Running Kinematics, Kinetics, Performance, Pain, and Injury in Distance Runners: A Systematic Review With Meta-analysis. J Orthop Sports Phys Ther. 2022;52:192–A5. Alexander JLN, Culvenor AG, Johnston RRT, Ezzat AM, Barton CJ. Gait Retraining for Patellofemoral Pain in Runners: An Umbrella Review of Clinical and Biomechanical Evidence. Sports Med Open.</p>
         <h2 id="s1-5">1.5 The Real Limits of This Evidence</h2>
+        <div class="inline-figure">
+          <img src="Assets/Images/gait-analysis-treadmill.jpg" alt="A clinician filming a patient's running gait on a treadmill using a smartphone on a tripod, with the live camera view visible on the phone screen.">
+          <p class="figure-caption">A standard phone-and-tripod gait analysis set-up in a clinic setting.</p>
+        </div>
         <p>It's tempting, once you've seen a gait analysis "work" for one patient, to treat the method as more validated than it is. Two limitations are worth holding onto throughout this course:</p>
         <h3>Visual gait analysis itself has only moderate reliability</h3>
         <p>A frequently cited reliability study asked ten raters — experienced, inexperienced, and expert — to independently score videotaped gait patterns twice each. Inter-rater reliability among experienced raters was only moderate (ICC ≈ 0.42), comparable to inexperienced raters, and even expert raters only reached moderate-to-good agreement (ICC ≈ 0.54). In other words, two competent clinicians watching the same run may not consistently agree on what they're seeing — which is exactly why Module 2 emphasises a structured, repeatable method rather than free-form observation.</p>
@@ -732,6 +770,8 @@
           <li><strong>Training load and capacity</strong> — since a sudden spike in volume or intensity is one of the most consistently implicated risk factors across the running-injury literature, independent of gait pattern.</li>
           <li><strong>The patient's own goals and context</strong> — a recreational runner returning from a first-ever injury and an athlete chasing a qualifying time need different framing even with identical gait findings.</li>
         </ul>
+        <img class="hero-image" src="Assets/Images/consult-session.png" alt="Three stages of a physiotherapy consultation: a subjective history interview, a clinician performing a straight-leg raise assessment, and a clinician observing a runner on a track while reviewing footage on a phone.">
+        <p class="figure-caption" style="margin-top:-18px;">From subjective history, through clinical examination, to on-track review — gait analysis sits within this broader assessment, not apart from it.</p>
         <p>Gait analysis earns its place in this workflow because it is genuinely modifiable and gives you and the runner a shared reference point — not because it is more objective or more predictive than the rest of the assessment. Module 3 will return to this integration point directly when it comes to linking specific gait observations to specific pathologies.</p>
         <h2 id="s1-7">1.7 What This Course Will Cover</h2>
         <p>With that context in place, the remaining four modules build a complete, repeatable clinical pathway:</p>
