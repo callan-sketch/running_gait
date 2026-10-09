@@ -298,29 +298,45 @@
       margin: 8px 0 24px;
     }
 
+    .figure-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin: 28px 0;
+      flex-wrap: wrap;
+    }
+
     .inline-figure {
-      float: right;
-      width: 260px;
-      max-width: 42%;
-      margin: 6px 0 18px 28px;
+      flex: 0 0 240px;
+      width: 240px;
+      max-width: 100%;
     }
 
     .inline-figure img {
       width: 100%;
       height: auto;
       border-radius: 12px;
+      display: block;
     }
 
     .inline-figure .figure-caption {
       margin: 8px 0 0;
     }
 
+    .figure-row > p {
+      flex: 1 1 320px;
+      margin-bottom: 0 !important;
+    }
+
     @media (max-width:600px) {
+      .figure-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
       .inline-figure {
-        float: none;
+        flex: 1 1 auto;
         width: 100%;
-        max-width: 100%;
-        margin: 8px 0 20px;
       }
     }
 
@@ -707,7 +723,7 @@
         </div>
         <p>A systematic review focused specifically on running-related musculoskeletal injuries found broadly consistent prevalence ranges across studies: medial tibial stress syndrome around 9.5%, Achilles tendinopathy roughly 6.2–9.5%, and plantar fasciitis 5.2–17.5% among runners generally — with marathon-specific samples showing Achilles tendinopathy as high as 2.0–18.5% and patellofemoral pain syndrome 7.4–15.6%. These sit alongside, rather than replace, the incidence figures above: prevalence (how many runners have the condition at a point in time) and incidence (how many per hours run) are different measures, and both are reported inconsistently enough in the literature that ranges, not single numbers, are the honest way to report them.</p>
         <p class="callout-ref" style="margin:-16px 0 28px;">Source: Lopes AD, Hespanhol Júnior LC, Yeung SS, Costa LOP. What are the Main Running-Related Musculoskeletal Injuries? A Systematic Review. Sports Med. 2012;42(10):891–905.</p>
-        <img class="hero-image" src="Assets/Images/coastal-runner.png" alt="A runner photographed from three angles on a coastal road, with the knee and ankle circled on the side view, the heel and ankle circled on the rear view, and the knee and shin circled on the front view.">
+        <img class="hero-image" style="height:auto;" src="Assets/Images/coastal-runner.png" alt="A runner photographed from three angles on a coastal road, with the knee and ankle circled on the side view, the heel and ankle circled on the rear view, and the knee and shin circled on the front view.">
         <p>These five pathologies will reappear throughout Modules 3 and 4, since they cover the large majority of what you'll actually see walk through the door. Knowing which injuries dominate the clinical picture is itself useful context before you even pick up a camera — it tells you what a gait analysis needs to be sensitive to.</p>
         <h2 id="s1-3">1.3 Why Look at Gait at All?</h2>
         <p>Running-related injury is widely accepted to be multifactorial — training load, tissue capacity, strength, footwear, surface, sleep, and psychosocial factors all contribute alongside biomechanics. Gait analysis is not a replacement for a full clinical assessment; it is one lens within it. The rationale for including it is threefold:</p>
@@ -747,11 +763,13 @@
         </div>
         <p class="callout-ref" style="margin:-16px 0 28px;">Sources: Doyle E, Doyle TLA, Bonacci J, Fuller JT. The Effectiveness of Gait Retraining on Running Kinematics, Kinetics, Performance, Pain, and Injury in Distance Runners: A Systematic Review With Meta-analysis. J Orthop Sports Phys Ther. 2022;52:192–A5. Alexander JLN, Culvenor AG, Johnston RRT, Ezzat AM, Barton CJ. Gait Retraining for Patellofemoral Pain in Runners: An Umbrella Review of Clinical and Biomechanical Evidence. Sports Med Open.</p>
         <h2 id="s1-5">1.5 The Real Limits of This Evidence</h2>
-        <div class="inline-figure">
-          <img src="Assets/Images/gait-analysis-treadmill.jpg" alt="A clinician filming a patient's running gait on a treadmill using a smartphone on a tripod, with the live camera view visible on the phone screen.">
-          <p class="figure-caption">A standard phone-and-tripod gait analysis set-up in a clinic setting.</p>
+        <div class="figure-row">
+          <div class="inline-figure">
+            <img src="Assets/Images/gait-analysis-treadmill.jpg" alt="A clinician filming a patient's running gait on a treadmill using a smartphone on a tripod, with the live camera view visible on the phone screen.">
+            <p class="figure-caption">A standard phone-and-tripod gait analysis set-up in a clinic setting.</p>
+          </div>
+          <p>It's tempting, once you've seen a gait analysis "work" for one patient, to treat the method as more validated than it is. Two limitations are worth holding onto throughout this course:</p>
         </div>
-        <p>It's tempting, once you've seen a gait analysis "work" for one patient, to treat the method as more validated than it is. Two limitations are worth holding onto throughout this course:</p>
         <h3>Visual gait analysis itself has only moderate reliability</h3>
         <p>A frequently cited reliability study asked ten raters — experienced, inexperienced, and expert — to independently score videotaped gait patterns twice each. Inter-rater reliability among experienced raters was only moderate (ICC ≈ 0.42), comparable to inexperienced raters, and even expert raters only reached moderate-to-good agreement (ICC ≈ 0.54). In other words, two competent clinicians watching the same run may not consistently agree on what they're seeing — which is exactly why Module 2 emphasises a structured, repeatable method rather than free-form observation.</p>
         <p>Standardised 2D video-based analysis (fixed camera position, defined landmarks, consistent frame rate) performs meaningfully better than unstructured visual observation, and has been shown to correlate reasonably well with 3D motion capture for several key variables — which is the whole rationale for the structured video protocol taught in Module 2, rather than an unstructured "watch them run and see what looks off" approach.</p>
