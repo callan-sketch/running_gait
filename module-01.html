@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Module 1: Introduction & Clinical Rationale | Core Learning</title>
+<title>Module 1: Foundations | Core Learning</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -85,10 +85,11 @@
   .module-head p{ color:var(--ink-soft); font-size:1rem; max-width:600px; }
 
   /* LESSON CARD */
-  .lesson-section{ padding-bottom:80px; }
+  .lesson-section{ padding-bottom:24px; }
+  .lesson-section.quiz-section{ padding-bottom:80px; }
   .lesson-card{
     background:#fff; border:1px solid var(--cream-dk); border-radius:16px;
-    padding:36px 38px;
+    padding:36px 38px; margin-bottom:24px;
   }
   .lesson-label{
     font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
@@ -183,9 +184,9 @@
       <div class="module-head-inner">
         <div class="module-head-thumb" style="background-image:url('Assets/Images/module-01.png')"></div>
         <div>
-          <span class="module-eyebrow">MODULE 1 OF 5</span>
-      <h1>Introduction &amp; Clinical Rationale</h1>
-      <p>Why running gait analysis matters for injury prevention and management, the evidence base and its limits, and where gait analysis fits in the broader clinical picture.</p>
+          <span class="module-eyebrow">MODULE 1 OF 4</span>
+      <h1>Foundations: Clinical Rationale &amp; Assessment Methodology</h1>
+      <p>Why running gait analysis matters for injury prevention and management, the evidence base and its limits, and the standardised video assessment protocol you'll use throughout the rest of the course. Two lessons, one quiz.</p>
         </div>
       </div>
     </div>
@@ -194,7 +195,7 @@
   <section class="lesson-section">
     <div class="wrap">
       <div class="lesson-card">
-        <span class="lesson-label">Lesson 1 of 1</span>
+        <span class="lesson-label">Lesson 1 of 2</span>
         <h2>Introduction &amp; Clinical Rationale</h2>
         <p class="lesson-desc">Read the written guide and listen to the podcast summary in either order — both cover the same material.</p>
 
@@ -205,7 +206,7 @@
             </span>
             <span class="btn-text">
               <span class="btn-title">Read the content</span>
-              <span class="btn-sub">Written guide · ~20 min</span>
+              <span class="btn-sub">Written guide · ~22 min</span>
             </span>
           </a>
 
@@ -231,11 +232,55 @@
             </span>
           </a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lesson-section quiz-section">
+    <div class="wrap">
+      <div class="lesson-card">
+        <span class="lesson-label">Lesson 2 of 2</span>
+        <h2>Running Gait Analysis Methodology</h2>
+        <p class="lesson-desc">Read the written guide and listen to the podcast summary in either order — both cover the same material.</p>
+
+        <div class="lesson-actions">
+          <a class="lesson-btn content" href="lessons/module-02-content.html">
+            <span class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M7 3H14L19 8V19a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 3V8H19" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12.5H15.5M8.5 15.5H15.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </span>
+            <span class="btn-text">
+              <span class="btn-title">Read the content</span>
+              <span class="btn-sub">Written guide · ~28 min</span>
+            </span>
+          </a>
+
+          <!-- PDF not built yet — placeholder disabled until Module_1_Running_Gait_Analysis_Methodology.pdf exists in lessons/ -->
+          <a class="lesson-btn pdf disabled" href="lessons/Module_1_Running_Gait_Analysis_Methodology.pdf" download aria-disabled="true" tabindex="-1">
+            <span class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3V15M12 15L7 10M12 15L17 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="btn-text">
+              <span class="btn-title">Download PDF</span>
+              <span class="btn-sub">Coming soon</span>
+            </span>
+          </a>
+
+          <!-- Podcast not recorded yet — placeholder disabled until a real episode URL exists -->
+          <a class="lesson-btn podcast disabled" href="#" aria-disabled="true" tabindex="-1">
+            <span class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M10 9.5V14.5L14.5 12L10 9.5Z" fill="currentColor"/></svg>
+            </span>
+            <span class="btn-text">
+              <span class="btn-title">Listen to the podcast</span>
+              <span class="btn-sub">Coming soon</span>
+            </span>
+          </a>
+        </div>
 
         <div class="quiz-cta-box">
           <div>
             <div class="quiz-cta-title">Ready to test what you've learned?</div>
-            <p class="quiz-cta-sub">80% pass mark. Passing unlocks Module 2 automatically.</p>
+            <p class="quiz-cta-sub">80% pass mark. Covers both lessons. Passing unlocks Module 2 automatically.</p>
           </div>
           <!-- Quiz page not built yet — module_1_quiz.html still to come -->
           <a class="btn-primary" href="module_1_quiz.html" target="_blank" rel="noopener">
@@ -278,7 +323,7 @@ const FIREBASE_CONFIG = {
 const COURSE_ID = "runninggait";
 const THIS_MODULE = 1;
 const NEXT_MODULE = 2;
-const TOTAL_MODULES = 5;
+const TOTAL_MODULES = 4;
 const THIS_MODULE_KEY = "module" + String(THIS_MODULE).padStart(2, "0");
 
 document.getElementById('year').textContent = new Date().getFullYear();
