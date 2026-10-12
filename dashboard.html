@@ -238,7 +238,7 @@
 </main>
 
 <footer>
-  &copy; <span id="year"></span> <span class="footer-word"><span class="core">Core</span> <span class="learning">Learning</span></span> · <a href="mailto:info@corelearning.co.za" style="text-decoration:underline;">info@corelearning.co.za</a>
+  &copy; <span id="year"></span> <span class="footer-word"><span class="core">Core</span> <span class="learning">Learning</span></span> · <a href="mailto:callan@wam.co.za" style="text-decoration:underline;">callan@wam.co.za</a>
 </footer>
 
 <script type="module">
@@ -258,10 +258,11 @@ const COURSE_ID = "runninggait";
    Unlock/complete state comes from Firestore at render time.
    ============================================================ */
 const MODULES = [
-  { n: 1, title: "Foundations: Clinical Rationale & Assessment Methodology", desc: "Why running gait analysis matters, the evidence base, and the standardised video assessment protocol. Two lessons, one quiz.", thumb: "module-01.png" },
-  { n: 2, title: "Interpreting Gait & Linking to Pathology", desc: "Reading gait patterns and mapping faults to associated injuries.", thumb: "module-03.png" },
-  { n: 3, title: "Injury-Specific Treatment Pathways", desc: "Per-injury clinical reasoning and treatment sequencing.", thumb: "module-04.png" },
-  { n: 4, title: "Running Re-Training & Return-to-Run Programming", desc: "Cueing, drills, load management, and return-to-run progression.", thumb: "module-05.png" }
+  { n: 1, title: "Introduction & Clinical Rationale", desc: "Why running gait analysis matters, the evidence base, and where it fits clinically." },
+  { n: 2, title: "Running Gait Analysis Methodology", desc: "Video setup, key kinematic markers, and subjective screening." },
+  { n: 3, title: "Interpreting Gait & Linking to Pathology", desc: "Reading gait patterns and mapping faults to associated injuries." },
+  { n: 4, title: "Injury-Specific Treatment Pathways", desc: "Per-injury clinical reasoning and treatment sequencing." },
+  { n: 5, title: "Running Re-Training & Return-to-Run Programming", desc: "Cueing, drills, load management, and return-to-run progression." }
 ];
 
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -358,10 +359,11 @@ function renderModules(courseData){
 
     const rowTag = state === 'locked' ? 'div' : 'a';
     const hrefAttr = state === 'locked' ? '' : `href="module-0${m.n}.html"`;
+    const thumbNum = String(m.n).padStart(2, '0');
 
     return `
       <${rowTag} ${hrefAttr} class="module-row ${state}">
-        <div class="module-thumb" style="background-image:url('Assets/Images/${m.thumb}')"></div>
+        <div class="module-thumb" style="background-image:url('Assets/Images/module-${thumbNum}.png')"></div>
         <div class="module-num">${state === 'complete' ? '✓' : m.n}</div>
         <div>
           <h3>${m.title}</h3>
