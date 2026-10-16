@@ -404,6 +404,29 @@
       border-top: none;
     }
 
+    td.img-cell {
+      width: 34%;
+      min-width: 170px;
+    }
+
+    .gait-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      background: #000;
+    }
+
+    .img-none {
+      color: var(--cream-dk);
+    }
+
+    @media (max-width:600px) {
+      table.has-visual {
+        min-width: 600px;
+      }
+    }
+
     .callout {
       background: #fff;
       border-left: 4px solid var(--teal);
@@ -665,60 +688,72 @@
         <h2 id="s2-3">2.3 Sagittal Plane: What to Look For</h2>
         <p>From the lateral view, work through the same handful of variables on every runner, in the same order, every time. Consistency in what you screen for is as important to reliability as the camera setup itself.</p>
         <div class="table-wrap">
-          <table>
+          <table class="has-visual">
             <tr>
-              <th style="width:30%">Variable</th>
+              <th style="width:24%">Variable</th>
               <th>What to Look For</th>
+              <th>Visual</th>
             </tr>
             <tr>
               <td><strong>Foot strike pattern</strong></td>
               <td>Where the foot first contacts the ground relative to the ankle — rearfoot, midfoot, or forefoot.</td>
+              <td class="img-cell img-none">—</td>
             </tr>
             <tr>
               <td><strong>Overstriding</strong></td>
               <td>Hip flexion with the knee still extending just before initial contact, placing the foot well ahead of the body's centre of mass.</td>
+              <td class="img-cell"><a href="Assets/Images/gait-overstriding.jpg" target="_blank" rel="noopener"><img class="gait-img" src="Assets/Images/gait-overstriding.jpg" alt="Side-view comparison: an overstriding runner (orange) with the foot landing well ahead of the centre of mass and an extended knee, beside a runner (blue) landing with the foot close to beneath the hip." loading="lazy" width="1200" height="800"></a></td>
             </tr>
             <tr>
               <td><strong>Trunk lean</strong></td>
               <td>Excessive forward or backward lean relative to a roughly neutral upright posture through stance.</td>
+              <td class="img-cell img-none">—</td>
             </tr>
             <tr>
               <td><strong>Vertical oscillation</strong></td>
               <td>How much the centre of mass (roughly, the top of the head) bounces vertically stride to stride — visually, whether the runner looks like they're "bouncing" excessively.</td>
+              <td class="img-cell"><a href="Assets/Images/gait-vertical-oscillation.jpg" target="_blank" rel="noopener"><img class="gait-img" src="Assets/Images/gait-vertical-oscillation.jpg" alt="Side-view comparison: a runner (orange) whose head traces a large up-and-down path stride to stride, beside a runner (blue) with a much flatter vertical path." loading="lazy" width="1200" height="800"></a></td>
             </tr>
             <tr>
               <td><strong>Knee flexion at initial contact</strong></td>
               <td>A very straight, extended knee at contact is one of the sagittal-plane hallmarks that accompanies overstriding.</td>
+              <td class="img-cell img-none">—</td>
             </tr>
           </table>
         </div>
         <h2 id="s2-4">2.4 Posterior Plane: What to Look For</h2>
         <p>The posterior view is where most of the frontal-plane compensations relevant to injury show up — and where reliability varies the most between variables, so this is exactly where a structured method earns its keep (see 2.6).</p>
         <div class="table-wrap">
-          <table>
+          <table class="has-visual">
             <tr>
-              <th style="width:30%">Variable</th>
+              <th style="width:24%">Variable</th>
               <th>What to Look For</th>
+              <th>Visual</th>
             </tr>
             <tr>
               <td><strong>Pelvic drop (contralateral)</strong></td>
               <td>The unsupported side of the pelvis dropping below level during single-leg stance on the other side.</td>
+              <td class="img-cell img-none">—</td>
             </tr>
             <tr>
               <td><strong>Hip adduction / crossover</strong></td>
               <td>The stance-leg thigh angling in toward, or past, the body's midline — visible as the foot landing close to or across an imaginary centreline.</td>
+              <td class="img-cell"><a href="Assets/Images/gait-hip-adduction-crossover.jpg" target="_blank" rel="noopener"><img class="gait-img" src="Assets/Images/gait-hip-adduction-crossover.jpg" alt="Posterior-view comparison: a stance leg (blue) staying beside the midline, beside a stance leg (orange) angling in so the foot lands on or across the centreline." loading="lazy" width="1200" height="800"></a></td>
             </tr>
             <tr>
               <td><strong>Knee position (valgus / "knee window")</strong></td>
               <td>Whether a visible gap remains between the knees during stance, or whether the knee collapses inward.</td>
+              <td class="img-cell"><a href="Assets/Images/gait-knee-valgus.jpg" target="_blank" rel="noopener"><img class="gait-img" src="Assets/Images/gait-knee-valgus.jpg" alt="Front-view comparison: a runner (red) whose stance knee collapses inward, marked with an arrow, beside a runner (green) keeping a visible gap between the knees." loading="lazy" width="1200" height="800"></a></td>
             </tr>
             <tr>
               <td><strong>Heel whip</strong></td>
               <td>The heel kicking excessively inward or outward during the swing phase, just after toe-off.</td>
+              <td class="img-cell"><a href="Assets/Images/gait-heel-whip.jpg" target="_blank" rel="noopener"><img class="gait-img" src="Assets/Images/gait-heel-whip.jpg" alt="Posterior-view comparison: a swing-phase heel coming straight up behind the runner, beside a heel whipping outward just after toe-off, shown by a red arrow." loading="lazy" width="1200" height="800"></a></td>
             </tr>
             <tr>
               <td><strong>Rearfoot eversion</strong></td>
               <td>The degree and, notably, the <em>duration</em> of inward rolling of the heel through stance — both matter (see 2.6 and Module 3).</td>
+              <td class="img-cell img-none">—</td>
             </tr>
           </table>
         </div>
