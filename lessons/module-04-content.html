@@ -425,7 +425,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: 18px;
-      margin: 24px 0 36px;
+      margin: 12px 0 28px;
     }
 
     .ex-card {
@@ -520,6 +520,16 @@
 
     .ex-chip:hover {
       border-color: var(--teal);
+    }
+
+    .ex-group {
+      margin: 30px 0 4px;
+      font-size: 0.78rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
     }
 
     .callout {
@@ -776,15 +786,15 @@
               <th>Evidence &amp; Notes</th>
             </tr>
             <tr>
-              <td><strong>Combined hip and knee strengthening</strong><span class="ex-links">Exercises: <a href="#ex-bridge-leg-lift">Alternating leg lifts in bridge</a> · <a href="#ex-step-down">Step-down</a> · <a href="#ex-split-squat">Split squat</a></span></td>
+              <td><strong>Combined hip and knee strengthening</strong><span class="ex-links">Exercises: <a href="#ex-bridge">Bridge</a> · <a href="#ex-bridge-leg-lift">Alternating leg lifts in bridge</a> · <a href="#ex-squat">Squat</a> · <a href="#ex-lunge-perturbation">Lunge with band perturbation</a> · <a href="#ex-step-down">Step-down</a> · <a href="#ex-prone-hip-ir">Prone hip internal rotation (banded)</a></span></td>
               <td>A randomised trial comparing a combined hip-and-knee strengthening protocol against knee-strengthening alone found the combined group achieved significantly better pain and function outcomes, supporting a hip-inclusive approach over a knee-only quadriceps programme.</td>
             </tr>
             <tr>
-              <td><strong>Hip abductor and external rotator strengthening</strong><span class="ex-links">Exercises: <a href="#ex-side-lying-abduction">Side-lying hip abduction</a> · <a href="#ex-clamshell">Clamshell</a></span></td>
+              <td><strong>Hip abductor and external rotator strengthening</strong><span class="ex-links">Exercises: <a href="#ex-side-lying-abduction">Side-lying hip abduction</a> · <a href="#ex-clamshell">Clamshell</a> · <a href="#ex-fire-hydrant">Fire hydrant</a> · <a href="#ex-prone-hip-er">Prone hip external rotation (banded)</a> · <a href="#ex-lateral-walk">Banded lateral walk</a> · <a href="#ex-wall-slide-band">Banded wall slide</a></span></td>
               <td>Targets the same hip adduction pattern flagged as the strongest prospective predictor in Module 3; typically progressed from open-chain (side-lying, banded) through to closed-chain, functional loading.</td>
             </tr>
             <tr>
-              <td><strong>Quadriceps strengthening</strong><span class="ex-links">Exercises: <a href="#ex-split-squat">Split squat</a> · <a href="#ex-step-down">Step-down</a></span></td>
+              <td><strong>Quadriceps strengthening</strong><span class="ex-links">Exercises: <a href="#ex-slr-vmo">Straight-leg raise (VMO emphasis)</a> · <a href="#ex-wall-slide-ball">Wall slide with ball squeeze</a> · <a href="#ex-squat-to-target">Squat to target</a> · <a href="#ex-squat">Squat</a> · <a href="#ex-split-squat">Split squat</a> · <a href="#ex-lunge">Lunge</a> · <a href="#ex-step-up">Step-up</a> · <a href="#ex-step-down">Step-down</a></span></td>
               <td>Remains a core component; PFP has long been associated with quadriceps weakness independent of the hip mechanism, and closed-chain strengthening is generally preferred to isolated open-chain knee extension for symptom tolerance.</td>
             </tr>
             <tr>
@@ -803,11 +813,11 @@
               <th>Evidence &amp; Notes</th>
             </tr>
             <tr>
-              <td><strong>Hip abductor strengthening</strong><span class="ex-links">Exercises: <a href="#ex-side-lying-abduction">Side-lying hip abduction</a> · <a href="#ex-clamshell">Clamshell</a></span></td>
+              <td><strong>Hip abductor strengthening</strong><span class="ex-links">Exercises: <a href="#ex-side-lying-abduction">Side-lying hip abduction</a> · <a href="#ex-clamshell">Clamshell</a> · <a href="#ex-fire-hydrant">Fire hydrant</a> · <a href="#ex-lateral-walk">Banded lateral walk</a> · <a href="#ex-wall-slide-band">Banded wall slide</a></span></td>
               <td>A systematic review found hip abductor strengthening programmes were associated with reductions in ITBS pain reported across included studies ranging from roughly 27% to 100%, alongside improved hip abductor strength.</td>
             </tr>
             <tr>
-              <td><strong>Gluteus medius &amp; posterior chain strengthening</strong><span class="ex-links">Exercises: <a href="#ex-single-leg-bridge">Single-leg bridge</a> · <a href="#ex-bridge-leg-lift">Alternating leg lifts in bridge</a> · <a href="#ex-step-down">Step-down</a></span></td>
+              <td><strong>Gluteus medius &amp; posterior chain strengthening</strong><span class="ex-links">Exercises: <a href="#ex-bridge">Bridge</a> · <a href="#ex-bridge-leg-lift">Alternating leg lifts in bridge</a> · <a href="#ex-single-leg-bridge">Single-leg bridge</a> · <a href="#ex-bridge-chair">Bridge – feet on chair</a> · <a href="#ex-bridge-ball">Bridge – feet on ball</a> · <a href="#ex-bridge-ball-roll">Bridge with ball roll-in</a> · <a href="#ex-lateral-step-up">Lateral step-up</a> · <a href="#ex-lunge-perturbation">Lunge with band perturbation</a> · <a href="#ex-step-down">Step-down</a></span></td>
               <td>Typically progressed from isolated abduction work to functional single-leg loading (step-downs, single-leg bridges) that better replicates the demands of stance phase.</td>
             </tr>
             <tr>
@@ -954,12 +964,22 @@
         </div>
         <p>Module 5 builds out exactly how to run a gait-retraining intervention — cueing strategies, dosage, and how to integrate it with the load-management and return-to-run planning that ties this whole course together.</p>
         <h2 id="s4-10">4.10 Exercise Library</h2>
-        <p>The exercises referenced in the treatment tables above, gathered in one place. Each card shows the main target, a short execution cue, and which conditions it is used for. Dosage and progression should follow the condition-specific evidence in each section rather than a fixed prescription.</p>
+        <p>The exercises referenced in the treatment tables above, gathered in one place and grouped by region. Each card shows the main target, a short execution cue, and which conditions it is used for. Dosage and progression should follow the condition-specific evidence in each section rather than a fixed prescription.</p>
+        <h3 class="ex-group">Hip &amp; pelvis</h3>
         <div class="ex-grid">
+            <div class="ex-card" id="ex-bridge">
+              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/bridge-poster.jpg" aria-label="Looping demonstration of bridge"><source src="Assets/video/bridge.mp4" type="video/mp4"></video></div>
+              <div class="ex-body">
+                <h4 class="ex-name">Bridge</h4>
+                <p class="ex-target">Glute max, hamstrings</p>
+                <p class="ex-cue">From hook-lying, drive through the heels to lift the hips until knees, hips and shoulders line up; hold briefly and lower with control.</p>
+                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-2">4.2 PFP</a><a class="ex-chip" href="#s4-3">4.3 ITBS</a></div>
+              </div>
+            </div>
             <div class="ex-card" id="ex-bridge-leg-lift">
               <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/alternating-leg-lift-bridge-poster.jpg" aria-label="Looping demonstration of alternating leg lifts in bridge"><source src="Assets/video/alternating-leg-lift-bridge.mp4" type="video/mp4"></video></div>
               <div class="ex-body">
-                <h3 class="ex-name">Alternating leg lifts in bridge</h3>
+                <h4 class="ex-name">Alternating leg lifts in bridge</h4>
                 <p class="ex-target">Glute max, hamstrings, pelvic control</p>
                 <p class="ex-cue">Hold a level double-leg bridge, then straighten one knee to lift the leg and alternate sides, keeping the pelvis level without dropping or rotating.</p>
                 <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-2">4.2 PFP</a><a class="ex-chip" href="#s4-3">4.3 ITBS</a></div>
@@ -968,16 +988,43 @@
             <div class="ex-card" id="ex-single-leg-bridge">
               <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/single-leg-bridge-poster.jpg" aria-label="Looping demonstration of single-leg bridge"><source src="Assets/video/single-leg-bridge.mp4" type="video/mp4"></video></div>
               <div class="ex-body">
-                <h3 class="ex-name">Single-leg bridge</h3>
+                <h4 class="ex-name">Single-leg bridge</h4>
                 <p class="ex-target">Glute max, hamstrings</p>
                 <p class="ex-cue">From hook-lying, extend one knee and drive up through the planted heel until hip, knee and shoulder line up; lower with control.</p>
+                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-3">4.3 ITBS</a></div>
+              </div>
+            </div>
+            <div class="ex-card" id="ex-bridge-chair">
+              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/bridge-feet-on-chair-poster.jpg" aria-label="Looping demonstration of bridge – feet on chair"><source src="Assets/video/bridge-feet-on-chair.mp4" type="video/mp4"></video></div>
+              <div class="ex-body">
+                <h4 class="ex-name">Bridge – feet on chair</h4>
+                <p class="ex-target">Glute max, hamstrings (longer lever)</p>
+                <p class="ex-cue">Heels on a chair with knees bent, lift the hips into a straight line from shoulders to knees; the raised base increases hamstring demand.</p>
+                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-3">4.3 ITBS</a></div>
+              </div>
+            </div>
+            <div class="ex-card" id="ex-bridge-ball">
+              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/bridge-feet-on-ball-poster.jpg" aria-label="Looping demonstration of bridge – feet on ball"><source src="Assets/video/bridge-feet-on-ball.mp4" type="video/mp4"></video></div>
+              <div class="ex-body">
+                <h4 class="ex-name">Bridge – feet on ball</h4>
+                <p class="ex-target">Glute max, hamstrings, stability</p>
+                <p class="ex-cue">Heels on a gym ball, lift the hips and hold the ball still; the unstable base adds a control challenge to the bridge.</p>
+                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-3">4.3 ITBS</a></div>
+              </div>
+            </div>
+            <div class="ex-card" id="ex-bridge-ball-roll">
+              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/bridge-ball-rolls-poster.jpg" aria-label="Looping demonstration of bridge with ball roll-in"><source src="Assets/video/bridge-ball-rolls.mp4" type="video/mp4"></video></div>
+              <div class="ex-body">
+                <h4 class="ex-name">Bridge with ball roll-in</h4>
+                <p class="ex-target">Hamstrings, glute max</p>
+                <p class="ex-cue">From a bridge with heels on the ball, curl the ball in toward you and roll it back out, keeping the hips up throughout.</p>
                 <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-3">4.3 ITBS</a></div>
               </div>
             </div>
             <div class="ex-card" id="ex-side-lying-abduction">
               <div class="ex-media"><div class="ex-media-empty"><span>Video coming soon</span></div></div>
               <div class="ex-body">
-                <h3 class="ex-name">Side-lying hip abduction</h3>
+                <h4 class="ex-name">Side-lying hip abduction</h4>
                 <p class="ex-target">Glute med</p>
                 <p class="ex-cue">Lie on your side with the top leg slightly behind the body and toes forward; lift without rolling the pelvis back.</p>
                 <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-2">4.2 PFP</a><a class="ex-chip" href="#s4-3">4.3 ITBS</a></div>
@@ -986,34 +1033,166 @@
             <div class="ex-card" id="ex-clamshell">
               <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/clamshell-poster.jpg" aria-label="Looping demonstration of clamshell"><source src="Assets/video/clamshell.mp4" type="video/mp4"></video></div>
               <div class="ex-body">
-                <h3 class="ex-name">Clamshell</h3>
+                <h4 class="ex-name">Clamshell</h4>
                 <p class="ex-target">Hip external rotators, glute med</p>
                 <p class="ex-cue">Side-lying with hips and knees bent; open the top knee while keeping the feet together and the pelvis still. Add a band above the knees to progress.</p>
                 <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-2">4.2 PFP</a><a class="ex-chip" href="#s4-3">4.3 ITBS</a></div>
               </div>
             </div>
-            <div class="ex-card" id="ex-step-down">
-              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/step-down-poster.jpg" aria-label="Looping demonstration of step-down"><source src="Assets/video/step-down.mp4" type="video/mp4"></video></div>
+            <div class="ex-card" id="ex-fire-hydrant">
+              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/fire-hydrant-poster.jpg" aria-label="Looping demonstration of fire hydrant"><source src="Assets/video/fire-hydrant.mp4" type="video/mp4"></video></div>
               <div class="ex-body">
-                <h3 class="ex-name">Step-down</h3>
-                <p class="ex-target">Quadriceps, glute med, frontal-plane knee control</p>
-                <p class="ex-cue">Stand on a step and slowly lower the opposite heel to the floor, keeping the stance knee tracking over the second toe and the pelvis level.</p>
+                <h4 class="ex-name">Fire hydrant</h4>
+                <p class="ex-target">Glute med, hip external rotators</p>
+                <p class="ex-cue">In four-point kneeling, lift one bent knee out to the side without shifting weight or rotating the trunk; return slowly.</p>
                 <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-2">4.2 PFP</a><a class="ex-chip" href="#s4-3">4.3 ITBS</a></div>
+              </div>
+            </div>
+            <div class="ex-card" id="ex-prone-hip-er">
+              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/prone-hip-external-rotation-poster.jpg" aria-label="Looping demonstration of prone hip external rotation (banded)"><source src="Assets/video/prone-hip-external-rotation.mp4" type="video/mp4"></video></div>
+              <div class="ex-body">
+                <h4 class="ex-name">Prone hip external rotation (banded)</h4>
+                <p class="ex-target">Deep hip external rotators</p>
+                <p class="ex-cue">Lying prone with the knee bent to 90° and a band around the ankle, rotate the foot inward across the midline against the band, keeping the pelvis flat.</p>
+                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-2">4.2 PFP</a></div>
+              </div>
+            </div>
+            <div class="ex-card" id="ex-prone-hip-ir">
+              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/prone-hip-internal-rotation-poster.jpg" aria-label="Looping demonstration of prone hip internal rotation (banded)"><source src="Assets/video/prone-hip-internal-rotation.mp4" type="video/mp4"></video></div>
+              <div class="ex-body">
+                <h4 class="ex-name">Prone hip internal rotation (banded)</h4>
+                <p class="ex-target">Hip internal rotators, rotational control</p>
+                <p class="ex-cue">Lying prone with the knee bent to 90° and a band around the ankle, rotate the foot outward against the band, keeping the pelvis flat on the bed.</p>
+                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-2">4.2 PFP</a></div>
+              </div>
+            </div>
+            <div class="ex-card" id="ex-lateral-walk">
+              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/banded-lateral-walk-poster.jpg" aria-label="Looping demonstration of banded lateral walk"><source src="Assets/video/banded-lateral-walk.mp4" type="video/mp4"></video></div>
+              <div class="ex-body">
+                <h4 class="ex-name">Banded lateral walk</h4>
+                <p class="ex-target">Glute med</p>
+                <p class="ex-cue">With a band around the feet and knees straight, step sideways keeping the toes forward and the trunk upright; avoid letting the trailing foot snap in.</p>
+                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-2">4.2 PFP</a><a class="ex-chip" href="#s4-3">4.3 ITBS</a></div>
+              </div>
+            </div>
+            <div class="ex-card" id="ex-wall-slide-band">
+              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/wall-slide-banded-poster.jpg" aria-label="Looping demonstration of banded wall slide"><source src="Assets/video/wall-slide-banded.mp4" type="video/mp4"></video></div>
+              <div class="ex-body">
+                <h4 class="ex-name">Banded wall slide</h4>
+                <p class="ex-target">Glute med, quadriceps</p>
+                <p class="ex-cue">Back against a ball on the wall with a band above the knees, slide down into a squat while pushing the knees out against the band.</p>
+                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-2">4.2 PFP</a><a class="ex-chip" href="#s4-3">4.3 ITBS</a></div>
+              </div>
+            </div>
+            <div class="ex-card" id="ex-foam-roll-lateral">
+              <div class="ex-media"><div class="ex-media-empty"><span>Video coming soon</span></div></div>
+              <div class="ex-body">
+                <h4 class="ex-name">Foam rolling – lateral thigh</h4>
+                <p class="ex-target">Lateral thigh soft tissue (adjunct)</p>
+                <p class="ex-cue">Roll slowly along the lateral thigh between hip and knee; used for short-term symptom relief alongside, not instead of, strengthening.</p>
+                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-3">4.3 ITBS</a></div>
+              </div>
+            </div>
+        </div>
+        <h3 class="ex-group">Knee &amp; closed-chain control</h3>
+        <div class="ex-grid">
+            <div class="ex-card" id="ex-slr-vmo">
+              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/straight-leg-raise-vmo-poster.jpg" aria-label="Looping demonstration of straight-leg raise (vmo emphasis)"><source src="Assets/video/straight-leg-raise-vmo.mp4" type="video/mp4"></video></div>
+              <div class="ex-body">
+                <h4 class="ex-name">Straight-leg raise (VMO emphasis)</h4>
+                <p class="ex-target">Quadriceps, VMO</p>
+                <p class="ex-cue">Lying with the leg slightly turned out, tighten the quadriceps to lock the knee and lift the straight leg; a low-load starting point when loading is poorly tolerated.</p>
+                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-2">4.2 PFP</a></div>
+              </div>
+            </div>
+            <div class="ex-card" id="ex-wall-slide-ball">
+              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/wall-slide-ball-squeeze-poster.jpg" aria-label="Looping demonstration of wall slide with ball squeeze"><source src="Assets/video/wall-slide-ball-squeeze.mp4" type="video/mp4"></video></div>
+              <div class="ex-body">
+                <h4 class="ex-name">Wall slide with ball squeeze</h4>
+                <p class="ex-target">Quadriceps (VMO emphasis), adductors</p>
+                <p class="ex-cue">Back against a ball on the wall, squeeze a small ball between the knees and slide down into a squat within a pain-tolerable range.</p>
+                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-2">4.2 PFP</a></div>
+              </div>
+            </div>
+            <div class="ex-card" id="ex-squat-to-target">
+              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/squat-to-target-poster.jpg" aria-label="Looping demonstration of squat to target"><source src="Assets/video/squat-to-target.mp4" type="video/mp4"></video></div>
+              <div class="ex-body">
+                <h4 class="ex-name">Squat to target</h4>
+                <p class="ex-target">Quadriceps, glutes, depth control</p>
+                <p class="ex-cue">Squat back to lightly touch a chair, then stand; the target sets a consistent depth and can be lowered as tolerance improves.</p>
+                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-2">4.2 PFP</a></div>
+              </div>
+            </div>
+            <div class="ex-card" id="ex-squat">
+              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/squat-poster.jpg" aria-label="Looping demonstration of squat"><source src="Assets/video/squat.mp4" type="video/mp4"></video></div>
+              <div class="ex-body">
+                <h4 class="ex-name">Squat</h4>
+                <p class="ex-target">Quadriceps, glutes</p>
+                <p class="ex-cue">Feet about hip-width, sit the hips back and down with the knees tracking over the toes; return to standing through the whole foot.</p>
+                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-2">4.2 PFP</a></div>
               </div>
             </div>
             <div class="ex-card" id="ex-split-squat">
               <div class="ex-media"><div class="ex-media-empty"><span>Video coming soon</span></div></div>
               <div class="ex-body">
-                <h3 class="ex-name">Split squat</h3>
+                <h4 class="ex-name">Split squat</h4>
                 <p class="ex-target">Quadriceps, glutes</p>
                 <p class="ex-cue">In a staggered stance, lower the back knee toward the floor with the front knee tracking over the foot; progress range and load as symptoms allow.</p>
                 <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-2">4.2 PFP</a></div>
               </div>
             </div>
+            <div class="ex-card" id="ex-lunge">
+              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/lunge-poster.jpg" aria-label="Looping demonstration of lunge"><source src="Assets/video/lunge.mp4" type="video/mp4"></video></div>
+              <div class="ex-body">
+                <h4 class="ex-name">Lunge</h4>
+                <p class="ex-target">Quadriceps, glutes, single-leg control</p>
+                <p class="ex-cue">Step forward and lower the back knee toward the floor, keeping the front knee over the foot and the pelvis level; push back to standing.</p>
+                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-2">4.2 PFP</a></div>
+              </div>
+            </div>
+            <div class="ex-card" id="ex-lunge-perturbation">
+              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/lunge-band-perturbation-poster.jpg" aria-label="Looping demonstration of lunge with band perturbation"><source src="Assets/video/lunge-band-perturbation.mp4" type="video/mp4"></video></div>
+              <div class="ex-body">
+                <h4 class="ex-name">Lunge with band perturbation</h4>
+                <p class="ex-target">Frontal-plane knee control, glute med</p>
+                <p class="ex-cue">Hold a split-stance lunge with a band pulling the front knee sideways and resist it, keeping the knee over the second toe.</p>
+                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-2">4.2 PFP</a><a class="ex-chip" href="#s4-3">4.3 ITBS</a></div>
+              </div>
+            </div>
+            <div class="ex-card" id="ex-step-up">
+              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/step-up-poster.jpg" aria-label="Looping demonstration of step-up"><source src="Assets/video/step-up.mp4" type="video/mp4"></video></div>
+              <div class="ex-body">
+                <h4 class="ex-name">Step-up</h4>
+                <p class="ex-target">Quadriceps, glutes</p>
+                <p class="ex-cue">Step up onto a box through the lead leg without pushing off the back foot, keeping the knee in line with the foot.</p>
+                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-2">4.2 PFP</a></div>
+              </div>
+            </div>
+            <div class="ex-card" id="ex-lateral-step-up">
+              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/lateral-step-up-poster.jpg" aria-label="Looping demonstration of lateral step-up"><source src="Assets/video/lateral-step-up.mp4" type="video/mp4"></video></div>
+              <div class="ex-body">
+                <h4 class="ex-name">Lateral step-up</h4>
+                <p class="ex-target">Glute med, quadriceps</p>
+                <p class="ex-cue">Standing side-on to a step, step up sideways onto it and control the lowering, keeping the pelvis level and the knee tracking over the foot.</p>
+                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-3">4.3 ITBS</a></div>
+              </div>
+            </div>
+            <div class="ex-card" id="ex-step-down">
+              <div class="ex-media"><video class="ex-video" autoplay muted loop playsinline preload="none" poster="Assets/video/step-down-poster.jpg" aria-label="Looping demonstration of step-down"><source src="Assets/video/step-down.mp4" type="video/mp4"></video></div>
+              <div class="ex-body">
+                <h4 class="ex-name">Step-down</h4>
+                <p class="ex-target">Quadriceps, glute med, frontal-plane knee control</p>
+                <p class="ex-cue">Stand on a step and slowly lower the opposite heel to the floor, keeping the stance knee tracking over the second toe and the pelvis level.</p>
+                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-2">4.2 PFP</a><a class="ex-chip" href="#s4-3">4.3 ITBS</a></div>
+              </div>
+            </div>
+        </div>
+        <h3 class="ex-group">Lower leg &amp; foot</h3>
+        <div class="ex-grid">
             <div class="ex-card" id="ex-calf-raise">
               <div class="ex-media"><div class="ex-media-empty"><span>Video coming soon</span></div></div>
               <div class="ex-body">
-                <h3 class="ex-name">Calf raise progression</h3>
+                <h4 class="ex-name">Calf raise progression</h4>
                 <p class="ex-target">Gastrocnemius, soleus</p>
                 <p class="ex-cue">Progress from double- to single-leg raises, then add load and bent-knee variations to bias soleus; full range, controlled tempo.</p>
                 <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-4">4.4 MTSS</a><a class="ex-chip" href="#s4-6">4.6 Plantar fasciitis</a></div>
@@ -1022,7 +1201,7 @@
             <div class="ex-card" id="ex-tib-post">
               <div class="ex-media"><div class="ex-media-empty"><span>Video coming soon</span></div></div>
               <div class="ex-body">
-                <h3 class="ex-name">Banded ankle inversion</h3>
+                <h4 class="ex-name">Banded ankle inversion</h4>
                 <p class="ex-target">Tibialis posterior</p>
                 <p class="ex-cue">Seated, with a band around the forefoot, turn the sole of the foot inward against resistance from a slightly everted start; return slowly.</p>
                 <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-4">4.4 MTSS</a></div>
@@ -1031,7 +1210,7 @@
             <div class="ex-card" id="ex-knee-to-wall">
               <div class="ex-media"><div class="ex-media-empty"><span>Video coming soon</span></div></div>
               <div class="ex-body">
-                <h3 class="ex-name">Knee-to-wall dorsiflexion</h3>
+                <h4 class="ex-name">Knee-to-wall dorsiflexion</h4>
                 <p class="ex-target">Ankle dorsiflexion range</p>
                 <p class="ex-cue">Half-kneel facing a wall and drive the knee forward to touch it with the heel kept down; move the foot back as range improves.</p>
                 <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-4">4.4 MTSS</a></div>
@@ -1040,7 +1219,7 @@
             <div class="ex-card" id="ex-eccentric-heel-drop">
               <div class="ex-media"><div class="ex-media-empty"><span>Video coming soon</span></div></div>
               <div class="ex-body">
-                <h3 class="ex-name">Eccentric heel drop (Alfredson)</h3>
+                <h4 class="ex-name">Eccentric heel drop (Alfredson)</h4>
                 <p class="ex-target">Achilles tendon, gastrocnemius, soleus</p>
                 <p class="ex-cue">Rise on both feet off a step edge, shift to the affected leg and lower the heel slowly below step level; perform with straight and bent knee.</p>
                 <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-5">4.5 Achilles</a></div>
@@ -1049,7 +1228,7 @@
             <div class="ex-card" id="ex-hsr-calf">
               <div class="ex-media"><div class="ex-media-empty"><span>Video coming soon</span></div></div>
               <div class="ex-body">
-                <h3 class="ex-name">Heavy slow resistance calf raise</h3>
+                <h4 class="ex-name">Heavy slow resistance calf raise</h4>
                 <p class="ex-target">Achilles tendon, gastrocnemius, soleus</p>
                 <p class="ex-cue">Seated and standing calf raises under heavy load with a slow tempo (around 3 seconds up, 3 seconds down), with load progressed over the programme.</p>
                 <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-5">4.5 Achilles</a></div>
@@ -1058,7 +1237,7 @@
             <div class="ex-card" id="ex-isometric-calf">
               <div class="ex-media"><div class="ex-media-empty"><span>Video coming soon</span></div></div>
               <div class="ex-body">
-                <h3 class="ex-name">Isometric calf hold</h3>
+                <h4 class="ex-name">Isometric calf hold</h4>
                 <p class="ex-target">Achilles tendon (analgesic loading)</p>
                 <p class="ex-cue">Hold a mid-range calf raise, or push into an immovable resistance, for sustained holds at a load that stays tolerable.</p>
                 <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-5">4.5 Achilles</a></div>
@@ -1067,7 +1246,7 @@
             <div class="ex-card" id="ex-pf-stretch">
               <div class="ex-media"><div class="ex-media-empty"><span>Video coming soon</span></div></div>
               <div class="ex-body">
-                <h3 class="ex-name">Plantar-fascia-specific stretch</h3>
+                <h4 class="ex-name">Plantar-fascia-specific stretch</h4>
                 <p class="ex-target">Plantar fascia</p>
                 <p class="ex-cue">Seated, cross the affected foot over the opposite knee and pull the toes back toward the shin until tension is felt along the arch.</p>
                 <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-6">4.6 Plantar fasciitis</a></div>
@@ -1076,19 +1255,10 @@
             <div class="ex-card" id="ex-towel-heel-raise">
               <div class="ex-media"><div class="ex-media-empty"><span>Video coming soon</span></div></div>
               <div class="ex-body">
-                <h3 class="ex-name">High-load heel raise with toe extension</h3>
+                <h4 class="ex-name">High-load heel raise with toe extension</h4>
                 <p class="ex-target">Plantar fascia, plantar flexors</p>
                 <p class="ex-cue">Single-leg heel raise with a rolled towel under the toes to extend them, slow tempo, progressively loaded (e.g. weighted backpack).</p>
                 <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-6">4.6 Plantar fasciitis</a></div>
-              </div>
-            </div>
-            <div class="ex-card" id="ex-foam-roll-lateral">
-              <div class="ex-media"><div class="ex-media-empty"><span>Video coming soon</span></div></div>
-              <div class="ex-body">
-                <h3 class="ex-name">Foam rolling – lateral thigh</h3>
-                <p class="ex-target">Lateral thigh soft tissue (adjunct)</p>
-                <p class="ex-cue">Roll slowly along the lateral thigh between hip and knee; used for short-term symptom relief alongside, not instead of, strengthening.</p>
-                <div class="ex-used"><span>Used in</span><a class="ex-chip" href="#s4-3">4.3 ITBS</a></div>
               </div>
             </div>
         </div>
