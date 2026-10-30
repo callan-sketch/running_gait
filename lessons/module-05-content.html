@@ -405,6 +405,347 @@
       border-top: none;
     }
 
+    /* ---- diagrams ---- */
+    .dg {
+      margin: 28px 0 6px;
+      background: #fff;
+      border: 1px solid var(--cream-dk);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .dg-caption {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      margin: 8px 0 28px;
+    }
+
+    .dg-scroll {
+      overflow-x: auto;
+    }
+
+    .dg svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .dg-title {
+      font-size: 0.72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
+      margin: 0 0 14px;
+    }
+
+    .wf-inputs {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .wf-box {
+      background: var(--cream);
+      border: 1px solid var(--cream-dk);
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 0.8rem;
+      line-height: 1.45;
+      color: var(--ink-soft);
+    }
+
+    .wf-box strong {
+      display: block;
+      color: var(--navy);
+      font-size: 0.86rem;
+      margin-bottom: 4px;
+    }
+
+    .wf-box.is-key {
+      background: #fff;
+      border: 2px solid var(--teal);
+    }
+
+    .wf-arrow {
+      text-align: center;
+      color: var(--teal);
+      font-size: 1.4rem;
+      line-height: 1;
+      margin: 10px 0;
+    }
+
+    .wf-out {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .fc-head,
+    .fc-row {
+      display: grid;
+      grid-template-columns: 1fr 28px 1fr 28px 1.35fr;
+      align-items: stretch;
+    }
+
+    .fc-head {
+      font-size: 0.72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .fc-row {
+      margin-bottom: 12px;
+    }
+
+    .fc-cell {
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+
+    .fc-see {
+      background: var(--navy);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .fc-screen {
+      background: #fff;
+      border: 2px solid var(--teal);
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    .fc-check {
+      background: var(--cream);
+      border: 1px solid var(--cream-dk);
+      color: var(--ink);
+    }
+
+    .fc-check ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .fc-arr {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+      font-size: 1.2rem;
+    }
+
+    .fc-foot {
+      margin-top: 6px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: var(--cream);
+      font-size: 0.84rem;
+      color: var(--ink);
+    }
+
+    .cmp {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .cmp-card {
+      border-radius: 10px;
+      border: 2px solid var(--teal);
+      overflow: hidden;
+    }
+
+    .cmp-card.is-warn {
+      border-color: var(--terracotta);
+    }
+
+    .cmp-card h4 {
+      margin: 0;
+      padding: 10px 14px;
+      background: var(--teal);
+      color: #fff;
+      font-size: 0.92rem;
+    }
+
+    .cmp-card.is-warn h4 {
+      background: var(--terracotta);
+    }
+
+    .cmp-card dl {
+      margin: 0;
+      padding: 10px 14px 14px;
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+
+    .cmp-card dt {
+      font-size: 0.7rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .cmp-card dd {
+      margin: 2px 0 0;
+      color: var(--ink);
+    }
+
+    .cmp-card .cmp-next {
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .ev-meter {
+      display: inline-flex;
+      gap: 3px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    .ev-meter i {
+      width: 16px;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--cream-dk);
+    }
+
+    .ev-l3 i,
+    .ev-l2 i:nth-child(-n+2),
+    .ev-l1 i:first-child {
+      background: var(--teal);
+    }
+
+    .ev-level {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--teal-dk);
+      margin-bottom: 4px;
+    }
+
+    .calc-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 12px 0 4px;
+    }
+
+    .calc-chip {
+      background: var(--cream);
+      border: 1px solid var(--cream-dk);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 0.84rem;
+      color: var(--ink-soft);
+    }
+
+    .calc-chip strong {
+      display: block;
+      font-size: 1.15rem;
+      color: var(--navy);
+    }
+
+    .step-flow {
+      list-style: none;
+      counter-reset: sf;
+      margin: 24px 0;
+      padding: 0;
+    }
+
+    .step-flow li {
+      counter-increment: sf;
+      position: relative;
+      padding: 0 0 18px 52px;
+      margin: 0;
+    }
+
+    .step-flow li::before {
+      content: counter(sf);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .step-flow li::after {
+      content: "";
+      position: absolute;
+      left: 16px;
+      top: 38px;
+      bottom: 4px;
+      width: 2px;
+      background: var(--teal);
+    }
+
+    .step-flow li:last-child::after {
+      display: none;
+    }
+
+    .step-flow .sf-card {
+      background: #fff;
+      border: 1px solid var(--cream-dk);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width:700px) {
+      .wf-inputs {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .wf-box.is-key {
+        grid-column: span 2;
+      }
+
+      .fc-head {
+        display: none;
+      }
+
+      .fc-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        margin-bottom: 20px;
+      }
+
+      .fc-arr {
+        transform: rotate(90deg);
+        height: 22px;
+      }
+
+      .cmp {
+        grid-template-columns: 1fr;
+      }
+
+      .dg-scroll svg {
+        min-width: 560px;
+      }
+    }
+
     .callout {
       background: #fff;
       border-left: 4px solid var(--teal);
@@ -663,6 +1004,16 @@
           <li><strong>Progress gradually</strong> — over 2-4 weeks of consistent practice before the pattern becomes automatic, rather than expecting an immediate, permanent change.</li>
           <li><strong>Reassess</strong> — recheck cadence without the metronome running to confirm retention of the new pattern.</li>
         </ol>
+        <div class="callout">
+          <span class="callout-label">Worked example</span>
+          <p>A runner's measured baseline is <strong>160 steps per minute</strong> at their easy pace. A 5–10% increase gives a target range of <strong>168–176 steps per minute</strong>:</p>
+          <div class="calc-row">
+            <div class="calc-chip">+5%<strong>168 spm</strong></div>
+            <div class="calc-chip">+7.5%<strong>172 spm</strong></div>
+            <div class="calc-chip">+10%<strong>176 spm</strong></div>
+          </div>
+          <p>Set the metronome to the target so that each beat is one footstep. Starting at the lower end (168) and moving up only once it feels automatic keeps the change small enough to rehearse, rather than jumping straight to the top of the range.</p>
+        </div>
         <p>A higher cadence at a given running speed mechanically produces a shorter stride, which is the pathway through which cadence retraining reduces overstriding, vertical oscillation, and the impact loading associated with it — tying directly back to the sagittal-plane observations from Module 2 and the loading-related injury associations from Module 3.</p>
         <p class="callout-ref">Sources: Schubert AG, Kempf J, Heiderscheit BC. Influence of Stride Frequency and Length on Running Mechanics: A Systematic Review. Sports Health. 2014;6(3):210–217. Doyle E, Doyle TLA, Bonacci J, Fuller JT. Can Coaches and Physiotherapists Detect Changes in Running Technique? A Systematic Review. J Orthop Sports Phys Ther. 2022.</p>
         <div class="callout">
@@ -738,6 +1089,66 @@
           <p>Critical methodological reviews have highlighted significant statistical and conceptual problems with the ACWR as a predictive tool, including mathematical coupling between the acute and chronic components and inconsistent injury-prediction accuracy across studies. Use the ACWR as one input for structuring gradual load progression, not as a precise predictive algorithm or a threshold that guarantees safety below it and risk above it.</p>
         </div>
         <p>In practice, this means favouring the underlying principle — avoid large, abrupt increases in weekly volume or intensity, and progress gradually — over rigid adherence to a specific ACWR number.</p>
+        <figure class="dg" style="margin-left:0;margin-right:0">
+<div class="dg-scroll"><svg viewBox="0 0 640 270" role="img" aria-labelledby="ld-t ld-d" font-family="Inter, sans-serif">
+<title id="ld-t">Weekly running volume: gradual build versus sudden spike</title>
+<desc id="ld-d">Two illustrative bar charts of weekly kilometres over eight weeks. Left: volume rises gradually from 20 to 29 km with lighter recovery weeks. Right: volume sits around 20 km then jumps to 34 km in week 5 before dropping back.</desc>
+<text x="60" y="22" font-size="14" font-weight="600" fill="#1b2a3a">Gradual build</text>
+<line x1="60" y1="210.0" x2="310" y2="210.0" stroke="#e9e4da" stroke-width="1"/>
+<text x="52" y="214.0" font-size="11" fill="#5a5f5c" text-anchor="end">0</text>
+<line x1="60" y1="167.5" x2="310" y2="167.5" stroke="#e9e4da" stroke-width="1"/>
+<text x="52" y="171.5" font-size="11" fill="#5a5f5c" text-anchor="end">10</text>
+<line x1="60" y1="125.0" x2="310" y2="125.0" stroke="#e9e4da" stroke-width="1"/>
+<text x="52" y="129.0" font-size="11" fill="#5a5f5c" text-anchor="end">20</text>
+<line x1="60" y1="82.5" x2="310" y2="82.5" stroke="#e9e4da" stroke-width="1"/>
+<text x="52" y="86.5" font-size="11" fill="#5a5f5c" text-anchor="end">30</text>
+<line x1="60" y1="40.0" x2="310" y2="40.0" stroke="#e9e4da" stroke-width="1"/>
+<text x="52" y="44.0" font-size="11" fill="#5a5f5c" text-anchor="end">40</text>
+<rect x="65.0" y="125.0" width="21.2" height="85.0" rx="3" fill="#3a8a8c"/>
+<text x="75.6" y="226.0" font-size="11" fill="#5a5f5c" text-anchor="middle">1</text>
+<rect x="96.2" y="116.5" width="21.2" height="93.5" rx="3" fill="#3a8a8c"/>
+<text x="106.9" y="226.0" font-size="11" fill="#5a5f5c" text-anchor="middle">2</text>
+<rect x="127.5" y="108.0" width="21.2" height="102.0" rx="3" fill="#3a8a8c"/>
+<text x="138.1" y="226.0" font-size="11" fill="#5a5f5c" text-anchor="middle">3</text>
+<rect x="158.8" y="125.0" width="21.2" height="85.0" rx="3" fill="#3a8a8c"/>
+<text x="169.4" y="226.0" font-size="11" fill="#5a5f5c" text-anchor="middle">4</text>
+<rect x="190.0" y="103.8" width="21.2" height="106.2" rx="3" fill="#3a8a8c"/>
+<text x="200.6" y="226.0" font-size="11" fill="#5a5f5c" text-anchor="middle">5</text>
+<rect x="221.2" y="95.2" width="21.2" height="114.8" rx="3" fill="#3a8a8c"/>
+<text x="231.9" y="226.0" font-size="11" fill="#5a5f5c" text-anchor="middle">6</text>
+<rect x="252.5" y="86.8" width="21.2" height="123.2" rx="3" fill="#3a8a8c"/>
+<text x="263.1" y="226.0" font-size="11" fill="#5a5f5c" text-anchor="middle">7</text>
+<rect x="283.8" y="103.8" width="21.2" height="106.2" rx="3" fill="#3a8a8c"/>
+<text x="294.4" y="226.0" font-size="11" fill="#5a5f5c" text-anchor="middle">8</text>
+<text x="185.0" y="258" font-size="11.5" fill="#5a5f5c" text-anchor="middle">Week</text>
+<text x="360" y="22" font-size="14" font-weight="600" fill="#1b2a3a">Sudden spike</text>
+<line x1="360" y1="210.0" x2="610" y2="210.0" stroke="#e9e4da" stroke-width="1"/>
+<line x1="360" y1="167.5" x2="610" y2="167.5" stroke="#e9e4da" stroke-width="1"/>
+<line x1="360" y1="125.0" x2="610" y2="125.0" stroke="#e9e4da" stroke-width="1"/>
+<line x1="360" y1="82.5" x2="610" y2="82.5" stroke="#e9e4da" stroke-width="1"/>
+<line x1="360" y1="40.0" x2="610" y2="40.0" stroke="#e9e4da" stroke-width="1"/>
+<rect x="365.0" y="125.0" width="21.2" height="85.0" rx="3" fill="#9fb9ba"/>
+<text x="375.6" y="226.0" font-size="11" fill="#5a5f5c" text-anchor="middle">1</text>
+<rect x="396.2" y="125.0" width="21.2" height="85.0" rx="3" fill="#9fb9ba"/>
+<text x="406.9" y="226.0" font-size="11" fill="#5a5f5c" text-anchor="middle">2</text>
+<rect x="427.5" y="120.8" width="21.2" height="89.2" rx="3" fill="#9fb9ba"/>
+<text x="438.1" y="226.0" font-size="11" fill="#5a5f5c" text-anchor="middle">3</text>
+<rect x="458.8" y="125.0" width="21.2" height="85.0" rx="3" fill="#9fb9ba"/>
+<text x="469.4" y="226.0" font-size="11" fill="#5a5f5c" text-anchor="middle">4</text>
+<rect x="490.0" y="65.5" width="21.2" height="144.5" rx="3" fill="#d9764a"/>
+<text x="500.6" y="226.0" font-size="11" fill="#5a5f5c" text-anchor="middle">5</text>
+<rect x="521.2" y="116.5" width="21.2" height="93.5" rx="3" fill="#9fb9ba"/>
+<text x="531.9" y="226.0" font-size="11" fill="#5a5f5c" text-anchor="middle">6</text>
+<rect x="552.5" y="120.8" width="21.2" height="89.2" rx="3" fill="#9fb9ba"/>
+<text x="563.1" y="226.0" font-size="11" fill="#5a5f5c" text-anchor="middle">7</text>
+<rect x="583.8" y="125.0" width="21.2" height="85.0" rx="3" fill="#9fb9ba"/>
+<text x="594.4" y="226.0" font-size="11" fill="#5a5f5c" text-anchor="middle">8</text>
+<text x="500.6" y="57.5" font-size="12" font-weight="600" fill="#d9764a" text-anchor="middle">+70% in one week</text>
+<text x="485.0" y="258" font-size="11.5" fill="#5a5f5c" text-anchor="middle">Week</text>
+<text x="14" y="125" font-size="11.5" fill="#5a5f5c" text-anchor="middle" transform="rotate(-90 14 125)">km per week</text>
+</svg></div>
+        </figure>
+        <p class="dg-caption">Illustrative weekly volume. Both runners end up training a similar amount, but the right-hand pattern packs a large jump into a single week, the kind of spike the load-management principle is designed to avoid.</p>
         <p class="callout-ref">Source: Impellizzeri FM, Woodcock S, Coutts AJ, Fanchini M, McCall A, Vigotsky AD. What Role Do Chronic Workloads Play in the Acute to Chronic Workload Ratio? Time to Dismiss ACWR and Its Underlying Theory. Sports Med. 2020;50:1031–1039.</p>
         <h2 id="s5-5">5.5 Return-to-Run Criteria</h2>
         <p>Deciding when a runner is ready to return to running, and how quickly to progress once they do, should follow a structured, symptom-guided process rather than a fixed calendar timeline.</p>
@@ -748,7 +1159,42 @@
           <li><strong>Consecutive pain-free days as a gate</strong> — a common practical marker used before progressing a stage is several consecutive days of pain-free daily activity, giving a simple, low-tech checkpoint runners can self-monitor between sessions.</li>
         </ul>
         <h2 id="s5-6">5.6 A Structured Return-to-Run Progression</h2>
-        <div class="table-wrap">
+                <figure class="dg" style="margin-left:0;margin-right:0">
+<div class="dg-scroll"><svg viewBox="0 0 640 290" role="img" aria-labelledby="st-t st-d" font-family="Inter, sans-serif">
+<title id="st-t">Return-to-run as a staircase of five stages</title>
+<desc id="st-d">Five rising steps: walk-run, continuous easy, volume build, intensity and terrain, and full return. A check mark at each step means progress only when that stage’s criterion is met. A dashed arrow from the volume build step back to continuous easy running shows holding or stepping back when symptoms exceed the agreed threshold.</desc>
+<rect x="45" y="160" width="106" height="30" rx="4" fill="#cfe0e0"/>
+<text x="98.0" y="208" font-size="11" fill="#5a5f5c" text-anchor="middle">Stage 1</text>
+<text x="98.0" y="224" font-size="12.5" font-weight="600" fill="#1b2a3a" text-anchor="middle">Walk-run</text>
+<circle cx="153" cy="145" r="9" fill="#fff" stroke="#2e6e70" stroke-width="2"/><path d="M149,145 l3,3 l5,-6" fill="none" stroke="#2e6e70" stroke-width="2"/>
+<rect x="155" y="130" width="106" height="60" rx="4" fill="#a9cacb"/>
+<text x="208.0" y="208" font-size="11" fill="#5a5f5c" text-anchor="middle">Stage 2</text>
+<text x="208.0" y="224" font-size="12.5" font-weight="600" fill="#1b2a3a" text-anchor="middle">Continuous</text>
+<text x="208.0" y="239" font-size="12.5" font-weight="600" fill="#1b2a3a" text-anchor="middle">easy</text>
+<circle cx="263" cy="115" r="9" fill="#fff" stroke="#2e6e70" stroke-width="2"/><path d="M259,115 l3,3 l5,-6" fill="none" stroke="#2e6e70" stroke-width="2"/>
+<rect x="265" y="100" width="106" height="90" rx="4" fill="#7fb1b2"/>
+<text x="318.0" y="208" font-size="11" fill="#5a5f5c" text-anchor="middle">Stage 3</text>
+<text x="318.0" y="224" font-size="12.5" font-weight="600" fill="#1b2a3a" text-anchor="middle">Volume</text>
+<text x="318.0" y="239" font-size="12.5" font-weight="600" fill="#1b2a3a" text-anchor="middle">build</text>
+<circle cx="373" cy="85" r="9" fill="#fff" stroke="#2e6e70" stroke-width="2"/><path d="M369,85 l3,3 l5,-6" fill="none" stroke="#2e6e70" stroke-width="2"/>
+<rect x="375" y="70" width="106" height="120" rx="4" fill="#55999b"/>
+<text x="428.0" y="208" font-size="11" fill="#5a5f5c" text-anchor="middle">Stage 4</text>
+<text x="428.0" y="224" font-size="12.5" font-weight="600" fill="#1b2a3a" text-anchor="middle">Intensity &amp;</text>
+<text x="428.0" y="239" font-size="12.5" font-weight="600" fill="#1b2a3a" text-anchor="middle">terrain</text>
+<circle cx="483" cy="55" r="9" fill="#fff" stroke="#2e6e70" stroke-width="2"/><path d="M479,55 l3,3 l5,-6" fill="none" stroke="#2e6e70" stroke-width="2"/>
+<rect x="485" y="40" width="106" height="150" rx="4" fill="#3a8a8c"/>
+<text x="538.0" y="208" font-size="11" fill="#5a5f5c" text-anchor="middle">Stage 5</text>
+<text x="538.0" y="224" font-size="12.5" font-weight="600" fill="#1b2a3a" text-anchor="middle">Full</text>
+<text x="538.0" y="239" font-size="12.5" font-weight="600" fill="#1b2a3a" text-anchor="middle">return</text>
+<path d="M295,96 C285,40 215,70 205,122" fill="none" stroke="#d9764a" stroke-width="2.5" stroke-dasharray="6 5"/>
+<path d="M199,112 L205,124 L212,113" fill="none" stroke="#d9764a" stroke-width="2.5"/>
+<text x="45" y="22" font-size="12.5" fill="#d9764a" font-weight="600">⤺ Symptoms above the agreed threshold: hold, or step back a stage</text>
+<circle cx="52" cy="266" r="8" fill="#fff" stroke="#2e6e70" stroke-width="2"/><path d="M48,266 l3,3 l5,-6" fill="none" stroke="#2e6e70" stroke-width="2"/>
+<text x="67" y="270" font-size="12" fill="#2a2c2b">Progress only when the current stage’s criterion is met (see table)</text>
+</svg></div>
+        </figure>
+        <p class="dg-caption">Return-to-run works as a staircase rather than a timeline: each step is earned by meeting its criterion, and a flare means holding or stepping back rather than pushing through.</p>
+<div class="table-wrap">
           <table>
             <tr>
               <th style="width:22%">Stage</th>
@@ -787,13 +1233,13 @@
         <p>Across this course you have moved from the scale and nature of running injury and where gait analysis genuinely fits (Module 1), through a standardised, reliability-aware assessment protocol (Module 2), to the evidence linking specific gait patterns to specific pathologies (Module 3), condition-specific treatment pathways grounded in loading and strengthening (Module 4), and finally the practical delivery of gait retraining and structured return-to-run programming (Module 5).</p>
         <p>The thread running through all five modules is the same one Module 1 opened with: gait analysis is one input among several, most useful when its limitations — reliability, evidence strength, individual variability — are held in view alongside its value, and always applied within a broader clinical reasoning process rather than as a stand-alone diagnostic or prescriptive tool.</p>
         <p>Put into a single repeatable sequence, that reasoning process looks like this:</p>
-        <ol>
-          <li><strong>Broad assessment</strong> — pathology and the intrinsic factors behind it (mobility, strength, flexibility, neuromuscular control), alongside extrinsic factors (training load, surface, footwear).</li>
-          <li><strong>Identify potential causes</strong> — could the clinical findings above plausibly explain the gait discrepancy you're about to look for? Anatomy, stability, strength, and neuromuscular control are the usual candidates.</li>
-          <li><strong>Identify the gait discrepancy</strong> — video from front, side, and back; assess cadence and contact time; identify foot strike, and whether over-striding, cross-over, medial collapse, or a combination is present.</li>
-          <li><strong>Correct the causes first</strong> — the strength, mobility, flexibility, and neuromuscular deficits identified in step 2 must be addressed alongside gait retraining, not instead of it (the point made explicitly in Module 4, 4.9).</li>
-          <li><strong>Correct the gait with specific cues</strong> — auditory (metronome), visual (mirror, real-time video), or verbal/tactile cues, with feedback faded gradually over roughly 8 sessions / 2 weeks rather than withdrawn abruptly.</li>
-          <li><strong>Incorporate and progress</strong> — gradual running-time increase, a GPS watch for ongoing cadence monitoring, and a return to sport or activity-specific retraining with graduated volume, as set out in 5.5–5.6 above.</li>
+        <ol class="step-flow">
+          <li><div class="sf-card"><strong>Broad assessment</strong> — pathology and the intrinsic factors behind it (mobility, strength, flexibility, neuromuscular control), alongside extrinsic factors (training load, surface, footwear).</div></li>
+          <li><div class="sf-card"><strong>Identify potential causes</strong> — could the clinical findings above plausibly explain the gait discrepancy you're about to look for? Anatomy, stability, strength, and neuromuscular control are the usual candidates.</div></li>
+          <li><div class="sf-card"><strong>Identify the gait discrepancy</strong> — video from front, side, and back; assess cadence and contact time; identify foot strike, and whether over-striding, cross-over, medial collapse, or a combination is present.</div></li>
+          <li><div class="sf-card"><strong>Correct the causes first</strong> — the strength, mobility, flexibility, and neuromuscular deficits identified in step 2 must be addressed alongside gait retraining, not instead of it (the point made explicitly in Module 4, 4.9).</div></li>
+          <li><div class="sf-card"><strong>Correct the gait with specific cues</strong> — auditory (metronome), visual (mirror, real-time video), or verbal/tactile cues, with feedback faded gradually over roughly 8 sessions / 2 weeks rather than withdrawn abruptly.</div></li>
+          <li><div class="sf-card"><strong>Incorporate and progress</strong> — gradual running-time increase, a GPS watch for ongoing cadence monitoring, and a return to sport or activity-specific retraining with graduated volume, as set out in 5.5–5.6 above.</div></li>
         </ol>
         <p>This six-step sequence is simply this course's five modules compressed into a single clinic-floor checklist — useful as a quick-reference alongside the detailed reasoning in each module itself.</p>
         <h2>Summary</h2>

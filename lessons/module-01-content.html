@@ -415,6 +415,347 @@
       border-top: none;
     }
 
+    /* ---- diagrams ---- */
+    .dg {
+      margin: 28px 0 6px;
+      background: #fff;
+      border: 1px solid var(--cream-dk);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .dg-caption {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      margin: 8px 0 28px;
+    }
+
+    .dg-scroll {
+      overflow-x: auto;
+    }
+
+    .dg svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .dg-title {
+      font-size: 0.72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
+      margin: 0 0 14px;
+    }
+
+    .wf-inputs {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .wf-box {
+      background: var(--cream);
+      border: 1px solid var(--cream-dk);
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 0.8rem;
+      line-height: 1.45;
+      color: var(--ink-soft);
+    }
+
+    .wf-box strong {
+      display: block;
+      color: var(--navy);
+      font-size: 0.86rem;
+      margin-bottom: 4px;
+    }
+
+    .wf-box.is-key {
+      background: #fff;
+      border: 2px solid var(--teal);
+    }
+
+    .wf-arrow {
+      text-align: center;
+      color: var(--teal);
+      font-size: 1.4rem;
+      line-height: 1;
+      margin: 10px 0;
+    }
+
+    .wf-out {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .fc-head,
+    .fc-row {
+      display: grid;
+      grid-template-columns: 1fr 28px 1fr 28px 1.35fr;
+      align-items: stretch;
+    }
+
+    .fc-head {
+      font-size: 0.72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .fc-row {
+      margin-bottom: 12px;
+    }
+
+    .fc-cell {
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+
+    .fc-see {
+      background: var(--navy);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .fc-screen {
+      background: #fff;
+      border: 2px solid var(--teal);
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    .fc-check {
+      background: var(--cream);
+      border: 1px solid var(--cream-dk);
+      color: var(--ink);
+    }
+
+    .fc-check ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .fc-arr {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+      font-size: 1.2rem;
+    }
+
+    .fc-foot {
+      margin-top: 6px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: var(--cream);
+      font-size: 0.84rem;
+      color: var(--ink);
+    }
+
+    .cmp {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .cmp-card {
+      border-radius: 10px;
+      border: 2px solid var(--teal);
+      overflow: hidden;
+    }
+
+    .cmp-card.is-warn {
+      border-color: var(--terracotta);
+    }
+
+    .cmp-card h4 {
+      margin: 0;
+      padding: 10px 14px;
+      background: var(--teal);
+      color: #fff;
+      font-size: 0.92rem;
+    }
+
+    .cmp-card.is-warn h4 {
+      background: var(--terracotta);
+    }
+
+    .cmp-card dl {
+      margin: 0;
+      padding: 10px 14px 14px;
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+
+    .cmp-card dt {
+      font-size: 0.7rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .cmp-card dd {
+      margin: 2px 0 0;
+      color: var(--ink);
+    }
+
+    .cmp-card .cmp-next {
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .ev-meter {
+      display: inline-flex;
+      gap: 3px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    .ev-meter i {
+      width: 16px;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--cream-dk);
+    }
+
+    .ev-l3 i,
+    .ev-l2 i:nth-child(-n+2),
+    .ev-l1 i:first-child {
+      background: var(--teal);
+    }
+
+    .ev-level {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--teal-dk);
+      margin-bottom: 4px;
+    }
+
+    .calc-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 12px 0 4px;
+    }
+
+    .calc-chip {
+      background: var(--cream);
+      border: 1px solid var(--cream-dk);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 0.84rem;
+      color: var(--ink-soft);
+    }
+
+    .calc-chip strong {
+      display: block;
+      font-size: 1.15rem;
+      color: var(--navy);
+    }
+
+    .step-flow {
+      list-style: none;
+      counter-reset: sf;
+      margin: 24px 0;
+      padding: 0;
+    }
+
+    .step-flow li {
+      counter-increment: sf;
+      position: relative;
+      padding: 0 0 18px 52px;
+      margin: 0;
+    }
+
+    .step-flow li::before {
+      content: counter(sf);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .step-flow li::after {
+      content: "";
+      position: absolute;
+      left: 16px;
+      top: 38px;
+      bottom: 4px;
+      width: 2px;
+      background: var(--teal);
+    }
+
+    .step-flow li:last-child::after {
+      display: none;
+    }
+
+    .step-flow .sf-card {
+      background: #fff;
+      border: 1px solid var(--cream-dk);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width:700px) {
+      .wf-inputs {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .wf-box.is-key {
+        grid-column: span 2;
+      }
+
+      .fc-head {
+        display: none;
+      }
+
+      .fc-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        margin-bottom: 20px;
+      }
+
+      .fc-arr {
+        transform: rotate(90deg);
+        height: 22px;
+      }
+
+      .cmp {
+        grid-template-columns: 1fr;
+      }
+
+      .dg-scroll svg {
+        min-width: 560px;
+      }
+    }
+
     .callout {
       background: #fff;
       border-left: 4px solid var(--teal);
@@ -729,19 +1070,19 @@
             </tr>
             <tr>
               <td><strong>Cadence increase (~5–10%)</strong></td>
-              <td>Most consistent evidence for reducing loading variables and short-term pain/function gains</td>
+              <td><span class="ev-level"><span class="ev-meter ev-l3" aria-hidden="true"><i></i><i></i><i></i></span>Consistent (short-term)</span>Most consistent evidence for reducing loading variables and short-term pain/function gains</td>
             </tr>
             <tr>
               <td><strong>Soft-landing / reduced vertical impact cues</strong></td>
-              <td>Consistent short-term improvements in pain and loading-related variables</td>
+              <td><span class="ev-level"><span class="ev-meter ev-l3" aria-hidden="true"><i></i><i></i><i></i></span>Consistent (short-term)</span>Consistent short-term improvements in pain and loading-related variables</td>
             </tr>
             <tr>
               <td><strong>Foot-strike pattern modification</strong></td>
-              <td>Mixed — changes kinematics, but effect on performance, pain, and injury risk is inconsistent</td>
+              <td><span class="ev-level"><span class="ev-meter ev-l2" aria-hidden="true"><i></i><i></i><i></i></span>Mixed</span>Mixed — changes kinematics, but effect on performance, pain, and injury risk is inconsistent</td>
             </tr>
             <tr>
               <td><strong>Multiparameter interventions</strong></td>
-              <td>Feasible, but current trials give only low-certainty evidence on clinical outcomes</td>
+              <td><span class="ev-level"><span class="ev-meter ev-l1" aria-hidden="true"><i></i><i></i><i></i></span>Low certainty</span>Feasible, but current trials give only low-certainty evidence on clinical outcomes</td>
             </tr>
           </table>
         </div>
@@ -773,6 +1114,19 @@
         <img class="hero-image" style="height:auto;" src="Assets/Images/consult-session.png" alt="Three stages of a physiotherapy consultation: a subjective history interview, a clinician performing a straight-leg raise assessment, and a clinician observing a runner on a track while reviewing footage on a phone.">
         <p class="figure-caption">From subjective history, through clinical examination, to on-track review — gait analysis sits within this broader assessment, not apart from it.</p>
         <p>Gait analysis earns its place in this workflow because it is genuinely modifiable and gives you and the runner a shared reference point — not because it is more objective or more predictive than the rest of the assessment. Module 3 will return to this integration point directly when it comes to linking specific gait observations to specific pathologies.</p>
+        <figure class="dg" style="margin-left:0;margin-right:0">
+          <p class="dg-title">Where gait analysis sits in the assessment</p>
+          <div class="wf-inputs">
+            <div class="wf-box"><strong>Subjective history</strong>Load changes, footwear, surface, injury history, symptom behaviour</div>
+            <div class="wf-box"><strong>Clinical examination</strong>Strength, range of motion, site-specific special tests</div>
+            <div class="wf-box"><strong>Training load &amp; capacity</strong>Recent spikes in volume or intensity</div>
+            <div class="wf-box"><strong>Goals &amp; context</strong>What the runner is training for, and how soon</div>
+            <div class="wf-box is-key"><strong>Gait analysis</strong>Modifiable, and a shared visual reference with the runner</div>
+          </div>
+          <div class="wf-arrow" aria-hidden="true">↓</div>
+          <div class="wf-out">Working hypothesis &amp; treatment plan</div>
+        </figure>
+        <p class="dg-caption">Gait analysis is one input alongside four others; no single input decides the plan on its own.</p>
         <h2 id="s1-7">1.7 What This Course Will Cover</h2>
         <p>With that context in place, the remaining four modules build a complete, repeatable clinical pathway:</p>
         <ul>

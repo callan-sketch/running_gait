@@ -375,6 +375,347 @@
       border-top: none;
     }
 
+    /* ---- diagrams ---- */
+    .dg {
+      margin: 28px 0 6px;
+      background: #fff;
+      border: 1px solid var(--cream-dk);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .dg-caption {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      margin: 8px 0 28px;
+    }
+
+    .dg-scroll {
+      overflow-x: auto;
+    }
+
+    .dg svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .dg-title {
+      font-size: 0.72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
+      margin: 0 0 14px;
+    }
+
+    .wf-inputs {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .wf-box {
+      background: var(--cream);
+      border: 1px solid var(--cream-dk);
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 0.8rem;
+      line-height: 1.45;
+      color: var(--ink-soft);
+    }
+
+    .wf-box strong {
+      display: block;
+      color: var(--navy);
+      font-size: 0.86rem;
+      margin-bottom: 4px;
+    }
+
+    .wf-box.is-key {
+      background: #fff;
+      border: 2px solid var(--teal);
+    }
+
+    .wf-arrow {
+      text-align: center;
+      color: var(--teal);
+      font-size: 1.4rem;
+      line-height: 1;
+      margin: 10px 0;
+    }
+
+    .wf-out {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .fc-head,
+    .fc-row {
+      display: grid;
+      grid-template-columns: 1fr 28px 1fr 28px 1.35fr;
+      align-items: stretch;
+    }
+
+    .fc-head {
+      font-size: 0.72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .fc-row {
+      margin-bottom: 12px;
+    }
+
+    .fc-cell {
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+
+    .fc-see {
+      background: var(--navy);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .fc-screen {
+      background: #fff;
+      border: 2px solid var(--teal);
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    .fc-check {
+      background: var(--cream);
+      border: 1px solid var(--cream-dk);
+      color: var(--ink);
+    }
+
+    .fc-check ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .fc-arr {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+      font-size: 1.2rem;
+    }
+
+    .fc-foot {
+      margin-top: 6px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: var(--cream);
+      font-size: 0.84rem;
+      color: var(--ink);
+    }
+
+    .cmp {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .cmp-card {
+      border-radius: 10px;
+      border: 2px solid var(--teal);
+      overflow: hidden;
+    }
+
+    .cmp-card.is-warn {
+      border-color: var(--terracotta);
+    }
+
+    .cmp-card h4 {
+      margin: 0;
+      padding: 10px 14px;
+      background: var(--teal);
+      color: #fff;
+      font-size: 0.92rem;
+    }
+
+    .cmp-card.is-warn h4 {
+      background: var(--terracotta);
+    }
+
+    .cmp-card dl {
+      margin: 0;
+      padding: 10px 14px 14px;
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+
+    .cmp-card dt {
+      font-size: 0.7rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .cmp-card dd {
+      margin: 2px 0 0;
+      color: var(--ink);
+    }
+
+    .cmp-card .cmp-next {
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .ev-meter {
+      display: inline-flex;
+      gap: 3px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    .ev-meter i {
+      width: 16px;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--cream-dk);
+    }
+
+    .ev-l3 i,
+    .ev-l2 i:nth-child(-n+2),
+    .ev-l1 i:first-child {
+      background: var(--teal);
+    }
+
+    .ev-level {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--teal-dk);
+      margin-bottom: 4px;
+    }
+
+    .calc-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 12px 0 4px;
+    }
+
+    .calc-chip {
+      background: var(--cream);
+      border: 1px solid var(--cream-dk);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 0.84rem;
+      color: var(--ink-soft);
+    }
+
+    .calc-chip strong {
+      display: block;
+      font-size: 1.15rem;
+      color: var(--navy);
+    }
+
+    .step-flow {
+      list-style: none;
+      counter-reset: sf;
+      margin: 24px 0;
+      padding: 0;
+    }
+
+    .step-flow li {
+      counter-increment: sf;
+      position: relative;
+      padding: 0 0 18px 52px;
+      margin: 0;
+    }
+
+    .step-flow li::before {
+      content: counter(sf);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .step-flow li::after {
+      content: "";
+      position: absolute;
+      left: 16px;
+      top: 38px;
+      bottom: 4px;
+      width: 2px;
+      background: var(--teal);
+    }
+
+    .step-flow li:last-child::after {
+      display: none;
+    }
+
+    .step-flow .sf-card {
+      background: #fff;
+      border: 1px solid var(--cream-dk);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width:700px) {
+      .wf-inputs {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .wf-box.is-key {
+        grid-column: span 2;
+      }
+
+      .fc-head {
+        display: none;
+      }
+
+      .fc-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        margin-bottom: 20px;
+      }
+
+      .fc-arr {
+        transform: rotate(90deg);
+        height: 22px;
+      }
+
+      .cmp {
+        grid-template-columns: 1fr;
+      }
+
+      .dg-scroll svg {
+        min-width: 560px;
+      }
+    }
+
     .callout {
       background: #fff;
       border-left: 4px solid var(--teal);
@@ -698,7 +1039,33 @@
             </tr>
           </table>
         </div>
-        <div class="callout warn">
+                <figure class="dg" style="margin-left:0;margin-right:0">
+<div class="dg-scroll"><svg viewBox="0 0 640 323" role="img" aria-labelledby="ev-t ev-d" font-family="Inter, sans-serif">
+<title id="ev-t">Rearfoot eversion through stance: typical versus prolonged</title>
+<desc id="ev-d">Schematic curves of rearfoot angle across stance. Both curves evert after initial contact, but the typical curve returns to neutral around mid-to-late stance while the prolonged curve stays everted until close to toe-off. Bars underneath show the longer time spent everted.</desc>
+<rect x="80" y="40.0" width="530" height="90.0" fill="#f7f5f1"/>
+<text x="88" y="56.0" font-size="12" fill="#5a5f5c">Eversion ↑</text>
+<text x="88" y="191.5" font-size="12" fill="#5a5f5c">Inversion ↓</text>
+<line x1="80" y1="130" x2="610" y2="130" stroke="#5a5f5c" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="72" y="134" font-size="12" fill="#5a5f5c" text-anchor="end">Neutral</text>
+<path d="M80.0,145.0 C88.8,137.5 106.5,113.8 133.0,100.0 C159.5,86.2 203.7,63.8 239.0,62.5 C274.3,61.2 314.1,81.2 345.0,92.5 C375.9,103.8 398.0,118.8 424.5,130.0 C451.0,141.2 473.1,150.0 504.0,160.0 C534.9,170.0 592.3,185.0 610.0,190.0" fill="none" stroke="#3a8a8c" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M80.0,145.0 C88.8,136.2 106.5,107.5 133.0,92.5 C159.5,77.5 203.7,60.0 239.0,55.0 C274.3,50.0 314.1,58.8 345.0,62.5 C375.9,66.2 398.0,71.2 424.5,77.5 C451.0,83.8 481.9,91.2 504.0,100.0 C526.1,108.8 539.3,118.8 557.0,130.0 C574.7,141.2 601.2,161.2 610.0,167.5" fill="none" stroke="#d9764a" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="80" y1="211.0" x2="610" y2="211.0" stroke="#e9e4da" stroke-width="1.5"/>
+<line x1="80.0" y1="211.0" x2="80.0" y2="216.0" stroke="#5a5f5c"/><text x="80.0" y="231.0" font-size="12" fill="#2a2c2b" text-anchor="start">Initial contact</text>
+<line x1="345.0" y1="211.0" x2="345.0" y2="216.0" stroke="#5a5f5c"/><text x="345.0" y="231.0" font-size="12" fill="#2a2c2b" text-anchor="middle">Mid-stance</text>
+<line x1="610.0" y1="211.0" x2="610.0" y2="216.0" stroke="#5a5f5c"/><text x="610.0" y="231.0" font-size="12" fill="#2a2c2b" text-anchor="end">Toe-off</text>
+<text x="72" y="265.0" font-size="12.5" fill="#3a8a8c" font-weight="600" text-anchor="end">Typical</text>
+<rect x="80" y="253.0" width="530" height="16" rx="8" fill="#f7f5f1"/>
+<rect x="98.02" y="253.0" width="325.95000000000005" height="16" rx="8" fill="#3a8a8c"/>
+<text x="431.97" y="265.0" font-size="12" fill="#2a2c2b">time everted</text>
+<text x="72" y="295.0" font-size="12.5" fill="#d9764a" font-weight="600" text-anchor="end">Prolonged</text>
+<rect x="80" y="283.0" width="530" height="16" rx="8" fill="#f7f5f1"/>
+<rect x="95.37" y="283.0" width="461.1" height="16" rx="8" fill="#d9764a"/>
+<text x="564.47" y="295.0" font-size="12" fill="#2a2c2b">time everted</text>
+</svg></div>
+        </figure>
+        <p class="dg-caption">Schematic, not measured data. Both runners evert by a similar peak amount; what separates them is how long the rearfoot stays everted through stance, which is the variable linked to MTSS and Achilles tendinopathy (3.4–3.5).</p>
+<div class="callout warn">
           <span class="callout-label">Clinical note</span>
           <p>MTSS symptoms can overlap with early tibial bone stress injury. Revisit the red-flag screening from Module 2 (2.7) before treating presumed MTSS with a loading-based approach — focal bony tenderness or pain at rest changes the picture entirely.</p>
         </div>
@@ -791,26 +1158,32 @@
         <p>These three patterns are a clinical shorthand, not a replacement for the pathology-specific detail in 3.2–3.7 — but they are a genuinely useful first filter when you sit down to review a runner's footage, and they map directly onto the treatment approaches in Module 4.</p>
         <h2 id="s3-9">3.9 Putting It Together</h2>
         <p>Two variables — hip adduction and rearfoot eversion duration — recur across most of these five conditions, which is genuinely useful clinically: a runner showing either pattern on video should prompt you to actively screen for the specific conditions each is linked to, rather than assuming the finding only matters for whichever injury they've presented with.</p>
-        <div class="table-wrap">
-          <table>
-            <tr>
-              <th style="width:30%">Dominant Gait Finding</th>
-              <th>Injuries to Screen For</th>
-            </tr>
-            <tr>
-              <td><strong>Increased hip adduction</strong></td>
-              <td>PFP, ITBS (especially combined with knee internal rotation)</td>
-            </tr>
-            <tr>
-              <td><strong>Prolonged rearfoot eversion</strong></td>
-              <td>MTSS, Achilles tendinopathy, plantar fasciitis</td>
-            </tr>
-            <tr>
-              <td><strong>Overstriding / low cadence</strong></td>
-              <td>Elevated loading rates broadly implicated across tibial stress injury and PFP — the single most modifiable finding, carried forward into Modules 4 and 5</td>
-            </tr>
-          </table>
-        </div>
+                <figure class="dg" style="margin-left:0;margin-right:0">
+          <div class="fc-head" aria-hidden="true"><span>On video you see</span><span></span><span>Screen for</span><span></span><span>Then check clinically</span></div>
+          <div class="fc-row">
+            <div class="fc-cell fc-see">Increased hip adduction<br><span style="font-weight:400;opacity:.85">± knee internal rotation</span></div>
+            <div class="fc-arr" aria-hidden="true">→</div>
+            <div class="fc-cell fc-screen">PFP<br>ITBS <span style="font-weight:400">(especially with knee internal rotation)</span></div>
+            <div class="fc-arr" aria-hidden="true">→</div>
+            <div class="fc-cell fc-check"><ul><li>Hip abductor strength</li><li>Single-leg squat / step-down control</li><li>Where the pain is: anterior vs lateral knee</li></ul></div>
+          </div>
+          <div class="fc-row">
+            <div class="fc-cell fc-see">Prolonged rearfoot eversion</div>
+            <div class="fc-arr" aria-hidden="true">→</div>
+            <div class="fc-cell fc-screen">MTSS<br>Achilles tendinopathy<br>Plantar fasciitis</div>
+            <div class="fc-arr" aria-hidden="true">→</div>
+            <div class="fc-cell fc-check"><ul><li>Ankle dorsiflexion range</li><li>Standing tibial varus</li><li>Palpate posteromedial tibia, Achilles, plantar fascia</li><li>Bone stress red flags (2.7)</li></ul></div>
+          </div>
+          <div class="fc-row">
+            <div class="fc-cell fc-see">Overstriding / low cadence</div>
+            <div class="fc-arr" aria-hidden="true">→</div>
+            <div class="fc-cell fc-screen">Higher loading rates: tibial stress injury, PFP</div>
+            <div class="fc-arr" aria-hidden="true">→</div>
+            <div class="fc-cell fc-check"><ul><li>Measured cadence (2.5)</li><li>Recent change in training load</li><li>Bone stress red flags (2.7)</li></ul></div>
+          </div>
+          <div class="fc-foot">Confirm against symptoms, palpation and special tests before treating; the treatment pathways follow in Module 4.</div>
+        </figure>
+        <p class="dg-caption">From gait finding to working hypothesis: what each recurring finding should prompt you to screen for and check.</p>
         <p>This mapping is a starting hypothesis, not a diagnosis — it still needs to be checked against the runner's actual symptom pattern, palpation findings, and special tests, exactly as Module 1 framed gait analysis as one input among several. Module 4 now takes each of these pathologies and works through the treatment pathway that follows once a working diagnosis is confirmed.</p>
         <h2>Summary</h2>
         <p>Each of the five dominant running injuries has a characteristic, evidence-linked gait signature: hip adduction (and knee internal rotation) for PFP and ITBS, prolonged rearfoot eversion for MTSS and Achilles tendinopathy, and a related but less-studied eversion and loading pattern for plantar fasciitis. Two findings — hip adduction and eversion duration — recur across multiple conditions and are worth screening broadly whenever either appears. These associations are hypothesis-generating, not diagnostic on their own, which is exactly why Module 4 builds the full clinical reasoning pathway from here rather than jumping straight to a fixed exercise list.</p>

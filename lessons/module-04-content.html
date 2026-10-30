@@ -577,6 +577,347 @@
       }
     }
 
+    /* ---- diagrams ---- */
+    .dg {
+      margin: 28px 0 6px;
+      background: #fff;
+      border: 1px solid var(--cream-dk);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .dg-caption {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      margin: 8px 0 28px;
+    }
+
+    .dg-scroll {
+      overflow-x: auto;
+    }
+
+    .dg svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .dg-title {
+      font-size: 0.72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
+      margin: 0 0 14px;
+    }
+
+    .wf-inputs {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .wf-box {
+      background: var(--cream);
+      border: 1px solid var(--cream-dk);
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 0.8rem;
+      line-height: 1.45;
+      color: var(--ink-soft);
+    }
+
+    .wf-box strong {
+      display: block;
+      color: var(--navy);
+      font-size: 0.86rem;
+      margin-bottom: 4px;
+    }
+
+    .wf-box.is-key {
+      background: #fff;
+      border: 2px solid var(--teal);
+    }
+
+    .wf-arrow {
+      text-align: center;
+      color: var(--teal);
+      font-size: 1.4rem;
+      line-height: 1;
+      margin: 10px 0;
+    }
+
+    .wf-out {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .fc-head,
+    .fc-row {
+      display: grid;
+      grid-template-columns: 1fr 28px 1fr 28px 1.35fr;
+      align-items: stretch;
+    }
+
+    .fc-head {
+      font-size: 0.72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .fc-row {
+      margin-bottom: 12px;
+    }
+
+    .fc-cell {
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+
+    .fc-see {
+      background: var(--navy);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .fc-screen {
+      background: #fff;
+      border: 2px solid var(--teal);
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    .fc-check {
+      background: var(--cream);
+      border: 1px solid var(--cream-dk);
+      color: var(--ink);
+    }
+
+    .fc-check ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .fc-arr {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+      font-size: 1.2rem;
+    }
+
+    .fc-foot {
+      margin-top: 6px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: var(--cream);
+      font-size: 0.84rem;
+      color: var(--ink);
+    }
+
+    .cmp {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .cmp-card {
+      border-radius: 10px;
+      border: 2px solid var(--teal);
+      overflow: hidden;
+    }
+
+    .cmp-card.is-warn {
+      border-color: var(--terracotta);
+    }
+
+    .cmp-card h4 {
+      margin: 0;
+      padding: 10px 14px;
+      background: var(--teal);
+      color: #fff;
+      font-size: 0.92rem;
+    }
+
+    .cmp-card.is-warn h4 {
+      background: var(--terracotta);
+    }
+
+    .cmp-card dl {
+      margin: 0;
+      padding: 10px 14px 14px;
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+
+    .cmp-card dt {
+      font-size: 0.7rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .cmp-card dd {
+      margin: 2px 0 0;
+      color: var(--ink);
+    }
+
+    .cmp-card .cmp-next {
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .ev-meter {
+      display: inline-flex;
+      gap: 3px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    .ev-meter i {
+      width: 16px;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--cream-dk);
+    }
+
+    .ev-l3 i,
+    .ev-l2 i:nth-child(-n+2),
+    .ev-l1 i:first-child {
+      background: var(--teal);
+    }
+
+    .ev-level {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--teal-dk);
+      margin-bottom: 4px;
+    }
+
+    .calc-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 12px 0 4px;
+    }
+
+    .calc-chip {
+      background: var(--cream);
+      border: 1px solid var(--cream-dk);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 0.84rem;
+      color: var(--ink-soft);
+    }
+
+    .calc-chip strong {
+      display: block;
+      font-size: 1.15rem;
+      color: var(--navy);
+    }
+
+    .step-flow {
+      list-style: none;
+      counter-reset: sf;
+      margin: 24px 0;
+      padding: 0;
+    }
+
+    .step-flow li {
+      counter-increment: sf;
+      position: relative;
+      padding: 0 0 18px 52px;
+      margin: 0;
+    }
+
+    .step-flow li::before {
+      content: counter(sf);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .step-flow li::after {
+      content: "";
+      position: absolute;
+      left: 16px;
+      top: 38px;
+      bottom: 4px;
+      width: 2px;
+      background: var(--teal);
+    }
+
+    .step-flow li:last-child::after {
+      display: none;
+    }
+
+    .step-flow .sf-card {
+      background: #fff;
+      border: 1px solid var(--cream-dk);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width:700px) {
+      .wf-inputs {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .wf-box.is-key {
+        grid-column: span 2;
+      }
+
+      .fc-head {
+        display: none;
+      }
+
+      .fc-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        margin-bottom: 20px;
+      }
+
+      .fc-arr {
+        transform: rotate(90deg);
+        height: 22px;
+      }
+
+      .cmp {
+        grid-template-columns: 1fr;
+      }
+
+      .dg-scroll svg {
+        min-width: 560px;
+      }
+    }
+
     .callout {
       background: #fff;
       border-left: 4px solid var(--teal);
@@ -882,6 +1223,32 @@
           <span class="callout-label">Before treating</span>
           <p>Re-confirm the red-flag screening from Module 2 (2.7) before beginning a loading-based programme. Focal bony tenderness, night pain, or pain at rest should prompt referral for imaging to rule out tibial bone stress injury before proceeding with the approach below.</p>
         </div>
+        <figure class="dg" style="margin-left:0;margin-right:0">
+          <p class="dg-title">MTSS or bone stress injury?</p>
+          <div class="cmp">
+            <div class="cmp-card">
+              <h4>Typical of MTSS</h4>
+              <dl>
+                <dt>Tenderness</dt><dd>Diffuse, along the posteromedial border of the distal two-thirds of the tibia, usually over 5 cm or more</dd>
+                <dt>Pain with running</dt><dd>Often present early in a run and may ease as the runner warms up</dd>
+                <dt>At rest</dt><dd>Settles with rest; no night pain</dd>
+                <dt>Hopping</dt><dd>Usually tolerated</dd>
+                <dt>Next step</dt><dd class="cmp-next">Graded loading, as below</dd>
+              </dl>
+            </div>
+            <div class="cmp-card is-warn">
+              <h4>Red flags for bone stress injury</h4>
+              <dl>
+                <dt>Tenderness</dt><dd>Focal, pinpoint bony tenderness</dd>
+                <dt>Pain with running</dt><dd>Builds through the run and can persist afterwards</dd>
+                <dt>At rest</dt><dd>Pain at rest, at night, or with walking</dd>
+                <dt>Hopping</dt><dd>Painful single-leg hop</dd>
+                <dt>Next step</dt><dd class="cmp-next">Stop running and refer for imaging</dd>
+              </dl>
+            </div>
+          </div>
+        </figure>
+        <p class="dg-caption">Typical presentations only; findings overlap, so when in doubt, treat as a bone stress injury until imaging rules it out. Tenderness length criterion: Yates B, White S. The incidence and risk factors in the development of medial tibial stress syndrome among naval recruits. Am J Sports Med. 2004;32(3):772–780.</p>
         <p>Once bone stress injury has been screened out, MTSS management centres on progressive, graded loading of the lower leg musculature rather than passive modalities alone.</p>
         <div class="table-wrap">
           <table>
@@ -926,6 +1293,54 @@
             </tr>
           </table>
         </div>
+        <figure class="dg" style="margin-left:0;margin-right:0">
+<div class="dg-scroll"><svg viewBox="0 0 640 364" role="img" aria-labelledby="tp-t tp-d" font-family="Inter, sans-serif">
+<title id="tp-t">Heel position over time for three Achilles loading protocols</title>
+<desc id="tp-d">Three schematic traces of heel height over two repetitions. Eccentric: a quick assisted rise then a slow lowering on the affected leg below step level. Heavy slow resistance: slow three-second rises and three-second lowerings. Isometric: a held mid-range position followed by rest.</desc>
+<text x="12" y="54" font-size="13.5" font-weight="600" fill="#1b2a3a">Eccentric (Alfredson)</text>
+<line x1="180" y1="82" x2="620" y2="82" stroke="#e9e4da" stroke-width="1.5"/>
+<line x1="180.0" y1="82.0" x2="214.9" y2="48.0" stroke="#5a5f5c" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="5 4"/>
+<line x1="214.9" y1="48.0" x2="228.9" y2="48.0" stroke="#1b2a3a" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="228.9" y1="48.0" x2="333.7" y2="97.3" stroke="#d9764a" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="333.7" y1="97.3" x2="368.6" y2="48.0" stroke="#5a5f5c" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="5 4"/>
+<line x1="368.6" y1="48.0" x2="382.5" y2="48.0" stroke="#1b2a3a" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="382.5" y1="48.0" x2="487.3" y2="97.3" stroke="#d9764a" stroke-width="3.5" stroke-linecap="round"/>
+<text x="12" y="72" font-size="11.5" fill="#5a5f5c">Rise on both legs, then</text>
+<text x="12" y="86" font-size="11.5" fill="#5a5f5c">lower slowly on the</text>
+<text x="12" y="100" font-size="11.5" fill="#5a5f5c">affected leg, below step</text>
+<text x="12" y="114" font-size="11.5" fill="#5a5f5c">level</text>
+<line x1="180" y1="97.3" x2="620" y2="97.3" stroke="#e9e4da" stroke-dasharray="3 4"/>
+<text x="620" y="111.3" font-size="11" fill="#5a5f5c" text-anchor="end">below step level</text>
+<text x="12" y="150" font-size="13.5" font-weight="600" fill="#1b2a3a">Heavy slow resistance</text>
+<line x1="180" y1="178" x2="620" y2="178" stroke="#e9e4da" stroke-width="1.5"/>
+<line x1="180.0" y1="178.0" x2="284.8" y2="144.0" stroke="#3a8a8c" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="284.8" y1="144.0" x2="389.5" y2="178.0" stroke="#d9764a" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="389.5" y1="178.0" x2="494.3" y2="144.0" stroke="#3a8a8c" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="494.3" y1="144.0" x2="599.0" y2="178.0" stroke="#d9764a" stroke-width="3.5" stroke-linecap="round"/>
+<text x="12" y="168" font-size="11.5" fill="#5a5f5c">Slow and loaded in both</text>
+<text x="12" y="182" font-size="11.5" fill="#5a5f5c">directions: about 3 s up,</text>
+<text x="12" y="196" font-size="11.5" fill="#5a5f5c">3 s down</text>
+<text x="232.4" y="194.0" font-size="11.5" fill="#2a2c2b" text-anchor="middle">3 s</text>
+<text x="337.1" y="194.0" font-size="11.5" fill="#2a2c2b" text-anchor="middle">3 s</text>
+<text x="12" y="246" font-size="13.5" font-weight="600" fill="#1b2a3a">Isometric</text>
+<line x1="180" y1="274" x2="620" y2="274" stroke="#e9e4da" stroke-width="1.5"/>
+<line x1="180.0" y1="274.0" x2="207.9" y2="253.6" stroke="#3a8a8c" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="207.9" y1="253.6" x2="361.6" y2="253.6" stroke="#1b2a3a" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="361.6" y1="253.6" x2="389.5" y2="274.0" stroke="#d9764a" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="389.5" y1="274.0" x2="410.5" y2="274.0" stroke="#e9e4da" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="410.5" y1="274.0" x2="438.4" y2="253.6" stroke="#3a8a8c" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="438.4" y1="253.6" x2="592.1" y2="253.6" stroke="#1b2a3a" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="592.1" y1="253.6" x2="620.0" y2="274.0" stroke="#d9764a" stroke-width="3.5" stroke-linecap="round"/>
+<text x="12" y="264" font-size="11.5" fill="#5a5f5c">Hold a mid-range position</text>
+<text x="12" y="278" font-size="11.5" fill="#5a5f5c">under load, then rest</text>
+<line x1="180" y1="342" x2="202" y2="342" stroke="#5a5f5c" stroke-width="3.5" stroke-dasharray="5 4"/><text x="208" y="346" font-size="11.5" fill="#2a2c2b">Assisted rise (both legs)</text>
+<line x1="386.0" y1="342" x2="408.0" y2="342" stroke="#3a8a8c" stroke-width="3.5"/><text x="414.0" y="346" font-size="11.5" fill="#2a2c2b">Rising</text>
+<line x1="470.4" y1="342" x2="492.4" y2="342" stroke="#d9764a" stroke-width="3.5"/><text x="498.4" y="346" font-size="11.5" fill="#2a2c2b">Lowering</text>
+<line x1="567.6" y1="342" x2="589.6" y2="342" stroke="#1b2a3a" stroke-width="3.5"/><text x="595.6" y="346" font-size="11.5" fill="#2a2c2b">Holding</text>
+<text x="620" y="22" font-size="11.5" fill="#5a5f5c" text-anchor="end">time →</text>
+</svg></div>
+        </figure>
+        <p class="dg-caption">Schematic heel position over two repetitions for each protocol. The protocols differ mainly in which direction is loaded and how fast, not just in the exercise itself.</p>
         <p>Given the Module 3 finding on forefoot strike increasing Achilles load, a runner who has self-adopted a forefoot pattern to manage a different (e.g. patellofemoral) complaint and now presents with Achilles symptoms is a specific scenario where re-examining that gait choice — not just prescribing more loading — belongs in the plan.</p>
         <p class="callout-ref">Source: Beyer R, Kongsgaard M, Hougs Kjær B, et al. Heavy Slow Resistance Versus Eccentric Training as Treatment for Achilles Tendinopathy: A Randomized Controlled Trial. Am J Sports Med. 2015;43(7):1704–1711.</p>
         <h2 id="s4-6">4.6 Plantar Fasciitis</h2>
