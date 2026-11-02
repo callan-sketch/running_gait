@@ -723,6 +723,63 @@
       margin: 8px 0 24px;
     }
 
+    .fp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .fp-card {
+      border: 1px solid var(--cream-dk);
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .fp-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      background: var(--navy);
+    }
+
+    .fp-body {
+      padding: 10px 12px 12px;
+    }
+
+    .fp-body h4 {
+      margin: 0 0 6px;
+      font-family: 'Fraunces', serif;
+      font-size: 1rem;
+      color: var(--navy);
+    }
+
+    .fp-body p {
+      margin: 0 0 6px;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+
+    .fp-body p span {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--teal-dk);
+      font-weight: 600;
+    }
+
+    @media (max-width:700px) {
+      .fp-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .callout {
       background: #fff;
       border-left: 4px solid var(--teal);
@@ -1139,6 +1196,36 @@
         <p class="callout-ref">Sources: Diebal AR, Gregory R, Alitz C, Gerber JP. Forefoot Running Improves Pain and Disability Associated With Chronic Exertional Compartment Syndrome. Am J Sports Med. 2012;40(5):1060–1067. Breen DT, Foster J, Falvey E, Franklyn-Miller A. Gait Re-training to Alleviate the Symptoms of Anterior Exertional Lower Leg Pain: A Case Series. Int J Sports Phys Ther. 2015;10(1):85–94.</p>
         <h2 id="s3-8">3.8 Three Common Gait Fault Patterns</h2>
         <p>Sections 3.2–3.7 worked pathology-by-pathology: given this injury, which gait findings should you expect? It's just as useful clinically to work the other way — given this gait fault on video, which injuries should you be screening for? Three visual patterns recur often enough in practice to be worth recognising as named patterns in their own right, each pulling together several of the individual variables from Module 2.</p>
+        <figure class="dg" style="margin-left:0;margin-right:0">
+          <p class="dg-title">The three patterns at a glance</p>
+          <div class="fp-grid">
+            <div class="fp-card">
+              <img src="Assets/Images/gait-overstriding.jpg" alt="Side-view comparison: an overstriding runner with the foot landing well ahead of the centre of mass and a straight knee, beside a runner landing with the foot under the hip." loading="lazy" width="1200" height="800">
+              <div class="fp-body">
+                <h4>Over-striding</h4>
+                <p><span>Look for</span>Foot landing well ahead of the hips, with a straight knee at contact</p>
+                <p><span>Screen for</span>Shin pain, stress fractures, PFP</p>
+              </div>
+            </div>
+            <div class="fp-card">
+              <img src="Assets/Images/gait-hip-adduction-crossover.jpg" alt="Back-view comparison: a stance leg staying beside the midline, beside a stance leg angling in so the foot lands on or across the centreline." loading="lazy" width="1200" height="800">
+              <div class="fp-body">
+                <h4>Cross-over</h4>
+                <p><span>Look for</span>Foot landing on or across the midline</p>
+                <p><span>Screen for</span>Medial knee pain, ITBS, tibial stress</p>
+              </div>
+            </div>
+            <div class="fp-card">
+              <img src="Assets/Images/gait-knee-valgus.jpg" alt="Front-view comparison: a runner whose stance knee collapses inward, beside a runner keeping a gap between the knees." loading="lazy" width="1200" height="800">
+              <div class="fp-body">
+                <h4>Medial collapse</h4>
+                <p><span>Look for</span>Pelvic drop with the knee collapsing inward</p>
+                <p><span>Screen for</span>PFP, ITBS, tibial stress</p>
+              </div>
+            </div>
+          </div>
+        </figure>
+        <p class="dg-caption">Images from Module 2 (2.3–2.4). In each image the orange or red figure shows the fault. Full detail is in the table below.</p>
         <div class="table-wrap">
           <table>
             <tr>
