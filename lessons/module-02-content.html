@@ -441,6 +441,20 @@
       margin: 8px 0 24px;
     }
 
+    .watch-shots {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      max-width: 520px;
+      margin: 20px auto 12px;
+    }
+
+    .watch-shots img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
     .callout {
       background: #fff;
       border-left: 4px solid var(--teal);
@@ -780,6 +794,14 @@
           <li><strong>GPS running watch or phone app:</strong> most modern running watches display real-time cadence, which is useful both for baseline measurement and later for retraining feedback in Module 5.</li>
           <li><strong>Typical recreational cadence</strong> commonly falls in the 150–170 steps-per-minute range at an easy pace, though this varies with height, speed, and individual stride mechanics — there is no single "correct" number, only a runner's own baseline and the modifiable 5–10% increase discussed in Modules 3 and 5.</li>
         </ul>
+        <h3>Reading a watch summary</h3>
+        <p>The screenshots below are from one trail run recorded on a GPS watch. The summary reports an average cadence of 153 spm, but the chart shows why the average on its own can mislead: the red points are walking sections and stops, which pull the average down. The steady running sections sit at roughly 155–170 spm, and that running cadence is the baseline to work from. Terrain matters too: this run included 174 m of climbing, so compare like with like when you reassess.</p>
+        <div class="watch-shots">
+          <img src="Assets/Images/cadence-watch-stats.jpg" alt="GPS watch app stats screen for a trail run: average run cadence 153 spm, maximum 228 spm, average stride length 0.9 m, vertical ratio 9.0%, vertical oscillation 8.0 cm, ground contact time 283 ms, total ascent 174 m." loading="lazy" width="673" height="1100">
+          <img src="Assets/Images/cadence-watch-charts.jpg" alt="GPS watch app cadence chart against distance, with most points between about 155 and 170 spm and clusters of red points below 120 spm during walking sections, above a stride length chart averaging 0.9 m." loading="lazy" width="538" height="1100">
+        </div>
+        <img class="hero-image" style="height:auto;border-radius:10px;" src="Assets/Images/cadence-watch-pace-chart.jpg" alt="Pace and cadence over 64 minutes: cadence points sit in a steady band during running and drop to red points in the gaps where the runner walked or stopped." loading="lazy" width="1400" height="706">
+        <p class="figure-caption">Average cadence (153 spm) includes walking breaks and stops, shown as red points. Use the steady running band, here roughly 155–170 spm, as the baseline. The same screen also reports vertical oscillation (8.0 cm) and ground contact time (283 ms), which add context to what you see on video in 2.3.</p>
         <h2 id="s2-6">2.6 Why the Protocol Matters</h2>
         <p>Not all of the variables above are equally reliable to score by eye — which is exactly why the standardised method matters more than any individual clinician's experience. One reliability study asked raters to independently score several categorical gait variables from video, twice each, and compared agreement using Cohen's kappa (values above roughly 0.75 are generally considered excellent agreement, 0.40–0.75 fair-to-good, and below 0.40 poor):</p>
         <div class="table-wrap">
