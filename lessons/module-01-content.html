@@ -315,6 +315,22 @@
       margin: 8px 0 0;
     }
 
+    .next-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .next-btn.secondary {
+      background: transparent;
+      border: 1.5px solid rgba(247, 245, 241, 0.45);
+      color: var(--cream);
+    }
+
+    .next-btn.secondary:hover {
+      background: rgba(247, 245, 241, 0.1);
+    }
+
     @media (max-width:600px) {
       .inline-figure {
         float: none;
@@ -968,7 +984,7 @@
             <path d="M2 13H14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
           </svg> Download PDF </a> <a href="../module-01.html" class="nav-back"> <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
             <path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-          </svg> Back to Module 1 </a> </div>
+          </svg> Back to Module 1 </a> <a href="../dashboard.html" class="nav-back" aria-label="Back to dashboard"> <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1.2" stroke="currentColor" stroke-width="1.6"/><rect x="9" y="2" width="5" height="5" rx="1.2" stroke="currentColor" stroke-width="1.6"/><rect x="2" y="9" width="5" height="5" rx="1.2" stroke="currentColor" stroke-width="1.6"/><rect x="9" y="9" width="5" height="5" rx="1.2" stroke="currentColor" stroke-width="1.6"/></svg> Dashboard </a> </div>
     </nav>
   </header>
   <div class="loading-screen" id="loadingScreen">
@@ -1149,10 +1165,10 @@
         <div class="next-module">
           <div>
             <div class="next-module-label">Finished reading?</div>
-            <div class="next-module-title">Head back to the Module 1 hub</div>
-          </div> <a href="../module-01.html" class="next-btn"> Back to Module 1 <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+            <div class="next-module-title">Head back to the Module 1 hub or your dashboard</div>
+          </div> <div class="next-actions"> <a href="../module-01.html" class="next-btn"> Back to Module 1 <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
               <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-            </svg> </a>
+            </svg> </a> <a href="../dashboard.html" class="next-btn secondary"> <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1.2" stroke="currentColor" stroke-width="1.6"/><rect x="9" y="2" width="5" height="5" rx="1.2" stroke="currentColor" stroke-width="1.6"/><rect x="2" y="9" width="5" height="5" rx="1.2" stroke="currentColor" stroke-width="1.6"/><rect x="9" y="9" width="5" height="5" rx="1.2" stroke="currentColor" stroke-width="1.6"/></svg> Dashboard </a> </div>
         </div>
       </article>
     </div>
