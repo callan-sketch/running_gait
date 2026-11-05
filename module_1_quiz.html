@@ -714,6 +714,13 @@
       progressFill.style.width = pct + '%';
       progressLabel.textContent = filled + ' of ' + TOTAL_REQUIRED_FIELDS + ' required fields completed';
     }
+    // Until the Gait grading web app is deployed, show a notice and block submission
+    if (!/^https:\/\/script\.google\.com\//.test(QUIZ_ENDPOINT_URL)) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Quiz opening soon';
+      submitStatus.textContent = 'This quiz is not open for submissions yet. Please check back soon.';
+      form.querySelectorAll('input').forEach(function(i) { if (i.id !== 'email') i.disabled = true; });
+    }
     form.addEventListener('input', updateProgress);
     form.addEventListener('change', updateProgress);
     updateProgress();
