@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 1 Quiz: Introduction &amp; Clinical Rationale — Core Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1b2a3a;
+      --teal: #3a8a8c;
+      --teal-dk: #2e6e70;
+      --terracotta: #d9764a;
+      --terracotta-dk: #bd5f37;
+      --cream: #f7f5f1;
+      --cream-dk: #e9e4da;
+      --ink: #2a2c2b;
+      --ink-soft: #5a5f5c;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2 {
+      font-family: 'Fraunces', serif;
+      color: var(--navy);
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--navy);
+    }
+
+    nav.wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo-word {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .logo-word .core {
+      color: #fff;
+    }
+
+    .logo-word .learning {
+      color: var(--terracotta);
+    }
+
+    .nav-back {
+      color: var(--cream);
+      opacity: 0.85;
+      font-weight: 600;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 13px;
+      border-radius: 8px;
+      transition: background .2s ease;
+      text-decoration: none;
+    }
+
+    .nav-back:hover {
+      background: rgba(247, 245, 241, 0.1);
+      opacity: 1;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    .quiz-head {
+      padding: 44px 0 8px;
+    }
+
+    .kicker {
+      color: var(--terracotta);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .quiz-head h1 {
+      font-size: clamp(1.6rem, 3.2vw, 2.15rem);
+      margin-bottom: 10px;
+    }
+
+    .quiz-sub {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      max-width: 60ch;
+    }
+
+    .progress-wrap {
+      position: sticky;
+      top: 64px;
+      z-index: 40;
+      background: var(--cream);
+      padding: 14px 0;
+      border-bottom: 1px solid var(--cream-dk);
+      margin-bottom: 8px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 6px;
+      background: var(--cream-dk);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--terracotta);
+      transition: width .2s ease;
+    }
+
+    .progress-label {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      margin-top: 8px;
+    }
+
+    form {
+      padding-bottom: 80px;
+    }
+
+    .section-card {
+      background: #fff;
+      border: 1px solid var(--cream-dk);
+      border-radius: 14px;
+      padding: 26px 26px 28px;
+      margin: 24px 0;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal-dk);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 18px;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    .field:last-child {
+      margin-bottom: 0;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .field input[type="email"],
+    .field input[type="text"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--cream-dk);
+      border-radius: 9px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: var(--cream);
+      transition: border-color .15s ease;
+    }
+
+    .field input:focus {
+      outline: none;
+      border-color: var(--teal);
+      background: #fff;
+    }
+
+    .field-hint {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      margin-top: 5px;
+    }
+
+    .q-card {
+      background: #fff;
+      border: 1px solid var(--cream-dk);
+      border-radius: 14px;
+      padding: 24px 26px 26px;
+      margin: 16px 0;
+      scroll-margin-top: 150px;
+    }
+
+    .q-num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 10px;
+    }
+
+    .q-text {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .opts {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .opt {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1.5px solid var(--cream-dk);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: border-color .15s ease, background .15s ease;
+    }
+
+    .opt:hover {
+      border-color: var(--teal);
+      background: var(--cream);
+    }
+
+    .opt input[type="radio"] {
+      margin-top: 3px;
+      width: 17px;
+      height: 17px;
+      accent-color: var(--terracotta);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .opt span {
+      font-size: 0.92rem;
+      color: var(--ink);
+    }
+
+    .opt:has(input:checked) {
+      border-color: var(--terracotta);
+      background: #fdf3ee;
+    }
+
+    .submit-bar {
+      position: sticky;
+      bottom: 0;
+      background: var(--cream);
+      border-top: 1px solid var(--cream-dk);
+      padding: 16px 0;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .submit-status {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    .submit-status.error {
+      color: var(--terracotta-dk);
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: var(--terracotta);
+      color: #fff;
+      padding: 13px 26px;
+      border: none;
+      border-radius: 9px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      transition: background .2s ease, transform .2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--terracotta-dk);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .result-screen {
+      display: none;
+      text-align: center;
+      padding: 60px 20px 100px;
+    }
+
+    .result-screen.show {
+      display: block;
+    }
+
+    .result-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+
+    .result-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1.6rem;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .result-score {
+      font-size: 1.1rem;
+      color: var(--ink-soft);
+      margin-bottom: 24px;
+    }
+
+    .result-note {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      max-width: 50ch;
+      margin: 0 auto;
+    }
+
+    .result-note a {
+      color: var(--terracotta-dk);
+      font-weight: 600;
+    }
+
+    @media (max-width:600px) {
+      nav.wrap {
+        padding: 0 16px;
+      }
+
+      .page {
+        padding: 0 16px;
+      }
+
+      .section-card,
+      .q-card {
+        padding: 18px 18px 20px;
+      }
+
+      .progress-wrap {
+        top: 64px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="authGateOverlay" style="position:fixed; inset:0; z-index:99999; background:#f7f5f1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; font-family:'Inter', sans-serif;">
+    <svg width="28" height="28" viewBox="0 0 16 16" fill="none" style="animation:authGateSpin .8s linear infinite;">
+      <circle cx="8" cy="8" r="6" stroke="#e9e4da" stroke-width="2" />
+      <path d="M14 8a6 6 0 0 0-6-6" stroke="#d9764a" stroke-width="2" stroke-linecap="round" />
+    </svg>
+    <span style="color:#5a5f5c; font-size:0.9rem;">Checking your access…</span>
+  </div>
+  <style>
+    @keyframes authGateSpin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <script type="module">
+    // ═══════════════════════════════════════════════════════════════
+    // AUTH GATE — must be a logged-in, paid-up student to see this
+    // page. Fails CLOSED: any missing session, missing profile, unpaid
+    // status, or error while checking sends the visitor to enroll.html
+    // rather than ever showing the real content underneath the overlay
+    // above. Same Firebase project/config as enroll.html.
+    // ═══════════════════════════════════════════════════════════════
+    const FIREBASE_CONFIG = {
+      apiKey: "AIzaSyAN9BVXDo15Mav2zketm5jhKRoBjs2yYX8",
+      authDomain: "core-coaching-login.firebaseapp.com",
+      projectId: "core-coaching-login",
+      storageBucket: "core-coaching-login.firebasestorage.app",
+      messagingSenderId: "184932860937",
+      appId: "1:184932860937:web:7023e588b1068ed2a824d8",
+      measurementId: "G-M48JWEWV0D"
+    };
+    const COURSE_ID = "runninggait";
+    const ENROLL_URL = "https://gait.corelearning.co.za/login.html";
+
+    function denyAccess() {
+      window.location.replace(ENROLL_URL);
+    }
+    try {
+      const {
+        initializeApp
+      } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js");
+      const {
+        getAuth,
+        onAuthStateChanged
+      } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js");
+      const {
+        getFirestore,
+        doc,
+        getDoc
+      } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+      const app = initializeApp(FIREBASE_CONFIG);
+      const auth = getAuth(app);
+      const db = getFirestore(app);
+      onAuthStateChanged(auth, async (user) => {
+        if (!user) {
+          denyAccess();
+          return;
+        }
+        try {
+          const snap = await getDoc(doc(db, 'users', user.uid));
+          const paid = snap.exists() && snap.data()?.courses?.[COURSE_ID]?.paid === true;
+          if (!paid) {
+            denyAccess();
+            return;
+          }
+          // Access confirmed — reveal the real page. Capture the verified
+          // sign-in email and lock it into the Email field, so the value
+          // submitted is always the account's real email, not a typed one.
+          window.__signedInEmail = user.email || '';
+          const emailField = document.getElementById('email');
+          if (emailField) {
+            emailField.value = window.__signedInEmail;
+            emailField.readOnly = true;
+            emailField.style.background = 'var(--cream-dk)';
+            emailField.style.cursor = 'not-allowed';
+          }
+          document.getElementById('authGateOverlay').remove();
+        } catch (err) {
+          console.error('Auth gate: profile check failed', err);
+          denyAccess();
+        }
+      });
+    } catch (err) {
+      console.error('Auth gate: Firebase failed to load', err);
+      denyAccess();
+    }
+  </script>
+  <header>
+    <nav class="wrap">
+      <span class="logo-word"><span class="core">Core</span> <span class="learning">Learning</span></span>
+      <a href="module-01.html" class="nav-back">← Back to Module 1</a>
+    </nav>
+  </header>
+  <div class="progress-wrap">
+    <div class="page" style="padding:0 28px;">
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-label" id="progressLabel">0 of 28 required fields completed</div>
+    </div>
+  </div>
+  <div class="page">
+    <div class="quiz-head">
+      <span class="kicker">Module 1 Quiz</span>
+      <h1>Introduction &amp; Clinical Rationale</h1>
+      <p class="quiz-sub">25 questions, 1 mark each (25 marks total). Pass mark is 80%. Covers Module 1: Introduction &amp; Clinical Rationale.</p>
+    </div>
+    <form id="quizForm" novalidate>
+      <div class="section-card">
+        <div class="section-label">Section 1</div>
+        <div class="section-title">Email</div>
+        <div class="field">
+          <label for="email">Signed in as</label>
+          <input type="email" id="email" name="email" readonly required>
+        </div>
+      </div>
+      <div class="section-card">
+        <div class="section-label">Section 2</div>
+        <div class="section-title">Personal details</div>
+        <div class="field">
+          <label for="name">Name *</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="field">
+          <label for="surname">Surname *</label>
+          <input type="text" id="surname" name="surname" required>
+        </div>
+      </div>
+      <div class="section-card" style="padding-bottom:10px;">
+        <div class="section-label">Section 3</div>
+        <div class="section-title">Quiz</div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 1 of 25</div>
+        <div class="q-text">Who is this course primarily designed for?</div>
+        <div class="opts"><label class="opt" for="q1_0"><input type="radio" id="q1_0" name="q1" value="Running coaches with no clinical background" required><span>Running coaches with no clinical background</span></label><label class="opt" for="q1_1"><input type="radio" id="q1_1" name="q1" value="Physiotherapists with a strong working knowledge of anatomy, biomechanics and musculoskeletal assessment" required><span>Physiotherapists with a strong working knowledge of anatomy, biomechanics and musculoskeletal assessment</span></label><label class="opt" for="q1_2"><input type="radio" id="q1_2" name="q1" value="Sports scientists working with 3D motion capture laboratories" required><span>Sports scientists working with 3D motion capture laboratories</span></label><label class="opt" for="q1_3"><input type="radio" id="q1_3" name="q1" value="Runners who want to analyse their own technique" required><span>Runners who want to analyse their own technique</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 2 of 25</div>
+        <div class="q-text">Which modules are structured around the link between gait faults and specific pathologies?</div>
+        <div class="opts"><label class="opt" for="q2_0"><input type="radio" id="q2_0" name="q2" value="Modules 1 and 2" required><span>Modules 1 and 2</span></label><label class="opt" for="q2_1"><input type="radio" id="q2_1" name="q2" value="Modules 2 and 5" required><span>Modules 2 and 5</span></label><label class="opt" for="q2_2"><input type="radio" id="q2_2" name="q2" value="Modules 4 and 5" required><span>Modules 4 and 5</span></label><label class="opt" for="q2_3"><input type="radio" id="q2_3" name="q2" value="Modules 3 and 4" required><span>Modules 3 and 4</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 3 of 25</div>
+        <div class="q-text">According to the meta-analysis cited in 1.2, what was the weighted injury incidence in novice runners?</div>
+        <div class="opts"><label class="opt" for="q3_0"><input type="radio" id="q3_0" name="q3" value="2.5 injuries per 1000 hours of running" required><span>2.5 injuries per 1000 hours of running</span></label><label class="opt" for="q3_1"><input type="radio" id="q3_1" name="q3" value="17.8 injuries per 1000 hours of running" required><span>17.8 injuries per 1000 hours of running</span></label><label class="opt" for="q3_2"><input type="radio" id="q3_2" name="q3" value="80 injuries per 1000 hours of running" required><span>80 injuries per 1000 hours of running</span></label><label class="opt" for="q3_3"><input type="radio" id="q3_3" name="q3" value="7.7 injuries per 1000 hours of running" required><span>7.7 injuries per 1000 hours of running</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 4 of 25</div>
+        <div class="q-text">What is the most likely explanation given for novice runners&#x27; higher injury risk per hour run?</div>
+        <div class="opts"><label class="opt" for="q4_0"><input type="radio" id="q4_0" name="q4" value="Running mostly on hard surfaces" required><span>Running mostly on hard surfaces</span></label><label class="opt" for="q4_1"><input type="radio" id="q4_1" name="q4" value="A higher rate of rearfoot striking" required><span>A higher rate of rearfoot striking</span></label><label class="opt" for="q4_2"><input type="radio" id="q4_2" name="q4" value="A mismatch between tissue capacity and training exposure early on" required><span>A mismatch between tissue capacity and training exposure early on</span></label><label class="opt" for="q4_3"><input type="radio" id="q4_3" name="q4" value="Poorer footwear choices" required><span>Poorer footwear choices</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 5 of 25</div>
+        <div class="q-text">Which of the following is NOT one of the five common running-related injuries listed in 1.2?</div>
+        <div class="opts"><label class="opt" for="q5_0"><input type="radio" id="q5_0" name="q5" value="Patellofemoral pain syndrome" required><span>Patellofemoral pain syndrome</span></label><label class="opt" for="q5_1"><input type="radio" id="q5_1" name="q5" value="Iliotibial band syndrome" required><span>Iliotibial band syndrome</span></label><label class="opt" for="q5_2"><input type="radio" id="q5_2" name="q5" value="Medial tibial stress syndrome" required><span>Medial tibial stress syndrome</span></label><label class="opt" for="q5_3"><input type="radio" id="q5_3" name="q5" value="Hamstring strain" required><span>Hamstring strain</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 6 of 25</div>
+        <div class="q-text">How does the lesson recommend handling the common claim that &quot;roughly 80% of runners get injured every year&quot;?</div>
+        <div class="opts"><label class="opt" for="q6_0"><input type="radio" id="q6_0" name="q6" value="Treat it as a rule of thumb: reported annual incidence varies enormously by study, so name the uncertainty rather than quoting one figure as settled fact" required><span>Treat it as a rule of thumb: reported annual incidence varies enormously by study, so name the uncertainty rather than quoting one figure as settled fact</span></label><label class="opt" for="q6_1"><input type="radio" id="q6_1" name="q6" value="Replace it with a precise figure of 50%" required><span>Replace it with a precise figure of 50%</span></label><label class="opt" for="q6_2"><input type="radio" id="q6_2" name="q6" value="Dismiss it, because running injuries are actually uncommon" required><span>Dismiss it, because running injuries are actually uncommon</span></label><label class="opt" for="q6_3"><input type="radio" id="q6_3" name="q6" value="Quote it as an established figure, since it is widely used" required><span>Quote it as an established figure, since it is widely used</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 7 of 25</div>
+        <div class="q-text">What is the difference between prevalence and incidence, as described in 1.2?</div>
+        <div class="opts"><label class="opt" for="q7_0"><input type="radio" id="q7_0" name="q7" value="Prevalence counts only marathon runners; incidence counts all runners" required><span>Prevalence counts only marathon runners; incidence counts all runners</span></label><label class="opt" for="q7_1"><input type="radio" id="q7_1" name="q7" value="Prevalence is measured per 1000 hours; incidence is a percentage of all runners" required><span>Prevalence is measured per 1000 hours; incidence is a percentage of all runners</span></label><label class="opt" for="q7_2"><input type="radio" id="q7_2" name="q7" value="They are two names for the same measure" required><span>They are two names for the same measure</span></label><label class="opt" for="q7_3"><input type="radio" id="q7_3" name="q7" value="Prevalence is how many runners have the condition at a point in time; incidence is how many new injuries occur per hours run" required><span>Prevalence is how many runners have the condition at a point in time; incidence is how many new injuries occur per hours run</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 8 of 25</div>
+        <div class="q-text">According to the Lopes et al. systematic review, what was the approximate prevalence of medial tibial stress syndrome among runners generally?</div>
+        <div class="opts"><label class="opt" for="q8_0"><input type="radio" id="q8_0" name="q8" value="Around 9.5%" required><span>Around 9.5%</span></label><label class="opt" for="q8_1"><input type="radio" id="q8_1" name="q8" value="Around 25%" required><span>Around 25%</span></label><label class="opt" for="q8_2"><input type="radio" id="q8_2" name="q8" value="Around 2%" required><span>Around 2%</span></label><label class="opt" for="q8_3"><input type="radio" id="q8_3" name="q8" value="Around 45%" required><span>Around 45%</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 9 of 25</div>
+        <div class="q-text">Why is it useful to know which injuries dominate the clinical picture before starting a gait analysis?</div>
+        <div class="opts"><label class="opt" for="q9_0"><input type="radio" id="q9_0" name="q9" value="It lets you skip the subjective history" required><span>It lets you skip the subjective history</span></label><label class="opt" for="q9_1"><input type="radio" id="q9_1" name="q9" value="It tells you what a gait analysis needs to be sensitive to" required><span>It tells you what a gait analysis needs to be sensitive to</span></label><label class="opt" for="q9_2"><input type="radio" id="q9_2" name="q9" value="It decides which camera to use" required><span>It decides which camera to use</span></label><label class="opt" for="q9_3"><input type="radio" id="q9_3" name="q9" value="It means you can diagnose from the video alone" required><span>It means you can diagnose from the video alone</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 10 of 25</div>
+        <div class="q-text">How does the course describe running-related injury?</div>
+        <div class="opts"><label class="opt" for="q10_0"><input type="radio" id="q10_0" name="q10" value="Mainly genetic and largely unavoidable" required><span>Mainly genetic and largely unavoidable</span></label><label class="opt" for="q10_1"><input type="radio" id="q10_1" name="q10" value="Mainly caused by poor biomechanics" required><span>Mainly caused by poor biomechanics</span></label><label class="opt" for="q10_2"><input type="radio" id="q10_2" name="q10" value="Multifactorial: training load, tissue capacity, strength, footwear, surface, sleep and psychosocial factors all contribute alongside biomechanics" required><span>Multifactorial: training load, tissue capacity, strength, footwear, surface, sleep and psychosocial factors all contribute alongside biomechanics</span></label><label class="opt" for="q10_3"><input type="radio" id="q10_3" name="q10" value="Mainly caused by footwear" required><span>Mainly caused by footwear</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 11 of 25</div>
+        <div class="q-text">Which of these is one of the three reasons given in 1.3 for including gait analysis?</div>
+        <div class="opts"><label class="opt" for="q11_0"><input type="radio" id="q11_0" name="q11" value="It is the most objective test available to a physiotherapist" required><span>It is the most objective test available to a physiotherapist</span></label><label class="opt" for="q11_1"><input type="radio" id="q11_1" name="q11" value="It replaces the need for a clinical examination" required><span>It replaces the need for a clinical examination</span></label><label class="opt" for="q11_2"><input type="radio" id="q11_2" name="q11" value="It predicts future injury with high accuracy" required><span>It predicts future injury with high accuracy</span></label><label class="opt" for="q11_3"><input type="radio" id="q11_3" name="q11" value="Gait pattern is a modifiable factor a clinician can realistically intervene on" required><span>Gait pattern is a modifiable factor a clinician can realistically intervene on</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 12 of 25</div>
+        <div class="q-text">What benefit of showing a runner their own footage is described in 1.3?</div>
+        <div class="opts"><label class="opt" for="q12_0"><input type="radio" id="q12_0" name="q12" value="It makes abstract biomechanical concepts concrete and improves buy-in for a retraining or exercise programme" required><span>It makes abstract biomechanical concepts concrete and improves buy-in for a retraining or exercise programme</span></label><label class="opt" for="q12_1"><input type="radio" id="q12_1" name="q12" value="It lets the runner self-diagnose" required><span>It lets the runner self-diagnose</span></label><label class="opt" for="q12_2"><input type="radio" id="q12_2" name="q12" value="It removes the need for exercise prescription" required><span>It removes the need for exercise prescription</span></label><label class="opt" for="q12_3"><input type="radio" id="q12_3" name="q12" value="It shortens the treatment time to one session" required><span>It shortens the treatment time to one session</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 13 of 25</div>
+        <div class="q-text">Why can gait analysis reveal deficits that a static assessment misses?</div>
+        <div class="opts"><label class="opt" for="q13_0"><input type="radio" id="q13_0" name="q13" value="Static assessments cannot measure strength" required><span>Static assessments cannot measure strength</span></label><label class="opt" for="q13_1"><input type="radio" id="q13_1" name="q13" value="Video is always more accurate than hands-on testing" required><span>Video is always more accurate than hands-on testing</span></label><label class="opt" for="q13_2"><input type="radio" id="q13_2" name="q13" value="Some deficits, such as hip control, cadence and vertical oscillation, only become apparent under the repeated, fatiguing load of actual running" required><span>Some deficits, such as hip control, cadence and vertical oscillation, only become apparent under the repeated, fatiguing load of actual running</span></label><label class="opt" for="q13_3"><input type="radio" id="q13_3" name="q13" value="Runners are more relaxed on a treadmill" required><span>Runners are more relaxed on a treadmill</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 14 of 25</div>
+        <div class="q-text">What is the course&#x27;s honest starting position on gait analysis?</div>
+        <div class="opts"><label class="opt" for="q14_0"><input type="radio" id="q14_0" name="q14" value="It is a useful adjunct, not a diagnostic gold standard" required><span>It is a useful adjunct, not a diagnostic gold standard</span></label><label class="opt" for="q14_1"><input type="radio" id="q14_1" name="q14" value="It is the diagnostic gold standard for running injuries" required><span>It is the diagnostic gold standard for running injuries</span></label><label class="opt" for="q14_2"><input type="radio" id="q14_2" name="q14" value="It should only be used by researchers" required><span>It should only be used by researchers</span></label><label class="opt" for="q14_3"><input type="radio" id="q14_3" name="q14" value="It has no clinical value" required><span>It has no clinical value</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 15 of 25</div>
+        <div class="q-text">What is gait retraining, as defined in 1.4?</div>
+        <div class="opts"><label class="opt" for="q15_0"><input type="radio" id="q15_0" name="q15" value="Strength training for runners" required><span>Strength training for runners</span></label><label class="opt" for="q15_1"><input type="radio" id="q15_1" name="q15" value="A rest period before returning to running" required><span>A rest period before returning to running</span></label><label class="opt" for="q15_2"><input type="radio" id="q15_2" name="q15" value="Deliberately modifying an aspect of running technique, usually with real-time feedback, and measuring the effect on biomechanics, pain and function" required><span>Deliberately modifying an aspect of running technique, usually with real-time feedback, and measuring the effect on biomechanics, pain and function</span></label><label class="opt" for="q15_3"><input type="radio" id="q15_3" name="q15" value="Changing a runner&#x27;s shoes" required><span>Changing a runner&#x27;s shoes</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 16 of 25</div>
+        <div class="q-text">The 2022 systematic review of 19 randomised controlled trials found moderate-certainty evidence for which intervention?</div>
+        <div class="opts"><label class="opt" for="q16_0"><input type="radio" id="q16_0" name="q16" value="Switching to a non-rearfoot strike pattern" required><span>Switching to a non-rearfoot strike pattern</span></label><label class="opt" for="q16_1"><input type="radio" id="q16_1" name="q16" value="Step-rate (cadence) retraining" required><span>Step-rate (cadence) retraining</span></label><label class="opt" for="q16_2"><input type="radio" id="q16_2" name="q16" value="Multiparameter interventions" required><span>Multiparameter interventions</span></label><label class="opt" for="q16_3"><input type="radio" id="q16_3" name="q16" value="Barefoot running" required><span>Barefoot running</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 17 of 25</div>
+        <div class="q-text">What did the same 2022 review conclude about foot-strike modification?</div>
+        <div class="opts"><label class="opt" for="q17_0"><input type="radio" id="q17_0" name="q17" value="It has the strongest evidence of any gait retraining strategy" required><span>It has the strongest evidence of any gait retraining strategy</span></label><label class="opt" for="q17_1"><input type="radio" id="q17_1" name="q17" value="It reliably improves running economy" required><span>It reliably improves running economy</span></label><label class="opt" for="q17_2"><input type="radio" id="q17_2" name="q17" value="It reliably prevents injury" required><span>It reliably prevents injury</span></label><label class="opt" for="q17_3"><input type="radio" id="q17_3" name="q17" value="Only low-to-moderate certainty evidence that it changes running economy or performance one way or the other" required><span>Only low-to-moderate certainty evidence that it changes running economy or performance one way or the other</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 18 of 25</div>
+        <div class="q-text">The umbrella review on patellofemoral pain in runners found the most consistent supporting evidence for which strategies?</div>
+        <div class="opts"><label class="opt" for="q18_0"><input type="radio" id="q18_0" name="q18" value="Increasing stride length and trunk lean" required><span>Increasing stride length and trunk lean</span></label><label class="opt" for="q18_1"><input type="radio" id="q18_1" name="q18" value="Barefoot running and minimalist shoes" required><span>Barefoot running and minimalist shoes</span></label><label class="opt" for="q18_2"><input type="radio" id="q18_2" name="q18" value="Foot-strike modification and orthotics" required><span>Foot-strike modification and orthotics</span></label><label class="opt" for="q18_3"><input type="radio" id="q18_3" name="q18" value="Cadence increases of roughly 5–10% and soft-landing cues to reduce vertical impact" required><span>Cadence increases of roughly 5–10% and soft-landing cues to reduce vertical impact</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 19 of 25</div>
+        <div class="q-text">In the evidence table in 1.4, how is the evidence for multiparameter interventions rated?</div>
+        <div class="opts"><label class="opt" for="q19_0"><input type="radio" id="q19_0" name="q19" value="Strong (long-term)" required><span>Strong (long-term)</span></label><label class="opt" for="q19_1"><input type="radio" id="q19_1" name="q19" value="Low certainty" required><span>Low certainty</span></label><label class="opt" for="q19_2"><input type="radio" id="q19_2" name="q19" value="Consistent (short-term)" required><span>Consistent (short-term)</span></label><label class="opt" for="q19_3"><input type="radio" id="q19_3" name="q19" value="Mixed" required><span>Mixed</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 20 of 25</div>
+        <div class="q-text">In the reliability study described in 1.5, what was the inter-rater reliability among experienced raters scoring videotaped gait?</div>
+        <div class="opts"><label class="opt" for="q20_0"><input type="radio" id="q20_0" name="q20" value="Zero (ICC ≈ 0.00)" required><span>Zero (ICC ≈ 0.00)</span></label><label class="opt" for="q20_1"><input type="radio" id="q20_1" name="q20" value="Good (ICC ≈ 0.80)" required><span>Good (ICC ≈ 0.80)</span></label><label class="opt" for="q20_2"><input type="radio" id="q20_2" name="q20" value="Only moderate (ICC ≈ 0.42)" required><span>Only moderate (ICC ≈ 0.42)</span></label><label class="opt" for="q20_3"><input type="radio" id="q20_3" name="q20" value="Excellent (ICC ≈ 0.95)" required><span>Excellent (ICC ≈ 0.95)</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 21 of 25</div>
+        <div class="q-text">What does the course offer as the answer to the limited reliability of visual gait observation?</div>
+        <div class="opts"><label class="opt" for="q21_0"><input type="radio" id="q21_0" name="q21" value="Only use expert raters" required><span>Only use expert raters</span></label><label class="opt" for="q21_1"><input type="radio" id="q21_1" name="q21" value="A standardised 2D video method with fixed camera position, defined landmarks and consistent frame rate" required><span>A standardised 2D video method with fixed camera position, defined landmarks and consistent frame rate</span></label><label class="opt" for="q21_2"><input type="radio" id="q21_2" name="q21" value="Avoid video and rely on palpation" required><span>Avoid video and rely on palpation</span></label><label class="opt" for="q21_3"><input type="radio" id="q21_3" name="q21" value="Use a single view only" required><span>Use a single view only</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 22 of 25</div>
+        <div class="q-text">How should gait retraining be positioned to patients, according to 1.5?</div>
+        <div class="opts"><label class="opt" for="q22_0"><input type="radio" id="q22_0" name="q22" value="As one evidence-informed component of a broader plan, not an infallible fix" required><span>As one evidence-informed component of a broader plan, not an infallible fix</span></label><label class="opt" for="q22_1"><input type="radio" id="q22_1" name="q22" value="As a guaranteed long-term injury-prevention strategy" required><span>As a guaranteed long-term injury-prevention strategy</span></label><label class="opt" for="q22_2"><input type="radio" id="q22_2" name="q22" value="As a replacement for strengthening" required><span>As a replacement for strengthening</span></label><label class="opt" for="q22_3"><input type="radio" id="q22_3" name="q22" value="As unnecessary for most runners" required><span>As unnecessary for most runners</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 23 of 25</div>
+        <div class="q-text">According to the clinical note in 1.5, your confidence in any single gait analysis finding should scale with what?</div>
+        <div class="opts"><label class="opt" for="q23_0"><input type="radio" id="q23_0" name="q23" value="How standardised your method was" required><span>How standardised your method was</span></label><label class="opt" for="q23_1"><input type="radio" id="q23_1" name="q23" value="How many years you have been qualified" required><span>How many years you have been qualified</span></label><label class="opt" for="q23_2"><input type="radio" id="q23_2" name="q23" value="How long the runner has been running" required><span>How long the runner has been running</span></label><label class="opt" for="q23_3"><input type="radio" id="q23_3" name="q23" value="How expensive your camera is" required><span>How expensive your camera is</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 24 of 25</div>
+        <div class="q-text">Within the clinical workflow in 1.6, which factor is described as one of the most consistently implicated risk factors across the running-injury literature, independent of gait pattern?</div>
+        <div class="opts"><label class="opt" for="q24_0"><input type="radio" id="q24_0" name="q24" value="A sudden spike in training volume or intensity" required><span>A sudden spike in training volume or intensity</span></label><label class="opt" for="q24_1"><input type="radio" id="q24_1" name="q24" value="Foot-strike pattern" required><span>Foot-strike pattern</span></label><label class="opt" for="q24_2"><input type="radio" id="q24_2" name="q24" value="Running on a treadmill" required><span>Running on a treadmill</span></label><label class="opt" for="q24_3"><input type="radio" id="q24_3" name="q24" value="Shoe brand" required><span>Shoe brand</span></label></div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 25 of 25</div>
+        <div class="q-text">According to 1.6, why does gait analysis earn its place in the clinical workflow?</div>
+        <div class="opts"><label class="opt" for="q25_0"><input type="radio" id="q25_0" name="q25" value="It can be done without seeing the patient" required><span>It can be done without seeing the patient</span></label><label class="opt" for="q25_1"><input type="radio" id="q25_1" name="q25" value="It is more predictive of injury than the rest of the assessment" required><span>It is more predictive of injury than the rest of the assessment</span></label><label class="opt" for="q25_2"><input type="radio" id="q25_2" name="q25" value="It is genuinely modifiable and gives you and the runner a shared reference point" required><span>It is genuinely modifiable and gives you and the runner a shared reference point</span></label><label class="opt" for="q25_3"><input type="radio" id="q25_3" name="q25" value="It is more objective than the rest of the assessment" required><span>It is more objective than the rest of the assessment</span></label></div>
+      </div>
+      <div class="submit-bar">
+        <span class="submit-status" id="submitStatus"></span>
+        <button type="submit" class="btn-primary" id="submitBtn">Submit Quiz</button>
+      </div>
+    </form>
+    <div class="result-screen" id="resultScreen">
+      <div class="result-icon" id="resultIcon">🎉</div>
+      <div class="result-title" id="resultTitle">Nice work!</div>
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-note" id="resultNote"></div>
+    </div>
+  </div>
+  <script>
+    // ── Configure once this is deployed as an Apps Script Web App ──
+    const QUIZ_ENDPOINT_URL = "PASTE_GAIT_WEB_APP_URL_HERE"; // set once the Gait Apps Script web app is deployed
+    const TOTAL_QUESTIONS = 25;
+    const EXTRA_REQUIRED_FIELDS = 0;
+    const TOTAL_REQUIRED_FIELDS = 3 + EXTRA_REQUIRED_FIELDS + TOTAL_QUESTIONS; // email, name, surname (+ extra) + 25 questions
+    const form = document.getElementById('quizForm');
+    const progressFill = document.getElementById('progressFill');
+    const progressLabel = document.getElementById('progressLabel');
+    const submitBtn = document.getElementById('submitBtn');
+    const submitStatus = document.getElementById('submitStatus');
+    const resultScreen = document.getElementById('resultScreen');
+
+    function countFilled() {
+      let filled = 0;
+      if (document.getElementById('email').value.trim()) filled++;
+      if (document.getElementById('name').value.trim()) filled++;
+      if (document.getElementById('surname').value.trim()) filled++;
+      for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+        if (form.querySelector(`input[name="q${i}"]:checked`)) filled++;
+      }
+      return filled;
+    }
+
+    function updateProgress() {
+      const filled = countFilled();
+      const pct = Math.round((filled / TOTAL_REQUIRED_FIELDS) * 100);
+      progressFill.style.width = pct + '%';
+      progressLabel.textContent = filled + ' of ' + TOTAL_REQUIRED_FIELDS + ' required fields completed';
+    }
+    form.addEventListener('input', updateProgress);
+    form.addEventListener('change', updateProgress);
+    updateProgress();
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      submitStatus.textContent = '';
+      submitStatus.classList.remove('error');
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      const answers = [];
+      for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+        const checked = form.querySelector(`input[name="q${i}"]:checked`);
+        answers.push(checked ? checked.value : "");
+      }
+      const payload = {
+        moduleNumber: 1,
+        email: window.__signedInEmail,
+        name: document.getElementById('name').value.trim(),
+        surname: document.getElementById('surname').value.trim(),
+        answers: answers
+      };
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting…';
+      try {
+        // Sent as text/plain (not application/json) on purpose — this avoids
+        // a CORS preflight request, which Apps Script Web Apps don't handle.
+        // The body is still valid JSON text; the server parses it as JSON.
+        const res = await fetch(QUIZ_ENDPOINT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify(payload)
+        });
+        const result = await res.json();
+        if (!result.success) {
+          throw new Error(result.error || 'Something went wrong.');
+        }
+        form.style.display = 'none';
+        document.querySelector('.progress-wrap').style.display = 'none';
+        resultScreen.classList.add('show');
+        const passed = result.passed;
+        const isFinalModule = false;
+        document.getElementById('resultIcon').textContent = passed ? '🎉' : '📋';
+        document.getElementById('resultTitle').textContent = passed ? (isFinalModule ? 'Congratulations — course complete!' : 'Nice work — you passed!') : 'Not quite there yet';
+        document.getElementById('resultScore').textContent = `You scored ${result.score}/${result.total} (${result.percentage}%). Pass mark is 80%.`;
+        document.getElementById('resultNote').innerHTML = passed ? (isFinalModule ? 'You\'ve completed every module and passed every quiz — well done! Your certificate is being generated now and will be emailed to you shortly.' : 'A confirmation email is on its way, and the next module has been unlocked automatically — log back in to continue whenever you\'re ready.') : 'Review the module content and give it another go when you\'re ready — you\'ve got this. A summary email is on its way to you too.';
+      } catch (err) {
+        submitStatus.textContent = 'Submission failed: ' + err.message;
+        submitStatus.classList.add('error');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Quiz';
+      }
+    });
+  </script>
+</body>
+
+</html>
