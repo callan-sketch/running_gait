@@ -424,6 +424,57 @@
       margin: 0 auto;
     }
 
+    .vid-link {
+      position: relative;
+      display: block;
+    }
+
+    .play-badge {
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(27, 42, 58, 0.85);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .vid-link:hover .play-badge {
+      background: var(--terracotta);
+    }
+
+    .slowmo {
+      max-width: 680px;
+      margin: 22px auto 28px;
+      scroll-margin-top: 90px;
+    }
+
+    .slowmo video {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      background: #000;
+    }
+
+    .slowmo figcaption {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    .slowmo.flash video {
+      box-shadow: 0 0 0 3px var(--terracotta);
+      transition: box-shadow 0.3s;
+    }
+
     .img-none {
       color: var(--cream-dk);
     }
@@ -784,7 +835,7 @@
             <tr>
               <td><strong>Hip adduction / crossover</strong></td>
               <td>The stance-leg thigh angling in toward, or past, the body's midline — visible as the foot landing close to or across an imaginary centreline.</td>
-              <td class="img-cell"><a href="Assets/Images/gait-hip-adduction-crossover.jpg" target="_blank" rel="noopener"><img class="gait-img" src="Assets/Images/gait-hip-adduction-crossover.jpg" alt="Posterior-view comparison: a stance leg (blue) staying beside the midline, beside a stance leg (orange) angling in so the foot lands on or across the centreline." loading="lazy" width="1200" height="800"></a></td>
+              <td class="img-cell"><a class="vid-link" href="#crossover-video" aria-label="Watch the crossover gait slow-motion video below the table"><img class="gait-img" src="Assets/Images/gait-crossover-freeze.jpg" alt="Freeze frame from a slow-motion video of a runner on a treadmill, seen from behind, with a yellow line down the centre of the belt and the foot landing on the line" loading="lazy" width="800" height="600"><span class="play-badge"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 1l7 4-7 4z" fill="currentColor"/></svg> Watch slow motion</span></a></td>
             </tr>
             <tr>
               <td><strong>Knee position (valgus / "knee window")</strong></td>
@@ -803,6 +854,10 @@
             </tr>
           </table>
         </div>
+        <figure class="slowmo" id="crossover-video">
+          <video autoplay muted loop playsinline preload="metadata" poster="Assets/video/crossover-slow-motion-poster.jpg" aria-label="Slow-motion loop of a runner on a treadmill from behind, showing each foot landing on or across the centre line of the belt"><source src="Assets/video/crossover-slow-motion.mp4" type="video/mp4"></video>
+          <figcaption><strong>Crossover in slow motion.</strong> Half-speed loop from the posterior camera. The yellow line marks the centre of the belt: watch each foot land on or across it rather than either side of it.</figcaption>
+        </figure>
         <h2 id="s2-5">2.5 Measuring Cadence</h2>
         <p>Cadence (steps per minute) is the one variable in this entire framework with genuinely strong, repeated intervention evidence behind it, so it deserves its own measurement step rather than being estimated by eye.</p>
         <ul>
@@ -988,6 +1043,18 @@
       updateTOC();
     }
   </script>
+<script>
+  document.querySelectorAll('a.vid-link').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var fig = document.querySelector(a.getAttribute('href'));
+      if (!fig) return;
+      var v = fig.querySelector('video');
+      if (v) { try { v.currentTime = 0; v.play(); } catch (e) {} }
+      fig.classList.add('flash');
+      setTimeout(function () { fig.classList.remove('flash'); }, 1600);
+    });
+  });
+</script>
 </body>
 
 </html>
