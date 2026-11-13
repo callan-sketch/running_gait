@@ -449,6 +449,7 @@
       background: var(--terracotta);
     }
 
+    .vid-link.stacked { margin-top: 8px; }
     .slowmo {
       max-width: 680px;
       margin: 22px auto 28px;
@@ -807,7 +808,7 @@
             <tr>
               <td><strong>Foot strike pattern</strong></td>
               <td>Where the foot first contacts the ground relative to the ankle — rearfoot, midfoot, or forefoot.</td>
-              <td class="img-cell"><a href="Assets/Images/gait-foot-strike.jpg" target="_blank" rel="noopener"><img class="gait-img" src="Assets/Images/gait-foot-strike.jpg" alt="Three side-by-side photos of a runner's foot at initial contact on a road, labelled heel strike (heel lands first with the forefoot raised), midfoot strike (sole lands flat), and forefoot strike (ball of the foot lands first with the heel raised)." loading="lazy" width="1400" height="643"></a></td>
+              <td class="img-cell"><a href="Assets/Images/gait-foot-strike.jpg" target="_blank" rel="noopener"><img class="gait-img" src="Assets/Images/gait-foot-strike.jpg" alt="Three side-by-side photos of a runner's foot at initial contact on a road, labelled heel strike (heel lands first with the forefoot raised), midfoot strike (sole lands flat), and forefoot strike (ball of the foot lands first with the heel raised)." loading="lazy" width="1400" height="643"></a><a class="vid-link stacked" href="#foot-strike-video" aria-label="Watch the heel strike slow-motion video below the table"><img class="gait-img" src="Assets/Images/gait-foot-strike-freeze.jpg" alt="Freeze frame from a slow-motion side-view video of a runner on a treadmill, with a yellow line along the sole of the shoe showing the heel touching the belt first with the toes raised about 20 degrees" loading="lazy" width="800" height="600"><span class="play-badge"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 1l7 4-7 4z" fill="currentColor"/></svg> Watch slow motion</span></a></td>
             </tr>
             <tr>
               <td><strong>Overstriding</strong></td>
@@ -831,6 +832,10 @@
             </tr>
           </table>
         </div>
+        <figure class="slowmo" id="foot-strike-video">
+          <video autoplay muted loop playsinline preload="metadata" poster="Assets/video/foot-strike-slow-motion-poster.jpg" aria-label="Slow-motion side-view loop of a runner on a treadmill, with a yellow line along the sole at each heel strike showing the toes raised as the heel touches the belt"><source src="Assets/video/foot-strike-slow-motion.mp4" type="video/mp4"></video>
+          <figcaption><strong>Rearfoot (heel) strike in slow motion.</strong> Half-speed loop from the side camera, pausing at each initial contact. The yellow line follows the sole against the belt: the heel touches first with the toes up about 20°, then the forefoot lowers to the belt. Note the foot lands only slightly ahead of the knee, so this is a heel strike without marked overstriding — compare the next clip.</figcaption>
+        </figure>
         <figure class="slowmo" id="overstriding-video">
           <video autoplay muted loop playsinline preload="metadata" poster="Assets/video/overstriding-slow-motion-poster.jpg" aria-label="Slow-motion side-view loop of a runner on a treadmill, showing each foot landing heel-first in front of a line dropped from the hip"><source src="Assets/video/overstriding-slow-motion.mp4" type="video/mp4"></video>
           <figcaption><strong>Overstriding in slow motion.</strong> Half-speed loop from the side camera. The dashed line drops from the hip to the belt: watch each foot land heel-first, well in front of it, with the knee almost straight.</figcaption>
