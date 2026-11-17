@@ -301,6 +301,96 @@
       background: #fdf3ee;
     }
 
+    .eval-intro {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      margin: -8px 0 18px;
+      line-height: 1.5;
+    }
+
+    .ev-item {
+      padding: 16px 0;
+      border-top: 1px solid var(--cream-dk);
+    }
+
+    .ev-item:first-of-type {
+      border-top: none;
+      padding-top: 4px;
+    }
+
+    .ev-q {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .likert {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+
+    .likert label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 4px;
+      border: 1.5px solid var(--cream-dk);
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: center;
+      font-size: 0.74rem;
+      line-height: 1.25;
+      color: var(--ink-soft);
+      transition: border-color .15s ease, background .15s ease;
+    }
+
+    .likert label:hover {
+      border-color: var(--teal);
+      background: var(--cream);
+    }
+
+    .likert label:has(input:checked) {
+      border-color: var(--terracotta);
+      background: #fdf3ee;
+      color: var(--ink);
+    }
+
+    .likert input[type="radio"] {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--terracotta);
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .field textarea {
+      width: 100%;
+      min-height: 84px;
+      padding: 12px 14px;
+      border: 1.5px solid var(--cream-dk);
+      border-radius: 9px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: var(--cream);
+      resize: vertical;
+    }
+
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--teal);
+      background: #fff;
+    }
+
+    @media (max-width: 520px) {
+      .likert { gap: 5px; }
+      .likert label { font-size: 0.66rem; padding: 8px 2px; }
+    }
+
     .submit-bar {
       position: sticky;
       bottom: 0;
@@ -560,7 +650,7 @@
       <div class="progress-track">
         <div class="progress-fill" id="progressFill"></div>
       </div>
-      <div class="progress-label" id="progressLabel">0 of 29 required fields completed</div>
+      <div class="progress-label" id="progressLabel">0 of 38 required fields completed</div>
     </div>
   </div>
   <div class="page">
@@ -728,6 +818,61 @@
         <div class="q-text">What is the progress criterion for moving on from Stage 1 (walk-run introduction)?</div>
         <div class="opts"><label class="opt" for="q25_0"><input type="radio" id="q25_0" name="q25" value="One session completed without any pain at all" required><span>One session completed without any pain at all</span></label><label class="opt" for="q25_1"><input type="radio" id="q25_1" name="q25" value="Reaching the runner&#x27;s pre-injury weekly volume" required><span>Reaching the runner&#x27;s pre-injury weekly volume</span></label><label class="opt" for="q25_2"><input type="radio" id="q25_2" name="q25" value="Running 5 km continuously without stopping or walking" required><span>Running 5 km continuously without stopping or walking</span></label><label class="opt" for="q25_3"><input type="radio" id="q25_3" name="q25" value="No symptom increase during or in the 24 h after two consecutive sessions" required><span>No symptom increase during or in the 24 h after two consecutive sessions</span></label></div>
       </div>
+      <div class="section-card" id="evaluation">
+        <div class="section-label">Section 5</div>
+        <div class="section-title">Course evaluation</div>
+        <p class="eval-intro">Your feedback is required for CPD accreditation and helps us improve the course. Please rate each statement. The comment boxes are optional.</p>
+        <div class="ev-item">
+          <div class="ev-q">1. The learning objectives of the course were met.</div>
+          <div class="likert" role="radiogroup"><label for="ev1_1"><input type="radio" id="ev1_1" name="ev1" value="1" required><span>Strongly disagree</span></label><label for="ev1_2"><input type="radio" id="ev1_2" name="ev1" value="2" required><span>Disagree</span></label><label for="ev1_3"><input type="radio" id="ev1_3" name="ev1" value="3" required><span>Neutral</span></label><label for="ev1_4"><input type="radio" id="ev1_4" name="ev1" value="4" required><span>Agree</span></label><label for="ev1_5"><input type="radio" id="ev1_5" name="ev1" value="5" required><span>Strongly agree</span></label></div>
+        </div>
+        <div class="ev-item">
+          <div class="ev-q">2. The content is relevant to my clinical practice.</div>
+          <div class="likert" role="radiogroup"><label for="ev2_1"><input type="radio" id="ev2_1" name="ev2" value="1" required><span>Strongly disagree</span></label><label for="ev2_2"><input type="radio" id="ev2_2" name="ev2" value="2" required><span>Disagree</span></label><label for="ev2_3"><input type="radio" id="ev2_3" name="ev2" value="3" required><span>Neutral</span></label><label for="ev2_4"><input type="radio" id="ev2_4" name="ev2" value="4" required><span>Agree</span></label><label for="ev2_5"><input type="radio" id="ev2_5" name="ev2" value="5" required><span>Strongly agree</span></label></div>
+        </div>
+        <div class="ev-item">
+          <div class="ev-q">3. The content was evidence-based and up to date.</div>
+          <div class="likert" role="radiogroup"><label for="ev3_1"><input type="radio" id="ev3_1" name="ev3" value="1" required><span>Strongly disagree</span></label><label for="ev3_2"><input type="radio" id="ev3_2" name="ev3" value="2" required><span>Disagree</span></label><label for="ev3_3"><input type="radio" id="ev3_3" name="ev3" value="3" required><span>Neutral</span></label><label for="ev3_4"><input type="radio" id="ev3_4" name="ev3" value="4" required><span>Agree</span></label><label for="ev3_5"><input type="radio" id="ev3_5" name="ev3" value="5" required><span>Strongly agree</span></label></div>
+        </div>
+        <div class="ev-item">
+          <div class="ev-q">4. The content was balanced and free of commercial bias.</div>
+          <div class="likert" role="radiogroup"><label for="ev4_1"><input type="radio" id="ev4_1" name="ev4" value="1" required><span>Strongly disagree</span></label><label for="ev4_2"><input type="radio" id="ev4_2" name="ev4" value="2" required><span>Disagree</span></label><label for="ev4_3"><input type="radio" id="ev4_3" name="ev4" value="3" required><span>Neutral</span></label><label for="ev4_4"><input type="radio" id="ev4_4" name="ev4" value="4" required><span>Agree</span></label><label for="ev4_5"><input type="radio" id="ev4_5" name="ev4" value="5" required><span>Strongly agree</span></label></div>
+        </div>
+        <div class="ev-item">
+          <div class="ev-q">5. The online format (lessons, videos, podcasts and handouts) was effective for my learning.</div>
+          <div class="likert" role="radiogroup"><label for="ev5_1"><input type="radio" id="ev5_1" name="ev5" value="1" required><span>Strongly disagree</span></label><label for="ev5_2"><input type="radio" id="ev5_2" name="ev5" value="2" required><span>Disagree</span></label><label for="ev5_3"><input type="radio" id="ev5_3" name="ev5" value="3" required><span>Neutral</span></label><label for="ev5_4"><input type="radio" id="ev5_4" name="ev5" value="4" required><span>Agree</span></label><label for="ev5_5"><input type="radio" id="ev5_5" name="ev5" value="5" required><span>Strongly agree</span></label></div>
+        </div>
+        <div class="ev-item">
+          <div class="ev-q">6. The module assessments matched the course content.</div>
+          <div class="likert" role="radiogroup"><label for="ev6_1"><input type="radio" id="ev6_1" name="ev6" value="1" required><span>Strongly disagree</span></label><label for="ev6_2"><input type="radio" id="ev6_2" name="ev6" value="2" required><span>Disagree</span></label><label for="ev6_3"><input type="radio" id="ev6_3" name="ev6" value="3" required><span>Neutral</span></label><label for="ev6_4"><input type="radio" id="ev6_4" name="ev6" value="4" required><span>Agree</span></label><label for="ev6_5"><input type="radio" id="ev6_5" name="ev6" value="5" required><span>Strongly agree</span></label></div>
+        </div>
+        <div class="ev-item">
+          <div class="ev-q">7. I will be able to apply what I learned to improve the care of my patients.</div>
+          <div class="likert" role="radiogroup"><label for="ev7_1"><input type="radio" id="ev7_1" name="ev7" value="1" required><span>Strongly disagree</span></label><label for="ev7_2"><input type="radio" id="ev7_2" name="ev7" value="2" required><span>Disagree</span></label><label for="ev7_3"><input type="radio" id="ev7_3" name="ev7" value="3" required><span>Neutral</span></label><label for="ev7_4"><input type="radio" id="ev7_4" name="ev7" value="4" required><span>Agree</span></label><label for="ev7_5"><input type="radio" id="ev7_5" name="ev7" value="5" required><span>Strongly agree</span></label></div>
+        </div>
+        <div class="ev-item">
+          <div class="ev-q">8. Overall, how would you rate this course?</div>
+          <div class="likert" role="radiogroup"><label for="ev_overall_1"><input type="radio" id="ev_overall_1" name="ev_overall" value="1" required><span>Poor</span></label><label for="ev_overall_2"><input type="radio" id="ev_overall_2" name="ev_overall" value="2" required><span>Fair</span></label><label for="ev_overall_3"><input type="radio" id="ev_overall_3" name="ev_overall" value="3" required><span>Good</span></label><label for="ev_overall_4"><input type="radio" id="ev_overall_4" name="ev_overall" value="4" required><span>Very good</span></label><label for="ev_overall_5"><input type="radio" id="ev_overall_5" name="ev_overall" value="5" required><span>Excellent</span></label></div>
+        </div>
+        <div class="ev-item">
+          <div class="ev-q">9. Roughly how long did the whole course take you?</div>
+          <div class="likert" role="radiogroup"><label for="ev_time_1"><input type="radio" id="ev_time_1" name="ev_time" value="1" required><span>Under 4 hours</span></label><label for="ev_time_2"><input type="radio" id="ev_time_2" name="ev_time" value="2" required><span>4–6 hours</span></label><label for="ev_time_3"><input type="radio" id="ev_time_3" name="ev_time" value="3" required><span>6–8 hours</span></label><label for="ev_time_4"><input type="radio" id="ev_time_4" name="ev_time" value="4" required><span>8–10 hours</span></label><label for="ev_time_5"><input type="radio" id="ev_time_5" name="ev_time" value="5" required><span>Over 10 hours</span></label></div>
+        </div>
+        <div class="ev-item">
+          <div class="field">
+            <label for="ev_useful">What was most useful to you?</label>
+            <textarea id="ev_useful" name="ev_useful" maxlength="1500"></textarea>
+          </div>
+          <div class="field">
+            <label for="ev_improve">What could be improved?</label>
+            <textarea id="ev_improve" name="ev_improve" maxlength="1500"></textarea>
+          </div>
+          <div class="field">
+            <label for="ev_needs">What further learning or topics would you like covered in future?</label>
+            <textarea id="ev_needs" name="ev_needs" maxlength="1500"></textarea>
+          </div>
+        </div>
+      </div>
       <div class="submit-bar">
         <span class="submit-status" id="submitStatus"></span>
         <button type="submit" class="btn-primary" id="submitBtn">Submit Quiz</button>
@@ -749,7 +894,8 @@
     const QUIZ_ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbz8L8Y-ORZrGZ7Y4g08p7yVJn1PaagrV8TcZlwNIbr6E8s5SZSsgY7ML2ZBQ3jezTc/exec";
     const TOTAL_QUESTIONS = 25;
     const EXTRA_REQUIRED_FIELDS = 1;
-    const TOTAL_REQUIRED_FIELDS = 3 + EXTRA_REQUIRED_FIELDS + TOTAL_QUESTIONS; // email, name, surname (+ extra) + 25 questions
+    const EVAL_RADIO_NAMES = ["ev1", "ev2", "ev3", "ev4", "ev5", "ev6", "ev7", "ev_overall", "ev_time"];
+    const TOTAL_REQUIRED_FIELDS = 3 + EXTRA_REQUIRED_FIELDS + TOTAL_QUESTIONS + EVAL_RADIO_NAMES.length; // email, name, surname (+ extra) + 25 questions
     const form = document.getElementById('quizForm');
     const progressFill = document.getElementById('progressFill');
     const progressLabel = document.getElementById('progressLabel');
@@ -766,6 +912,9 @@
       for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
         if (form.querySelector(`input[name="q${i}"]:checked`)) filled++;
       }
+      EVAL_RADIO_NAMES.forEach(function(n) {
+        if (form.querySelector(`input[name="${n}"]:checked`)) filled++;
+      });
       return filled;
     }
 
@@ -804,6 +953,17 @@
         name: document.getElementById('name').value.trim(),
         surname: document.getElementById('surname').value.trim(),
         hpcsaNumber: document.getElementById('hpcsa').value.trim(),
+        evaluation: (function() {
+          const ev = {};
+          EVAL_RADIO_NAMES.forEach(function(n) {
+            const c = form.querySelector(`input[name="${n}"]:checked`);
+            ev[n] = c ? c.value : '';
+          });
+          ev.useful = document.getElementById('ev_useful').value.trim();
+          ev.improve = document.getElementById('ev_improve').value.trim();
+          ev.needs = document.getElementById('ev_needs').value.trim();
+          return ev;
+        })(),
         answers: answers
       };
       submitBtn.disabled = true;
