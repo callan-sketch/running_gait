@@ -127,6 +127,22 @@
   .field-hint{ font-size:0.78rem; color:var(--ink-soft); margin-top:6px; }
   .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
 
+  .checkbox-field{ margin:20px 0 4px; }
+  .checkbox-label{
+    display:flex; align-items:flex-start; gap:10px; cursor:pointer;
+    font-size:0.86rem; color:var(--ink); line-height:1.5;
+  }
+  .checkbox-label input[type="checkbox"]{
+    width:18px; height:18px; margin-top:1px; flex-shrink:0;
+    accent-color:var(--teal); cursor:pointer;
+  }
+  .checkbox-label a{ color:var(--teal); font-weight:600; text-decoration:none; }
+  .checkbox-label a:hover{ text-decoration:underline; }
+  .checkbox-field .field-error{
+    display:none; font-size:0.8rem; color:#c0432f; margin-top:6px;
+  }
+  .checkbox-field .field-error.visible{ display:block; }
+
   .btn-primary{
     width:100%; background:var(--terracotta); color:#fff; border:none;
     padding:13px 20px; border-radius:9px; font-size:0.98rem; font-weight:600;
@@ -154,6 +170,18 @@
   }
   .error-box.show{ display:block; }
 
+  .info-box{
+    display:none; background:#eaf4f4; color:var(--teal-dk);
+    border-radius:8px; padding:11px 14px; font-size:0.85rem; margin-bottom:18px;
+  }
+  .info-box.show{ display:block; }
+
+  .forgot-link{
+    display:none; background:none; border:none; padding:0; margin-top:8px;
+    font-size:0.82rem; color:var(--terracotta); font-weight:600; cursor:pointer;
+  }
+  .forgot-link:hover{ text-decoration:underline; }
+
   .switch-line{ text-align:center; font-size:0.86rem; color:var(--ink-soft); margin-top:20px; }
   .switch-line button{ background:none; border:none; color:var(--terracotta); font-weight:600; font-size:0.86rem; }
 
@@ -173,13 +201,6 @@
     margin-top:20px; background:var(--cream); border-radius:8px; padding:12px 14px;
   }
   .secure-note svg{ flex-shrink:0; margin-top:2px; color:var(--teal); }
-
-  .btn-dev-bypass{
-    width:100%; margin-top:14px; background:#fff8ea; border:1px dashed #c9922e; color:#8a6416;
-    padding:11px 16px; border-radius:8px; font-size:0.85rem; font-weight:600;
-    transition:background .2s ease;
-  }
-  .btn-dev-bypass:hover{ background:#fdf0d5; }
 
   /* Discount code block */
   .discount-block{ margin-top:6px; }
@@ -268,6 +289,7 @@
         </div>
 
         <div class="error-box" id="authError"></div>
+        <div class="info-box" id="authInfo"></div>
 
         <button class="btn-google" id="googleBtn">
           <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.9c1.7-1.57 2.7-3.88 2.7-6.62z"/><path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.9-2.26c-.8.54-1.84.86-3.06.86-2.35 0-4.34-1.59-5.05-3.72H.9v2.33A9 9 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.95 10.7A5.4 5.4 0 0 1 3.67 9c0-.59.1-1.17.28-1.7V4.97H.9A9 9 0 0 0 0 9c0 1.45.35 2.83.9 4.03l3.05-2.33z"/><path fill="#EA4335" d="M9 3.58c1.32 0 2.5.46 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0A9 9 0 0 0 .9 4.97L3.95 7.3C4.66 5.17 6.65 3.58 9 3.58z"/></svg>
@@ -285,6 +307,7 @@
             <label for="password">Password</label>
             <input type="password" id="password" required autocomplete="new-password" minlength="8">
             <div class="field-hint" id="passwordHint">At least 8 characters</div>
+            <button type="button" class="forgot-link" id="forgotPasswordBtn">Forgot password?</button>
           </div>
           <button type="submit" class="btn-primary" id="emailSubmitBtn">
             <span class="btn-text">Create account</span>
@@ -337,6 +360,13 @@
               <option value="yes-occasionally">Occasionally</option>
               <option value="not-yet">Not yet</option>
             </select>
+          </div>
+          <div class="checkbox-field" id="termsField">
+            <label class="checkbox-label">
+              <input type="checkbox" id="obTerms" onchange="document.getElementById('termsError').classList.remove('visible')">
+              <span>I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a> set out by Core Learning.</span>
+            </label>
+            <p class="field-error" id="termsError">Please accept the Terms &amp; Conditions and Privacy Policy to continue.</p>
           </div>
           <button type="submit" class="btn-primary" id="onboardSubmitBtn">
             <span class="btn-text">Continue to payment</span>
@@ -400,15 +430,6 @@
           <span>You'll be redirected to Yoco's secure checkout to pay. We never see or store your card details.</span>
         </div>
 
-        <!-- ============================================================
-             TEMPORARY DEV BYPASS — remove this entire block once Yoco
-             checkout + yocoWebhook are actually wired up and tested for
-             this course. Marks the course paid without any real payment,
-             for build and testing purposes only.
-             ============================================================ -->
-        <button class="btn-dev-bypass" id="devBypassBtn" type="button">
-          ⚠ Dev only: skip payment &amp; unlock course
-        </button>
       </div>
 
     </div>
@@ -421,7 +442,7 @@
 
 <script type="module">
 /* ============================================================
-   CONFIG — replace these before going live.
+   CONFIG
    ============================================================ */
 const FIREBASE_CONFIG = {
   apiKey: "AIzaSyAN9BVXDo15Mav2zketm5jhKRoBjs2yYX8",
@@ -433,63 +454,20 @@ const FIREBASE_CONFIG = {
   measurementId: "G-M48JWEWV0D"
 };
 
-// Base URL for your deployed Cloud Functions (2nd gen), e.g.
-// "https://us-central1-your-project.cloudfunctions.net"
-// NOTE: this is still a placeholder in the physio-climbing repo too as of
-// this build — confirm the real value before this course can take payment.
-const FUNCTIONS_BASE_URL = "YOUR_FUNCTIONS_BASE_URL";
-
-// This course's id — matches the "courses.runninggait" namespace
-// used in Firestore and passed through to Cloud Functions.
+const FUNCTIONS_BASE_URL = "https://us-central1-core-coaching-login.cloudfunctions.net";
 const COURSE_ID = "runninggait";
-
-// Base price in Rands, for display/math on this page only. The real
-// source of truth for the amount actually charged is always the
-// createYocoCheckout Cloud Function — this constant must be kept in
-// sync with it manually, or better, have the Cloud Function return
-// the base price too so there's only one place to update it.
 const COURSE_PRICE_RANDS = 800;
 
 const IS_CONFIGURED = FIREBASE_CONFIG.apiKey !== "YOUR_API_KEY_HERE";
-
 if (!IS_CONFIGURED) {
   document.getElementById('devBanner').classList.add('show');
 }
 
-/* ============================================================
-   FIREBASE — only imported/initialised if configured, so this
-   file doesn't hard-error while FIREBASE_CONFIG is still a
-   placeholder.
-   ============================================================ */
+// Declared here, at the very top, before anything else references them —
+// so every event listener attached below can safely check FIREBASE_READY
+// regardless of whether the Firebase load (further down) has finished yet.
 let auth, db, currentUser = null;
 let FIREBASE_READY = false;
-
-if (IS_CONFIGURED) {
-  try {
-    const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js");
-    const {
-      getAuth, GoogleAuthProvider, signInWithPopup,
-      createUserWithEmailAndPassword, signInWithEmailAndPassword
-    } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js");
-    const { getFirestore, doc, setDoc, getDoc } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
-
-    const app = initializeApp(FIREBASE_CONFIG);
-    auth = getAuth(app);
-    db = getFirestore(app);
-
-    window._fb = {
-      GoogleAuthProvider, signInWithPopup,
-      createUserWithEmailAndPassword, signInWithEmailAndPassword,
-      doc, setDoc, getDoc
-    };
-    FIREBASE_READY = true;
-  } catch (err) {
-    console.error('Firebase failed to load:', err);
-    const banner = document.getElementById('devBanner');
-    banner.textContent = '⚠ Firebase failed to load — check your internet connection and try refreshing. If this keeps happening, the CDN URL or config may be wrong.';
-    banner.classList.add('show');
-  }
-}
 
 /* ============================================================
    STEP NAVIGATION
@@ -511,6 +489,11 @@ function goToStep(n){
 
 /* ============================================================
    STEP 1 — AUTH
+   (All listeners here are attached immediately, synchronously,
+   completely independent of whether Firebase has finished loading.
+   Each handler checks FIREBASE_READY itself before doing anything
+   Firebase-dependent — so the buttons are always clickable and
+   always show a clear message, never silently do nothing.)
    ============================================================ */
 let authMode = 'signup'; // or 'login'
 
@@ -524,7 +507,9 @@ function setAuthMode(mode){
   document.getElementById('emailSubmitBtn').querySelector('.btn-text').textContent =
     mode === 'signup' ? 'Create account' : 'Log in';
   document.getElementById('passwordHint').style.display = mode === 'signup' ? 'block' : 'none';
+  document.getElementById('forgotPasswordBtn').style.display = mode === 'login' ? 'block' : 'none';
   hideError('authError');
+  hideInfo('authInfo');
 }
 
 function showError(id, msg){
@@ -533,6 +518,14 @@ function showError(id, msg){
   el.classList.add('show');
 }
 function hideError(id){
+  document.getElementById(id).classList.remove('show');
+}
+function showInfo(id, msg){
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.classList.add('show');
+}
+function hideInfo(id){
   document.getElementById(id).classList.remove('show');
 }
 function setLoading(btnId, loading){
@@ -544,8 +537,6 @@ async function afterAuthSuccess(user){
   currentUser = user;
   document.getElementById('onboardEmail').value = user.email || '';
 
-  // If this user already has a profile / has already paid for this
-  // course, skip ahead rather than re-onboarding or re-charging them.
   if (FIREBASE_READY) {
     try {
       const snap = await window._fb.getDoc(window._fb.doc(db, 'users', user.uid));
@@ -568,7 +559,7 @@ async function afterAuthSuccess(user){
 document.getElementById('googleBtn').addEventListener('click', async () => {
   hideError('authError');
   if (!FIREBASE_READY){
-    showError('authError', 'Firebase isn\'t ready yet — see the banner at the top of the page.');
+    showError('authError', 'Still connecting — please wait a moment and try again.');
     return;
   }
   try {
@@ -588,7 +579,7 @@ document.getElementById('emailForm').addEventListener('submit', async (e) => {
   const password = document.getElementById('password').value;
 
   if (!FIREBASE_READY){
-    showError('authError', 'Firebase isn\'t ready yet — see the banner at the top of the page.');
+    showError('authError', 'Still connecting — please wait a moment and try again.');
     return;
   }
 
@@ -618,6 +609,29 @@ function friendlyAuthError(code){
   return map[code] || 'Something went wrong. Please try again.';
 }
 
+document.getElementById('forgotPasswordBtn').addEventListener('click', async () => {
+  hideError('authError');
+  hideInfo('authInfo');
+  const email = document.getElementById('email').value.trim();
+
+  if (!email){
+    showError('authError', 'Enter your email address above first, then tap "Forgot password?".');
+    return;
+  }
+  if (!FIREBASE_READY){
+    showError('authError', 'Still connecting — please wait a moment and try again.');
+    return;
+  }
+
+  try {
+    await window._fb.sendPasswordResetEmail(auth, email);
+    showInfo('authInfo', `Password reset email sent to ${email} — check your inbox (and spam folder).`);
+  } catch (err){
+    console.error(err);
+    showError('authError', friendlyAuthError(err.code));
+  }
+});
+
 /* ============================================================
    STEP 2 — ONBOARDING
    ============================================================ */
@@ -625,17 +639,24 @@ document.getElementById('onboardForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   hideError('onboardError');
 
+  if (!document.getElementById('obTerms').checked){
+    document.getElementById('termsError').classList.add('visible');
+    return;
+  }
+
   const profile = {
     name: document.getElementById('fullName').value.trim(),
     email: currentUser ? currentUser.email : document.getElementById('onboardEmail').value,
     profession: document.getElementById('profession').value,
     yearsQualified: document.getElementById('yearsQualified').value || null,
     country: document.getElementById('country').value.trim(),
-    treatsRunners: document.getElementById('treatsRunners').value || null
+    treatsRunners: document.getElementById('treatsRunners').value || null,
+    termsAccepted: true,
+    termsAcceptedAt: new Date().toISOString()
   };
 
   if (!FIREBASE_READY){
-    showError('onboardError', 'Firebase isn\'t ready yet — see the banner at the top of the page.');
+    showError('onboardError', 'Still connecting — please wait a moment and try again.');
     return;
   }
 
@@ -663,28 +684,9 @@ document.getElementById('onboardForm').addEventListener('submit', async (e) => {
 
 /* ============================================================
    STEP 3 — DISCOUNT CODE
-   ============================================================
-   Two Cloud Functions are involved here, both shared with the other
-   Core Learning courses:
-
-   1. validateDiscountCode — called live as soon as someone clicks
-      "Apply", purely to show an accurate price preview on this page.
-      Expected request:  POST { code, courseId }
-      Expected response: { valid: true, type: "percent" | "fixed",
-                            value: number, discountRands: number,
-                            newTotalRands: number }
-                       or { valid: false, message: string }
-
-   2. createYocoCheckout — already referenced below for the real
-      payment step. It must independently re-validate whatever
-      discountCode is passed to it and calculate the final amount
-      itself — never trust the discount total this page displays,
-      since it's for preview only and the client could tamper with it.
-
-   NOTE: as of this build, neither function's source has been reviewed
-   for this course, and COURSE_ID = "runninggait" has not yet been
-   added to their shared pricing/dispatch config. Confirm both before
-   relying on this flow.
+   validateDiscountCode's actual response shape is in CENTS:
+     { valid: true, code, type, value, discountCents, finalAmountCents }
+   or { valid: false, message } — converted to Rands below for display.
    ============================================================ */
 let appliedDiscountCode = null;
 
@@ -704,6 +706,9 @@ function updatePriceDisplay({ discountRands = 0, newTotalRands = COURSE_PRICE_RA
   } else {
     discountRow.style.display = 'none';
   }
+
+  const payBtnText = document.querySelector('#payBtn .btn-text');
+  payBtnText.textContent = newTotalRands === 0 ? 'Complete enrollment' : 'Continue to secure payment';
 }
 
 document.getElementById('discountToggle').addEventListener('click', () => {
@@ -732,7 +737,7 @@ document.getElementById('discountApplyBtn').addEventListener('click', async () =
   }
 
   if (!FIREBASE_READY){
-    showDiscountError('Not ready yet — see the banner at the top of the page.');
+    showDiscountError('Still connecting — please wait a moment and try again.');
     return;
   }
 
@@ -757,12 +762,11 @@ document.getElementById('discountApplyBtn').addEventListener('click', async () =
       return;
     }
 
+    const discountRands = Math.round(result.discountCents / 100);
+    const newTotalRands = Math.round(result.finalAmountCents / 100);
+
     appliedDiscountCode = code;
-    updatePriceDisplay({
-      discountRands: result.discountRands,
-      newTotalRands: result.newTotalRands,
-      code
-    });
+    updatePriceDisplay({ discountRands, newTotalRands, code });
 
     document.getElementById('discountInputRow').style.display = 'none';
     document.getElementById('discountApplied').style.display = 'flex';
@@ -791,7 +795,7 @@ document.getElementById('payBtn').addEventListener('click', async () => {
   hideError('paymentError');
 
   if (!FIREBASE_READY){
-    showError('paymentError', 'Payment isn\'t ready yet — see the banner at the top of the page.');
+    showError('paymentError', 'Still connecting — please wait a moment and try again.');
     return;
   }
 
@@ -815,12 +819,6 @@ document.getElementById('payBtn').addEventListener('click', async () => {
     if (!res.ok) throw new Error('Checkout creation failed');
     const { redirectUrl } = await res.json();
     window.location.href = redirectUrl;
-    // Yoco redirects back to successUrl/cancelUrl/failureUrl (all built from
-    // siteBaseUrl above, so this correctly returns to gait.corelearning.co.za
-    // rather than another course's domain) after payment. yocoWebhook then
-    // sets courses.runninggait.paid = true server-side once payment clears —
-    // or, if a discount code covers 100%, createYocoCheckout sets it directly
-    // and redirectUrl points straight at dashboard.html with no Yoco step at all.
   } catch (err){
     console.error(err);
     showError('paymentError', 'Couldn\'t start checkout — please try again.');
@@ -828,44 +826,44 @@ document.getElementById('payBtn').addEventListener('click', async () => {
   }
 });
 
-/* ============================================================
-   TEMPORARY DEV BYPASS HANDLER — remove alongside the button
-   above once real payment is wired up. Writes paid:true and
-   unlocks Module 1 directly, skipping Yoco entirely.
-   ============================================================ */
-document.getElementById('devBypassBtn').addEventListener('click', async () => {
-  hideError('paymentError');
-
-  if (!FIREBASE_READY){
-    showError('paymentError', 'Firebase isn\'t ready yet — see the banner at the top of the page.');
-    return;
-  }
-  if (!currentUser){
-    showError('paymentError', 'No signed-in user found — please complete step 1 first.');
-    return;
-  }
-
-  setLoading('devBypassBtn', true);
-  try {
-    const userRef = window._fb.doc(db, 'users', currentUser.uid);
-    await window._fb.setDoc(userRef, {
-      courses: {
-        [COURSE_ID]: {
-          paid: true,
-          unlockedModules: [1],
-          moduleProgress: {}
-        }
-      }
-    }, { merge: true });
-    window.location.href = 'dashboard.html';
-  } catch (err){
-    console.error(err);
-    showError('paymentError', 'Dev bypass failed — check the console for details.');
-    setLoading('devBypassBtn', false);
-  }
-});
-
 document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ============================================================
+   FIREBASE — loaded last, deliberately. Every handler above already
+   checks FIREBASE_READY before doing anything Firebase-dependent, so
+   nothing above this point is blocked by it. This ordering means a
+   slow or failed Firebase CDN load can never make the whole page
+   look completely unresponsive — buttons stay clickable throughout,
+   and show a clear "still connecting" message instead of silence.
+   ============================================================ */
+if (IS_CONFIGURED) {
+  try {
+    const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js");
+    const {
+      getAuth, GoogleAuthProvider, signInWithPopup,
+      createUserWithEmailAndPassword, signInWithEmailAndPassword,
+      sendPasswordResetEmail
+    } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js");
+    const { getFirestore, doc, setDoc, getDoc } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+
+    const app = initializeApp(FIREBASE_CONFIG);
+    auth = getAuth(app);
+    db = getFirestore(app);
+
+    window._fb = {
+      GoogleAuthProvider, signInWithPopup,
+      createUserWithEmailAndPassword, signInWithEmailAndPassword,
+      sendPasswordResetEmail,
+      doc, setDoc, getDoc
+    };
+    FIREBASE_READY = true;
+  } catch (err) {
+    console.error('Firebase failed to load:', err);
+    const banner = document.getElementById('devBanner');
+    banner.textContent = '⚠ Firebase failed to load — check your internet connection and try refreshing. If this keeps happening, the CDN URL or config may be wrong.';
+    banner.classList.add('show');
+  }
+}
 </script>
 
 </body>

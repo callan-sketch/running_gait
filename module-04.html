@@ -132,17 +132,6 @@
   }
   .btn-primary:hover{ background:var(--terracotta-dk); transform:translateY(-1px); }
 
-  .dev-complete-box{
-    margin-top:28px; padding-top:24px; border-top:1px dashed var(--cream-dk);
-  }
-  .btn-dev-bypass{
-    background:#fff8ea; border:1px dashed #c9922e; color:#8a6416;
-    padding:12px 20px; border-radius:9px; font-size:0.88rem; font-weight:600;
-    transition:background .2s ease; display:inline-flex; align-items:center; gap:9px;
-  }
-  .btn-dev-bypass:hover{ background:#fdf0d5; }
-  .btn-dev-bypass:disabled{ opacity:0.6; cursor:not-allowed; }
-  .dev-note{ font-size:0.78rem; color:var(--ink-soft); margin-top:10px; max-width:480px; }
 
   .status-msg{
     display:none; margin-top:16px; padding:12px 16px; border-radius:8px;
@@ -242,18 +231,6 @@
           </a>
         </div>
 
-        <!-- ============================================================
-             TEMPORARY DEV BYPASS — remove once the real quiz above is
-             live and wired to the grading endpoint for automatic
-             grading/unlock. Manual override for testing/admin use only.
-             ============================================================ -->
-        <div class="dev-complete-box">
-          <button class="btn-dev-bypass" id="devCompleteBtn">
-            ⚠ Dev only: mark module complete &amp; unlock Module 5
-          </button>
-          <p class="dev-note">Manual override for testing — remove once the real quiz handles grading and unlock automatically.</p>
-          <div class="status-msg" id="statusMsg"></div>
-        </div>
       </div>
     </div>
   </section>
@@ -347,45 +324,6 @@ function showStatus(msg, type){
   el.textContent = msg;
   el.className = `status-msg show ${type}`;
 }
-
-document.getElementById('devCompleteBtn').addEventListener('click', async () => {
-  if (!currentUser) return;
-
-  const btn = document.getElementById('devCompleteBtn');
-  btn.disabled = true;
-
-  try {
-    const userRef = doc(db, 'users', currentUser.uid);
-    const snap = await getDoc(userRef);
-    const existing = snap.exists() ? snap.data() : {};
-    const existingCourse = (existing.courses && existing.courses[COURSE_ID]) || {};
-    const existingUnlocked = existingCourse.unlockedModules || [1];
-    const existingProgress = existingCourse.moduleProgress || {};
-
-    const newUnlocked = new Set(existingUnlocked);
-    if (NEXT_MODULE <= TOTAL_MODULES) newUnlocked.add(NEXT_MODULE);
-
-    await setDoc(userRef, {
-      courses: {
-        [COURSE_ID]: {
-          ...existingCourse,
-          unlockedModules: Array.from(newUnlocked),
-          moduleProgress: {
-            ...existingProgress,
-            [THIS_MODULE_KEY]: { completed: true }
-          }
-        }
-      }
-    }, { merge: true });
-
-    showStatus('Module marked complete — redirecting to your dashboard…', 'success');
-    setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
-  } catch (err){
-    console.error(err);
-    showStatus('Something went wrong saving your progress — please try again.', 'error');
-    btn.disabled = false;
-  }
-});
 
 document.getElementById('logoutBtn').addEventListener('click', async (e) => {
   e.preventDefault();
