@@ -455,6 +455,7 @@ const FIREBASE_CONFIG = {
 };
 
 const FUNCTIONS_BASE_URL = "https://us-central1-core-coaching-login.cloudfunctions.net";
+const PAY_HANDOFF_URL = "https://corelearning.co.za/pay.html";
 const COURSE_ID = "runninggait";
 const COURSE_PRICE_RANDS = 800;
 
@@ -818,7 +819,10 @@ document.getElementById('payBtn').addEventListener('click', async () => {
     });
     if (!res.ok) throw new Error('Checkout creation failed');
     const { redirectUrl } = await res.json();
-    window.location.href = redirectUrl;
+    // Yoco only accepts checkouts arriving from its registered websites, so hand
+    // off via corelearning.co.za/pay.html (registered) rather than going direct.
+    const m = /^https:\/\/c\.yoco\.com\/checkout\/(ch_[A-Za-z0-9]+)/.exec(redirectUrl || '');
+    window.location.href = m ? `${PAY_HANDOFF_URL}?c=${m[1]}` : redirectUrl;
   } catch (err){
     console.error(err);
     showError('paymentError', 'Couldn\'t start checkout — please try again.');
