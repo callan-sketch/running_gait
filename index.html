@@ -66,6 +66,27 @@
   .hero h1{ color:#fff; font-size:clamp(2rem, 4.2vw, 3.1rem); margin-bottom:20px; }
   .hero h1 em{ font-style:italic; color:var(--terracotta); font-weight:500; }
   .hero p.sub{ color:var(--cream); opacity:0.75; font-size:1.05rem; max-width:520px; margin-bottom:32px; }
+  /* CEU accreditation badge — used twice on the page (hero + price card) */
+  .ceu-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(58,138,140,0.16); color:#bfe3e3;
+    padding:8px 16px; border-radius:20px;
+    font-size:0.82rem; font-weight:600;
+    border:1px solid rgba(58,138,140,0.4);
+    margin-bottom:24px;
+  }
+  .ceu-badge svg{ flex-shrink:0; }
+  .price-card .ceu-badge{
+    background:rgba(58,138,140,0.1); color:var(--teal);
+    border:1px solid rgba(58,138,140,0.3);
+    margin-bottom:18px; margin-top:0;
+  }
+  .intl-cpd{
+    font-size:0.8rem; line-height:1.55; color:var(--ink-soft);
+    margin:0 0 20px;
+  }
+  .intl-cpd strong{ color:var(--navy); }
+
   .hero-ctas{ display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
   .btn-primary{
     background:var(--terracotta); color:#fff; padding:14px 26px; border-radius:9px;
@@ -184,6 +205,10 @@
       <span class="eyebrow hero-eyebrow">CORE LEARNING</span>
       <h1>Running Gait Analysis for Injury Prevention &amp; Treatment</h1>
       <p class="sub">A five-module course on running gait assessment, interpretation, injury-specific treatment, and return-to-run programming — built for physiotherapists who want a structured, evidence-based framework for their running patients.</p>
+      <div class="ceu-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2L14.5 8.5L21 9L16 13.5L17.5 20L12 16.5L6.5 20L8 13.5L3 9L9.5 8.5L12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        CEU Points awarded: 8 General (CEUs), Level 1
+      </div>
       <div class="hero-ctas">
         <a href="login.html" class="btn-primary">
           Enroll now
@@ -310,6 +335,11 @@
         <span class="eyebrow">ONE-TIME ENROLLMENT</span>
         <div class="amount">R800</div>
         <div class="amount-note">Once-off payment · secure checkout via Yoco</div>
+        <div class="ceu-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2L14.5 8.5L21 9L16 13.5L17.5 20L12 16.5L6.5 20L8 13.5L3 9L9.5 8.5L12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          CEU Points awarded: 8 General (CEUs), Level 1
+        </div>
+        <p class="intl-cpd"><strong>CEUs accredited for HPCSA continuing professional development. Approximately 8 hours of learning.</strong> International physiotherapists: this course can support your CPD requirements where self-directed learning counts (for example, the Physiotherapy Board of Australia's 20 hours per year), subject to your own reflection and relevance to your practice.</p>
         <a href="login.html" class="btn-primary">
           Enroll in the course
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
