@@ -185,7 +185,11 @@
   .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
   .reveal.in{ opacity:1; transform:translateY(0); }
   @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } html{ scroll-behavior:auto; } }
+  .ig-link{ display:inline-flex; align-items:center; gap:8px; text-decoration:none; }
+  .ig-link i{ font-size:1.25rem; line-height:1; }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css">
 </head>
 <body>
 
@@ -360,6 +364,7 @@
     <div class="footer-meta">
       <span>&copy; <span id="year"></span> Core Learning</span>
       <a href="mailto:info@corelearning.co.za">info@corelearning.co.za</a>
+      <a class="ig-link" href="https://www.instagram.com/core_learning_hub/" target="_blank" rel="noopener" aria-label="Core Learning on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i><span>@core_learning_hub</span></a>
     </div>
   </div>
 </footer>
